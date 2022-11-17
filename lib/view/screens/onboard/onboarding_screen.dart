@@ -209,21 +209,21 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                                 //     :
                                                 'get_started'.tr,
                                             onPressed: () {
-                                              if (onBoardingController
-                                                      .selectedIndex !=
-                                                  2) {
-                                                _pageController.nextPage(
-                                                    duration:
-                                                        Duration(seconds: 1),
-                                                    curve: Curves.ease);
-                                              } else {
-                                                Get.find<SplashController>()
-                                                    .disableIntro();
-                                                Get.offNamed(
-                                                    RouteHelper.getSignInRoute(
-                                                        RouteHelper
-                                                            .onBoarding));
-                                              }
+                                              // if (onBoardingController
+                                              //         .selectedIndex !=
+                                              //     2) {
+                                              //   _pageController.nextPage(
+                                              //       duration:
+                                              //           Duration(seconds: 1),
+                                              //       curve: Curves.ease);
+                                              // } else
+                                              // {
+                                              Get.find<SplashController>()
+                                                  .disableIntro();
+                                              Get.offNamed(
+                                                  RouteHelper.getSignInRoute(
+                                                      RouteHelper.onBoarding));
+                                              // }
                                             },
                                           ),
                                         )
