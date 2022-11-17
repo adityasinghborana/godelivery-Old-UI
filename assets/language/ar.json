@@ -430,11 +430,9 @@
   "track_delivery": "تتبع التسليم",
   "cancel_delivery": "إلغاء التسليم",
   "delivery_id": "معرف التسليم",
-
   "version_1.1": "Version 1.1",
   "featured_stores": "المتاجر المميزة",
   "max_size_2_mb": "أقصى حجم 2 ميغا بايت",
-
   "version_1.2": "Version 1.2",
   "no_parcel_category_data_found": "لم يتم العثور على بيانات فئة الطرد",
   "search_item_in_store": "البحث عن عنصر في المتجر ...",
@@ -448,13 +446,12 @@
   "download_our_app": "قم بتنزيل تطبيقنا",
   "download_our_apps": "قم بتنزيل تطبيقنا",
   "quick_links": "روابط سريعة",
-  "my_account" : "حسابي",
+  "my_account": "حسابي",
   "contact_us": "اتصل بنا",
   "copyright": "حقوق النشر © 6amTech",
   "terms_and_condition": "الشروط والأحكام",
   "add_address": "اضف عنوان",
   "subscribed_successfully": "تم الاشتراك بنجاح",
-
   "landing_page_texts": "Landing Page Texts",
   "more_than_just_a_reliable_ecommerce_platform": "أكثر من مجرد منصة تجارة إلكترونية موثوقة",
   "choose_your_location_to_start_shopping": "اختر موقعك لبدء التسوق",
@@ -474,7 +471,6 @@
   "pick_from_map": "اختر من الخريطة",
   "register": "يسجل",
   "register_as_delivery_man_and_earn_money": "سجل كرجل توصيل واكسب المال",
-
   "version_1.4": "Version 1.4",
   "street_number": "رقم الشارع",
   "house": "منزل",
@@ -493,14 +489,12 @@
   "item_details": "تفاصيل العنصر",
   "enter_sender_name": "أدخل اسم المرسل",
   "enter_sender_phone_number": "أدخل رقم هاتف المرسل",
-
   "your_account_remove_successfully": "تمت إزالة حسابك بنجاح",
   "there_is_a_problem_on_removing_your_account": "هناك مشكلة في إزالة حسابك",
   "remove_account": "إزالة الحساب",
   "are_you_sure_to_delete_account": "هل أنت متأكد من حذف حسابك?",
   "it_will_remove_your_all_information": "سوف يزيل كل المعلومات الخاصة بك.",
   "no_restaurant_data_found": "لم يتم العثور على بيانات مطعم",
-
   "loyalty_points": "نقاط الولاء",
   "wallet_amount": "مبلغ المحفظة",
   "convert_to_currency": "تحويل إلى عملة",
@@ -541,7 +535,6 @@
   "debit": "مدين",
   "you_do_not_have_sufficient_balance_in_wallet": "ليس لديك رصيد كاف في المحفظة",
   "write_somethings": "اكتب شيئا",
-
   "version_5.8": "Version 5.8",
   "write_something": "أكتب شيئا...",
   "live_chat": "دردشة مباشرة",
@@ -615,5 +608,7 @@
   "set_your_store_location": "حدد موقع متجرك",
   "select_your_store_zone": "حدد منطقة متجرك",
   "deleted": "تم الحذف",
-  "this_is_my_refer_code": "هذا هو رمز مشاركتي"
+  "this_is_my_refer_code": "هذا هو رمز مشاركتي",
+  "search_by_item_name": "Search by item name",
+  "explore": "يكتشف"
 }

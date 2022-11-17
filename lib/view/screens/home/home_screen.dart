@@ -387,8 +387,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           .moduleConfig
                                                           .module
                                                           .showRestaurantText
-                                                      ? 'Search by item name'.tr
-                                                      : 'Search by item name'
+                                                      ? 'search_by_item_name'.tr
+                                                      : 'search_by_item_name'
                                                           .tr,
                                                   style: robotoRegular.copyWith(
                                                     fontSize: Dimensions

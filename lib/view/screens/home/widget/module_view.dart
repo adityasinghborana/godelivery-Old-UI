@@ -58,74 +58,68 @@ class ModuleView extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              SizedBox(
-                                width: 1,
-                              ),
-                              // CustomImage(
-                              //   image:
-                              //       '${splashController.configModel.baseUrls.moduleImageUrl}/${splashController.moduleList[index].icon}',
-                              //   height: 50,
-                              //   width: 50,
-                              // ),
-
                               Image.asset(
                                 Images.imgRestro,
                                 height: 159,
                                 width: 135,
                               ),
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    splashController
-                                        .moduleList[index].moduleName,
-                                    style: robotoBold.copyWith(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    "lorem ipsum dolor sit amet,consector.",
-                                    style: robotoRegular.copyWith(
-                                      color: Colors.white,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Row(
+                              Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.only(right: 20),
+                                  child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                        CrossAxisAlignment.start,
                                     children: [
+                                      Text(
+                                        splashController
+                                            .moduleList[index].moduleName,
+                                        style: robotoBold.copyWith(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                        ),
+                                      ),
                                       SizedBox(
-                                        width: 140,
+                                        height: 10,
                                       ),
                                       Text(
-                                        "Explore",
-                                        style: robotoBold.copyWith(
+                                        "lorem ipsum dolor sit amet,consector.",
+                                        style: robotoRegular.copyWith(
                                           color: Colors.white,
                                           fontSize: 12,
                                         ),
                                       ),
                                       SizedBox(
-                                        width: 2,
+                                        height: 5,
                                       ),
-                                      Icon(
-                                        Icons.arrow_forward,
-                                        size: 23,
-                                        color: Colors.white,
-                                      )
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'explore'.tr,
+                                            style: robotoBold.copyWith(
+                                              color: Colors.white,
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 2,
+                                          ),
+                                          Icon(
+                                            Icons.arrow_forward,
+                                            size: 23,
+                                            color: Colors.white,
+                                          )
+                                        ],
+                                      ),
                                     ],
                                   ),
-                                ],
+                                ),
                               ),
                             ],
                           ),
