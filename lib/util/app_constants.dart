@@ -109,6 +109,8 @@ class AppConstants {
   static const String LANGUAGE_CODE = '6ammart_language_code';
   static const String CART_LIST = '6ammart_cart_list';
   static const String USER_PASSWORD = '6ammart_user_password';
+  static const String USER_FNAME = '6ammart_user_fname';
+  static const String USER_LNAME = '6ammart_user_lname';
   static const String USER_ADDRESS = '6ammart_user_address';
   static const String USER_NUMBER = '6ammart_user_number';
   static const String USER_COUNTRY_CODE = '6ammart_user_country_code';

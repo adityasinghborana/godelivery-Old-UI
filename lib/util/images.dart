@@ -1,7 +1,8 @@
 class Images {
   static const String logo = 'assets/image/logo.png';
   static const String placeholder = 'assets/image/placeholder.jpg';
-  static const String notification_placeholder = 'assets/image/notification_placeholder.jpg';
+  static const String notification_placeholder =
+      'assets/image/notification_placeholder.jpg';
   static const String arabic = 'assets/image/arabic.png';
   static const String call = 'assets/image/call.png';
   static const String checked = 'assets/image/checked.png';
@@ -10,11 +11,13 @@ class Images {
   static const String lock = 'assets/image/lock.png';
   static const String mail = 'assets/image/mail.png';
   static const String map = 'assets/image/map.png';
-  static const String onboard_1 = 'assets/image/onboard_1.png';
-  static const String onboard_2 = 'assets/image/onboard_2.png';
-  static const String onboard_3 = 'assets/image/onboard_3.png';
+  static const String onboard_1 = 'assets/image/img_onBoarding_1.png';
+  static const String onboard_2 = 'assets/image/img_onBoarding_2.png';
+  static const String onboard_3 = 'assets/image/img_onBoarding_3.png';
+  static const String onboard_4 = 'assets/image/img_onBoarding_4.png';
   static const String restaurant_marker = 'assets/image/restaurant_marker.png';
-  static const String delivery_man_marker = 'assets/image/delivery_man_marker.png';
+  static const String delivery_man_marker =
+      'assets/image/delivery_man_marker.png';
   static const String user = 'assets/image/user.png';
   static const String about_us = 'assets/image/about_us.png';
   static const String coupon = 'assets/image/coupon.png';
@@ -41,7 +44,8 @@ class Images {
   static const String pick_marker = 'assets/image/pick_marker.png';
   static const String house = 'assets/image/house.png';
   static const String tracking = 'assets/image/tracking.png';
-  static const String my_location_marker = 'assets/image/my_location_marker.png';
+  static const String my_location_marker =
+      'assets/image/my_location_marker.png';
   static const String user_marker = 'assets/image/user_marker.png';
   static const String maintenance = 'assets/image/maintenance.png';
   static const String no_internet = 'assets/image/no_internet.png';
@@ -57,14 +61,18 @@ class Images {
   static const String profile = 'assets/image/profile.png';
   static const String landing_app_store = 'assets/image/landing_app_store.png';
   static const String landing_checkout = 'assets/image/landing_checkout.png';
-  static const String landing_choose_location = 'assets/image/landing_choose_location.png';
+  static const String landing_choose_location =
+      'assets/image/landing_choose_location.png';
   static const String landing_excellent = 'assets/image/landing_excellent.png';
-  static const String landing_google_play = 'assets/image/landing_google_play.png';
+  static const String landing_google_play =
+      'assets/image/landing_google_play.png';
   static const String landing_bg = 'assets/image/landing_bg.png';
-  static const String landing_store_open = 'assets/image/landing_store_open.png';
+  static const String landing_store_open =
+      'assets/image/landing_store_open.png';
   static const String landing_stores = 'assets/image/landing_stores.png';
   static const String landing_trusted = 'assets/image/landing_trusted.png';
-  static const String landing_delivery_man = 'assets/image/landing_delivery_man.png';
+  static const String landing_delivery_man =
+      'assets/image/landing_delivery_man.png';
   static const String twitter = 'assets/image/twitter.png';
   static const String youtube = 'assets/image/youtube.png';
   static const String linkedin = 'assets/image/linkedin.png';
@@ -87,4 +95,15 @@ class Images {
   static const String confirmed_gif = 'assets/image/confirmed.gif';
   static const String pending_gif = 'assets/image/pending.gif';
   static const String handover_gif = 'assets/image/handover.gif';
+  static const String imgLocation = 'assets/image/img_location.png';
+  static const String imgFilter = 'assets/image/img_filter.png';
+  static const String imgRestro = 'assets/image/img_resto.png';
+  static const String imgNotify = 'assets/image/img_notification.png';
+  static const String imgCategory = 'assets/image/img_category.png';
+  static const String imgHome = 'assets/image/img_home.png';
+  static const String imgFav = 'assets/image/img_fav.png';
+  static const String imgProfile = 'assets/image/ic_profile.png';
+  static const String imgNotification = 'assets/image/img_notification.png';
+  static const String imgOnBoardingLogo =
+      'assets/image/img_onBoarding_logo.png';
 }

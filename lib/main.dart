@@ -24,16 +24,18 @@ import 'package:get/get.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'helper/get_di.dart' as di;
 
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
 Future<void> main() async {
-  if(ResponsiveHelper.isMobilePhone()) {
+  if (ResponsiveHelper.isMobilePhone()) {
     HttpOverrides.global = new MyHttpOverrides();
   }
   setPathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
-  if(GetPlatform.isWeb){
-    await Firebase.initializeApp(options: FirebaseOptions(
+  if (GetPlatform.isWeb) {
+    await Firebase.initializeApp(
+        options: FirebaseOptions(
       apiKey: 'AIzaSyDFN-73p8zKVZbA0i5DtO215XzAb-xuGSE',
       appId: '1:1000163153346:web:4f702a4b5adbd5c906b25b',
       messagingSenderId: 'G-L1GNL2YV61',
@@ -46,14 +48,15 @@ Future<void> main() async {
   NotificationBody _body;
   try {
     if (GetPlatform.isMobile) {
-      final RemoteMessage remoteMessage = await FirebaseMessaging.instance.getInitialMessage();
+      final RemoteMessage remoteMessage =
+          await FirebaseMessaging.instance.getInitialMessage();
       if (remoteMessage != null) {
         _body = NotificationHelper.convertNotification(remoteMessage.data);
       }
       await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
       FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
     }
-  }catch(e) {}
+  } catch (e) {}
 
   // if (ResponsiveHelper.isWeb()) {
   //   FacebookAuth.i.webInitialize(
@@ -84,9 +87,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(GetPlatform.isWeb) {
+    if (GetPlatform.isWeb) {
       Get.find<SplashController>().initSharedData();
-      if(Get.find<LocationController>().getUserAddress() != null && Get.find<LocationController>().getUserAddress().zoneIds == null) {
+      if (Get.find<LocationController>().getUserAddress() != null &&
+          Get.find<LocationController>().getUserAddress().zoneIds == null) {
         Get.find<AuthController>().clearSharedAddress();
       }
       Get.find<CartController>().getCartData();
@@ -96,24 +100,37 @@ class MyApp extends StatelessWidget {
     return GetBuilder<ThemeController>(builder: (themeController) {
       return GetBuilder<LocalizationController>(builder: (localizeController) {
         return GetBuilder<SplashController>(builder: (splashController) {
-          return (GetPlatform.isWeb && splashController.configModel == null) ? SizedBox() : GetMaterialApp(
-            title: AppConstants.APP_NAME,
-            debugShowCheckedModeBanner: false,
-            navigatorKey: Get.key,
-            scrollBehavior: MaterialScrollBehavior().copyWith(
-              dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
-            ),
-            theme: themeController.darkTheme ? themeController.darkColor == null ? dark() : dark(color
-                : themeController.darkColor) : themeController.lightColor == null ? light()
-                : light(color: themeController.lightColor),
-            locale: localizeController.locale,
-            translations: Messages(languages: languages),
-            fallbackLocale: Locale(AppConstants.languages[0].languageCode, AppConstants.languages[0].countryCode),
-            initialRoute: GetPlatform.isWeb ? RouteHelper.getInitialRoute() : RouteHelper.getSplashRoute(body),
-            getPages: RouteHelper.routes,
-            defaultTransition: Transition.topLevel,
-            transitionDuration: Duration(milliseconds: 500),
-          );
+          return (GetPlatform.isWeb && splashController.configModel == null)
+              ? SizedBox()
+              : GetMaterialApp(
+                  title: AppConstants.APP_NAME,
+                  debugShowCheckedModeBanner: false,
+                  navigatorKey: Get.key,
+                  scrollBehavior: MaterialScrollBehavior().copyWith(
+                    dragDevices: {
+                      PointerDeviceKind.mouse,
+                      PointerDeviceKind.touch
+                    },
+                  ),
+                  theme: themeController.darkTheme
+                      ? themeController.darkColor == null
+                          ? dark()
+                          : dark(color: themeController.darkColor)
+                      : themeController.lightColor == null
+                          ? light()
+                          : light(color: themeController.lightColor),
+                  locale: localizeController.locale,
+                  translations: Messages(languages: languages),
+                  fallbackLocale: Locale(AppConstants.languages[0].languageCode,
+                      AppConstants.languages[0].countryCode),
+                  initialRoute: GetPlatform.isWeb
+                      ? RouteHelper.getInitialRoute()
+                      : RouteHelper.getSplashRoute(body),
+                  // : RouteHelper.getOnBoardingRoute(),
+                  getPages: RouteHelper.routes,
+                  defaultTransition: Transition.topLevel,
+                  transitionDuration: Duration(milliseconds: 500),
+                );
         });
       });
     });
@@ -123,6 +140,8 @@ class MyApp extends StatelessWidget {
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext context) {
-    return super.createHttpClient(context)..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
