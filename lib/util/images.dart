@@ -111,4 +111,5 @@ class Images {
   static const String icApple = 'assets/image/ic_apple.png';
   static const String icCall = 'assets/image/ic_call.png';
   static const String imgSpalshBg = 'assets/image/img_splash_bg.png';
+  static const String imgEmail = 'assets/image/img_email.png';
 }

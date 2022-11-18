@@ -7,11 +7,13 @@ import 'package:sixam_mart/util/dimensions.dart';
 import 'package:sixam_mart/util/styles.dart';
 import 'package:sixam_mart/view/base/custom_button.dart';
 import 'package:sixam_mart/view/base/custom_snackbar.dart';
+import 'package:sixam_mart/view/base/custom_text_field.dart';
 import 'package:sixam_mart/view/base/footer_view.dart';
 import 'package:sixam_mart/view/base/menu_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:phone_number/phone_number.dart';
+import 'package:sixam_mart/view/screens/auth/widget/code_picker_widget.dart';
 
 class ForgetPassScreen extends StatefulWidget {
   final bool fromSocialLogin;
