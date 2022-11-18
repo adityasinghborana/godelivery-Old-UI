@@ -106,4 +106,9 @@ class Images {
   static const String imgNotification = 'assets/image/img_notification.png';
   static const String imgOnBoardingLogo =
       'assets/image/img_onBoarding_logo.png';
+  static const String icGoogle = 'assets/image/ic_google.png';
+  static const String icFacebook = 'assets/image/ic_facebook.png';
+  static const String icApple = 'assets/image/ic_apple.png';
+  static const String icCall = 'assets/image/ic_call.png';
+  static const String imgSpalshBg = 'assets/image/img_splash_bg.png';
 }

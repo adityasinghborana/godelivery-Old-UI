@@ -45,6 +45,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       TextEditingController();
   final TextEditingController _referCodeController = TextEditingController();
   String _countryDialCode;
+  bool isVisible = false;
 
   @override
   void initState() {
@@ -91,182 +92,364 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       )
                     : null,
                 child: GetBuilder<AuthController>(builder: (authController) {
-                  return Column(children: [
-                    Image.asset(Images.logo, width: 200),
-                    // SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
-                    // Center(child: Text(AppConstants.APP_NAME, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge))),
-                    SizedBox(height: Dimensions.PADDING_SIZE_EXTRA_LARGE),
-
-                    Text('sign_up'.tr.toUpperCase(),
-                        style: robotoBlack.copyWith(fontSize: 30)),
-                    SizedBox(height: 50),
-
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(Dimensions.RADIUS_SMALL),
-                        color: Theme.of(context).cardColor,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey[Get.isDarkMode ? 800 : 200],
-                              spreadRadius: 1,
-                              blurRadius: 5)
-                        ],
-                      ),
-                      child: Column(children: [
-                        CustomTextField(
-                          hintText: 'first_name'.tr,
-                          controller: _firstNameController,
-                          focusNode: _firstNameFocus,
-                          nextFocus: _lastNameFocus,
-                          inputType: TextInputType.name,
-                          capitalization: TextCapitalization.words,
-                          prefixIcon: Images.user,
-                          divider: true,
-                        ),
-                        CustomTextField(
-                          hintText: 'last_name'.tr,
-                          controller: _lastNameController,
-                          focusNode: _lastNameFocus,
-                          nextFocus: _emailFocus,
-                          inputType: TextInputType.name,
-                          capitalization: TextCapitalization.words,
-                          prefixIcon: Images.user,
-                          divider: true,
-                        ),
-                        CustomTextField(
-                          hintText: 'email'.tr,
-                          controller: _emailController,
-                          focusNode: _emailFocus,
-                          nextFocus: _phoneFocus,
-                          inputType: TextInputType.emailAddress,
-                          prefixIcon: Images.mail,
-                          divider: true,
-                        ),
-                        Row(children: [
-                          CodePickerWidget(
-                            onChanged: (CountryCode countryCode) {
-                              _countryDialCode = countryCode.dialCode;
-                            },
-                            initialSelection: CountryCode.fromCountryCode(
-                                    Get.find<SplashController>()
-                                        .configModel
-                                        .country)
-                                .code,
-                            favorite: [
-                              CountryCode.fromCountryCode(
-                                      Get.find<SplashController>()
-                                          .configModel
-                                          .country)
-                                  .code
-                            ],
-                            showDropDownButton: true,
-                            padding: EdgeInsets.zero,
-                            showFlagMain: true,
-                            dialogBackgroundColor: Theme.of(context).cardColor,
-                            textStyle: robotoRegular.copyWith(
-                              fontSize: Dimensions.fontSizeLarge,
-                              color:
-                                  Theme.of(context).textTheme.bodyText1.color,
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 40),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 31),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  onTap: () => Navigator.pop(context),
+                                  child: Icon(
+                                    Icons.arrow_back_ios_new,
+                                    size: 20,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Text('create_new_account'.tr,
+                                    style: robotoBlack.copyWith(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 14,
+                                        color: Color(0xff09303e))),
+                              ],
                             ),
                           ),
-                          Expanded(
-                              child: CustomTextField(
-                            hintText: 'phone'.tr,
-                            controller: _phoneController,
-                            focusNode: _phoneFocus,
-                            nextFocus: _passwordFocus,
-                            inputType: TextInputType.phone,
-                            divider: false,
+                          // Image.asset(Images.logo, width: 200),
+                          // SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+                          // Center(child: Text(AppConstants.APP_NAME, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge))),
+                          SizedBox(
+                            height: 36,
+                          ),
+                          Text('please_provide_general'.tr,
+                              style: robotoBlack.copyWith(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff5c6678))),
+                          // Text('sign_up'.tr.toUpperCase(),
+                          //     style: robotoBlack.copyWith(fontSize: 30)),
+
+                          SizedBox(height: 30),
+                          Form(
+                              child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextFormField(
+                                controller: _firstNameController,
+                                decoration: textFieldInputDecoration.copyWith(
+                                  hintText: 'first_name'.tr,
+                                ),
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    // print('value empty');
+                                    return "enter_your_first_name".tr;
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                                onSaved: (value) {
+                                  setState(() {
+                                    _firstNameController.text = value;
+                                  });
+                                },
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              TextFormField(
+                                controller: _lastNameController,
+                                decoration: textFieldInputDecoration.copyWith(
+                                  hintText: 'last_name'.tr,
+                                ),
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    // print('value empty');
+                                    return "enter_your_last_name".tr;
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                                onSaved: (value) {
+                                  setState(() {
+                                    _lastNameController.text = value;
+                                  });
+                                },
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              TextFormField(
+                                controller: _phoneController,
+                                decoration: textFieldInputDecoration.copyWith(
+                                  hintText: 'phone_number'.tr,
+                                ),
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    // print('value empty');
+                                    return "enter_phone_number".tr;
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                                onSaved: (value) {
+                                  setState(() {
+                                    _phoneController.text = value;
+                                  });
+                                },
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              TextFormField(
+                                controller: _emailController,
+                                decoration: textFieldInputDecoration.copyWith(
+                                  hintText: 'email_address'.tr,
+                                ),
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    // print('value empty');
+                                    return "enter_your_first_name".tr;
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                                onSaved: (value) {
+                                  setState(() {
+                                    _emailController.text = value;
+                                  });
+                                },
+                              ),
+                              SizedBox(
+                                height: 7,
+                              ),
+                              Text('to_change_your_email'.tr,
+                                  style: robotoBlack.copyWith(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff979797))),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              TextFormField(
+                                controller: _passwordController,
+                                obscureText: isVisible,
+                                decoration: textFieldInputDecoration.copyWith(
+                                    hintText: 'create_password'.tr,
+                                    suffixIcon: IconButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            isVisible = !isVisible;
+                                          });
+                                        },
+                                        icon: Icon(isVisible
+                                            ? Icons.visibility_outlined
+                                            : Icons.visibility_off_outlined))),
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    // print('value empty');
+                                    return "enter_password".tr;
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                                onSaved: (value) {
+                                  setState(() {
+                                    _passwordController.text = value;
+                                  });
+                                },
+                              ),
+                              SizedBox(
+                                height: 7,
+                              ),
+                              Text('must_be_at_least'.tr,
+                                  style: robotoBlack.copyWith(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff979797))),
+                            ],
                           )),
+                          // Container(
+                          //   decoration: BoxDecoration(
+                          //     borderRadius: BorderRadius.circular(
+                          //         Dimensions.RADIUS_SMALL),
+                          //     color: Theme.of(context).cardColor,
+                          //     boxShadow: [
+                          //       BoxShadow(
+                          //           color:
+                          //               Colors.grey[Get.isDarkMode ? 800 : 200],
+                          //           spreadRadius: 1,
+                          //           blurRadius: 5)
+                          //     ],
+                          //   ),
+                          //   child: Column(children: [
+                          //     CustomTextField(
+                          //       hintText: 'first_name'.tr,
+                          //       controller: _firstNameController,
+                          //       focusNode: _firstNameFocus,
+                          //       nextFocus: _lastNameFocus,
+                          //       inputType: TextInputType.name,
+                          //       capitalization: TextCapitalization.words,
+                          //       prefixIcon: Images.user,
+                          //       divider: true,
+                          //     ),
+                          //     CustomTextField(
+                          //       hintText: 'last_name'.tr,
+                          //       controller: _lastNameController,
+                          //       focusNode: _lastNameFocus,
+                          //       nextFocus: _emailFocus,
+                          //       inputType: TextInputType.name,
+                          //       capitalization: TextCapitalization.words,
+                          //       prefixIcon: Images.user,
+                          //       divider: true,
+                          //     ),
+                          //     CustomTextField(
+                          //       hintText: 'email'.tr,
+                          //       controller: _emailController,
+                          //       focusNode: _emailFocus,
+                          //       nextFocus: _phoneFocus,
+                          //       inputType: TextInputType.emailAddress,
+                          //       prefixIcon: Images.mail,
+                          //       divider: true,
+                          //     ),
+                          //     Row(children: [
+                          //       CodePickerWidget(
+                          //         onChanged: (CountryCode countryCode) {
+                          //           _countryDialCode = countryCode.dialCode;
+                          //         },
+                          //         initialSelection: CountryCode.fromCountryCode(
+                          //                 Get.find<SplashController>()
+                          //                     .configModel
+                          //                     .country)
+                          //             .code,
+                          //         favorite: [
+                          //           CountryCode.fromCountryCode(
+                          //                   Get.find<SplashController>()
+                          //                       .configModel
+                          //                       .country)
+                          //               .code
+                          //         ],
+                          //         showDropDownButton: true,
+                          //         padding: EdgeInsets.zero,
+                          //         showFlagMain: true,
+                          //         dialogBackgroundColor:
+                          //             Theme.of(context).cardColor,
+                          //         textStyle: robotoRegular.copyWith(
+                          //           fontSize: Dimensions.fontSizeLarge,
+                          //           color: Theme.of(context)
+                          //               .textTheme
+                          //               .bodyText1
+                          //               .color,
+                          //         ),
+                          //       ),
+                          //       Expanded(
+                          //           child: CustomTextField(
+                          //         hintText: 'phone'.tr,
+                          //         controller: _phoneController,
+                          //         focusNode: _phoneFocus,
+                          //         nextFocus: _passwordFocus,
+                          //         inputType: TextInputType.phone,
+                          //         divider: false,
+                          //       )),
+                          //     ]),
+                          //     Padding(
+                          //         padding: EdgeInsets.symmetric(
+                          //             horizontal:
+                          //                 Dimensions.PADDING_SIZE_LARGE),
+                          //         child: Divider(height: 1)),
+                          //     CustomTextField(
+                          //       hintText: 'password'.tr,
+                          //       controller: _passwordController,
+                          //       focusNode: _passwordFocus,
+                          //       nextFocus: _confirmPasswordFocus,
+                          //       inputType: TextInputType.visiblePassword,
+                          //       prefixIcon: Images.lock,
+                          //       isPassword: true,
+                          //       divider: true,
+                          //     ),
+                          //     CustomTextField(
+                          //       hintText: 'confirm_password'.tr,
+                          //       controller: _confirmPasswordController,
+                          //       focusNode: _confirmPasswordFocus,
+                          //       nextFocus: Get.find<SplashController>()
+                          //                   .configModel
+                          //                   .refEarningStatus ==
+                          //               1
+                          //           ? _referCodeFocus
+                          //           : null,
+                          //       inputAction: Get.find<SplashController>()
+                          //                   .configModel
+                          //                   .refEarningStatus ==
+                          //               1
+                          //           ? TextInputAction.next
+                          //           : TextInputAction.done,
+                          //       inputType: TextInputType.visiblePassword,
+                          //       prefixIcon: Images.lock,
+                          //       isPassword: true,
+                          //       onSubmit: (text) => (GetPlatform.isWeb &&
+                          //               authController.acceptTerms)
+                          //           ? _register(
+                          //               authController, _countryDialCode)
+                          //           : null,
+                          //     ),
+                          //     (Get.find<SplashController>()
+                          //                 .configModel
+                          //                 .refEarningStatus ==
+                          //             1)
+                          //         ? CustomTextField(
+                          //             hintText: 'refer_code'.tr,
+                          //             controller: _referCodeController,
+                          //             focusNode: _referCodeFocus,
+                          //             inputAction: TextInputAction.done,
+                          //             inputType: TextInputType.text,
+                          //             capitalization: TextCapitalization.words,
+                          //             prefixIcon: Images.refer_code,
+                          //             divider: false,
+                          //             prefixSize: 14,
+                          //           )
+                          //         : SizedBox(),
+                          //   ]),
+                          // ),
+                          SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
+
+                          // ConditionCheckBox(authController: authController),
+                          SizedBox(height: 79),
+
+                          !authController.isLoading
+                              ? Row(children: [
+                                  // Expanded(
+                                  //     child: CustomButton(
+                                  //   buttonText: 'sign_in'.tr,
+                                  //   transparent: true,
+                                  //   onPressed: () => Get.toNamed(
+                                  //       RouteHelper.getSignInRoute(
+                                  //           RouteHelper.signUp)),
+                                  // )),
+                                  Expanded(
+                                      child: CustomButton(
+                                    buttonText: 'create_account'.tr,
+                                    onPressed: authController.acceptTerms
+                                        ? () => _register(
+                                            authController, _countryDialCode)
+                                        : null,
+                                  )),
+                                ])
+                              : Center(child: CircularProgressIndicator()),
+                          SizedBox(height: 30),
+
+                          // SocialLoginWidget(),
+
+                          //GuestButton(),
                         ]),
-                        Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: Dimensions.PADDING_SIZE_LARGE),
-                            child: Divider(height: 1)),
-                        CustomTextField(
-                          hintText: 'password'.tr,
-                          controller: _passwordController,
-                          focusNode: _passwordFocus,
-                          nextFocus: _confirmPasswordFocus,
-                          inputType: TextInputType.visiblePassword,
-                          prefixIcon: Images.lock,
-                          isPassword: true,
-                          divider: true,
-                        ),
-                        CustomTextField(
-                          hintText: 'confirm_password'.tr,
-                          controller: _confirmPasswordController,
-                          focusNode: _confirmPasswordFocus,
-                          nextFocus: Get.find<SplashController>()
-                                      .configModel
-                                      .refEarningStatus ==
-                                  1
-                              ? _referCodeFocus
-                              : null,
-                          inputAction: Get.find<SplashController>()
-                                      .configModel
-                                      .refEarningStatus ==
-                                  1
-                              ? TextInputAction.next
-                              : TextInputAction.done,
-                          inputType: TextInputType.visiblePassword,
-                          prefixIcon: Images.lock,
-                          isPassword: true,
-                          onSubmit: (text) =>
-                              (GetPlatform.isWeb && authController.acceptTerms)
-                                  ? _register(authController, _countryDialCode)
-                                  : null,
-                        ),
-                        (Get.find<SplashController>()
-                                    .configModel
-                                    .refEarningStatus ==
-                                1)
-                            ? CustomTextField(
-                                hintText: 'refer_code'.tr,
-                                controller: _referCodeController,
-                                focusNode: _referCodeFocus,
-                                inputAction: TextInputAction.done,
-                                inputType: TextInputType.text,
-                                capitalization: TextCapitalization.words,
-                                prefixIcon: Images.refer_code,
-                                divider: false,
-                                prefixSize: 14,
-                              )
-                            : SizedBox(),
-                      ]),
-                    ),
-                    SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
-
-                    ConditionCheckBox(authController: authController),
-                    SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
-
-                    !authController.isLoading
-                        ? Row(children: [
-                            Expanded(
-                                child: CustomButton(
-                              buttonText: 'sign_in'.tr,
-                              transparent: true,
-                              onPressed: () => Get.toNamed(
-                                  RouteHelper.getSignInRoute(
-                                      RouteHelper.signUp)),
-                            )),
-                            Expanded(
-                                child: CustomButton(
-                              buttonText: 'sign_up'.tr,
-                              onPressed: authController.acceptTerms
-                                  ? () => _register(
-                                      authController, _countryDialCode)
-                                  : null,
-                            )),
-                          ])
-                        : Center(child: CircularProgressIndicator()),
-                    SizedBox(height: 30),
-
-                    // SocialLoginWidget(),
-
-                    GuestButton(),
-                  ]);
+                  );
                 }),
               ),
             ),

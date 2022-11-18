@@ -12,17 +12,35 @@ class ConditionCheckBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      Checkbox(
-        activeColor: Theme.of(context).primaryColor,
-        value: authController.acceptTerms,
-        onChanged: (bool isChecked) => authController.toggleTerms(),
+      // Checkbox(
+      //   activeColor: Theme.of(context).primaryColor,
+      //   value: authController.acceptTerms,
+      //   onChanged: (bool isChecked) => authController.toggleTerms(),
+      // ),
+      //Text('i_agree_with'.tr, style: robotoRegular),
+      Text(
+        'by_proceeding'.tr,
+        style: robotoRegular2,
       ),
-      Text('i_agree_with'.tr, style: robotoRegular),
-      InkWell(
-        onTap: () => Get.toNamed(RouteHelper.getHtmlRoute('terms-and-condition')),
-        child: Padding(
-          padding: EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_SMALL),
-          child: Text('terms_conditions'.tr, style: robotoMedium.copyWith(color: Colors.blue)),
+      // InkWell(
+      //   onTap: () =>
+      //       Get.toNamed(RouteHelper.getHtmlRoute('terms-and-condition')),
+      //   child: Padding(
+      //     padding: EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_SMALL),
+      //     child: Text('terms_conditions'.tr,
+      //         style: robotoMedium.copyWith(color: Colors.blue)),
+      //   ),
+      // ),
+
+      Expanded(
+        child: InkWell(
+          onTap: () =>
+              Get.toNamed(RouteHelper.getHtmlRoute('terms-and-condition')),
+          child: Padding(
+            padding: EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_SMALL),
+            child: Text('term_of_use_privacy'.tr,
+                style: robotoMedium.copyWith(color: Colors.blue)),
+          ),
         ),
       ),
     ]);

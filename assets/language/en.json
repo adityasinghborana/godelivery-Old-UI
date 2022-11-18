@@ -22,6 +22,7 @@
   "first_name": "First name",
   "last_name": "Last name",
   "phone": "Phone",
+  "phone_number": "Phone number",
   "enter_your_first_name": "Enter your first name",
   "enter_your_last_name": "Enter your last name",
   "enter_email_address": "Enter your email address",
@@ -610,5 +611,18 @@
   "deleted": "Deleted",
   "this_is_my_refer_code": "This is my share code",
   "search_by_item_name": "Search by item name",
-  "explore": "Explore"
+  "explore": "Explore",
+  "or": "OR",
+  "email_address": "Email Address",
+  "by_proceeding": "By proceeding, you agree to our",
+  "term_of_use_privacy": "Terms of Use & Privacy Policy",
+  "i_agree": "I agree to receive information and news from Go Deliveryee via email. You can unsubscribe anytime. in your personal settings",
+  "i_agree_that": "I agree that Go Deliveree may contact me for customer surveys via the telephone number I have provided. You can unsubscribe anytime in your personal settings",
+  "create_new_account": "Create New Account",
+  "enter_the_email_associated": "Enter the email associated with your account and we'll send an email with instruction to reset your password",
+  "please_provide_general": "Please provide general information about yourself",
+  "to_change_your_email": "To change your email address,please contact customer support.",
+  "create_password": "Create Password",
+  "must_be_at_least": "Must be at least 8 characters.",
+  "create_account": "Create Account"
 }

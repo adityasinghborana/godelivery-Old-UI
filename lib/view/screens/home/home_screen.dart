@@ -73,6 +73,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final ScrollController _scrollController = ScrollController();
+  bool _isLoggedIn = Get.find<AuthController>().isLoggedIn();
 
   @override
   void initState() {
@@ -244,19 +245,40 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           .color,
                                                     ),
                                                     SizedBox(width: 10),
+                                                    GetBuilder<UserController>(
+                                                        builder:
+                                                            (userController) {
+                                                      return Text(
+                                                        _isLoggedIn
+                                                            ? '${userController.userInfoModel.fName} ${userController.userInfoModel.lName}'
+                                                            : 'guest'.tr,
+                                                        style:
+                                                            robotoBold.copyWith(
+                                                          color:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .bodyText1
+                                                                  .color,
+                                                          fontSize: Dimensions
+                                                              .fontSizeSmall,
+                                                        ),
+                                                      );
+                                                    }),
 
-                                                    Text(
-                                                      "Hey Alley!!",
-                                                      style:
-                                                          robotoBold.copyWith(
-                                                        color: Theme.of(context)
-                                                            .textTheme
-                                                            .bodyText1
-                                                            .color,
-                                                        fontSize: Dimensions
-                                                            .fontSizeSmall,
-                                                      ),
-                                                    ),
+                                                    // Text(
+                                                    //   _isLoggedIn
+                                                    //       ? '${userController.userInfoModel.fName} ${userController.userInfoModel.lName}'
+                                                    //       : 'guest'.tr,
+                                                    //   style:
+                                                    //       robotoBold.copyWith(
+                                                    //     color: Theme.of(context)
+                                                    //         .textTheme
+                                                    //         .bodyText1
+                                                    //         .color,
+                                                    //     fontSize: Dimensions
+                                                    //         .fontSizeSmall,
+                                                    //   ),
+                                                    // ),
 
                                                     // Icon(Icons.arrow_drop_down,
                                                     //     color: Theme.of(context)
