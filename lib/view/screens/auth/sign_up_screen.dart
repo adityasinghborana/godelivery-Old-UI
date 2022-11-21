@@ -126,9 +126,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           // Image.asset(Images.logo, width: 200),
                           // SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
                           // Center(child: Text(AppConstants.APP_NAME, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge))),
-                          SizedBox(
-                            height: 36,
-                          ),
+                          SizedBox(height: 36),
                           Text('please_provide_general'.tr,
                               style: robotoBlack.copyWith(
                                   fontSize: 14,

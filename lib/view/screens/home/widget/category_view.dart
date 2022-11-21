@@ -11,7 +11,13 @@ import 'package:flutter/material.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 import 'package:get/get.dart';
 
-class CategoryView extends StatelessWidget {
+class CategoryView extends StatefulWidget {
+  @override
+  State<CategoryView> createState() => _CategoryViewState();
+}
+
+class _CategoryViewState extends State<CategoryView> {
+  double _ratio;
   @override
   Widget build(BuildContext context) {
     ScrollController _scrollController = ScrollController();

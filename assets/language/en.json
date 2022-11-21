@@ -17,6 +17,7 @@
   "email": "E-mail",
   "password": "Password",
   "confirm_password": "Confirm password",
+  "enter_confirm_password": "Enter confirm password",
   "remember_me": "Remember me",
   "forgot_password": "Forgot Password",
   "first_name": "First name",
@@ -624,5 +625,14 @@
   "to_change_your_email": "To change your email address,please contact customer support.",
   "create_password": "Create Password",
   "must_be_at_least": "Must be at least 8 characters.",
-  "create_account": "Create Account"
+  "create_account": "Create Account",
+  "check_your_email": "Check your email",
+  "we_have_sent": "We have sent a password recover instruction to your email",
+  "open_email_app": "Open email app",
+  "skip_confirm": "Skip, I,II confirm later",
+  "did_not_receive": "Did not receive the email? Check your spam filter,or",
+  "another_email": "try another email address",
+  "create_new_password": "Create new password",
+  "your_new_password": "Your new password must be different from previous used password",
+  "both_password_must_match": "Both password must match"
 }

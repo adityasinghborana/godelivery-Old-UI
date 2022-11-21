@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:phone_number/phone_number.dart';
 import 'package:sixam_mart/view/screens/auth/widget/code_picker_widget.dart';
+import 'package:sixam_mart/view/screens/forget/forgot_pass_email_verification_screen.dart';
 
 class ForgetPassScreen extends StatefulWidget {
   final bool fromSocialLogin;
@@ -26,6 +27,7 @@ class ForgetPassScreen extends StatefulWidget {
 }
 
 class _ForgetPassScreenState extends State<ForgetPassScreen> {
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _numberController = TextEditingController();
   String _countryDialCode = CountryCode.fromCountryCode(
           Get.find<SplashController>().configModel.country)
@@ -108,13 +110,14 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                   height: 36,
                 ),
                 TextFormField(
+                  controller: _emailController,
                   decoration: textFieldInputDecoration.copyWith(
                     hintText: 'email_address'.tr,
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
                       // print('value empty');
-                      return "enter_your_first_name".tr;
+                      return "enter_email_address".tr;
                     } else {
                       return null;
                     }
@@ -160,11 +163,20 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                 //   ]),
                 // ),
                 SizedBox(height: 30),
+                // GetBuilder<AuthController>(builder: (authController) {
+                //   return !authController.isLoading
+                //       ? CustomButton(
+                //           buttonText: 'send'.tr,
+                //           onPressed: () => _forgetPass(_countryDialCode),
+                //         )
+                //       : Center(child: CircularProgressIndicator());
+                // }),
                 GetBuilder<AuthController>(builder: (authController) {
                   return !authController.isLoading
                       ? CustomButton(
                           buttonText: 'send'.tr,
-                          onPressed: () => _forgetPass(_countryDialCode),
+                          onPressed: () =>
+                              Get.to(ForgotPasswordEmailVerificationScreen()),
                         )
                       : Center(child: CircularProgressIndicator());
                 }),

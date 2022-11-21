@@ -8,6 +8,7 @@ import 'package:sixam_mart/data/model/response/order_model.dart';
 import 'package:sixam_mart/helper/responsive_helper.dart';
 import 'package:sixam_mart/util/dimensions.dart';
 import 'package:sixam_mart/util/images.dart';
+import 'package:sixam_mart/view/screens/category/category_screen.dart';
 import 'package:sixam_mart/view/screens/dashboard/widget/bottom_nav_item.dart';
 import 'package:sixam_mart/view/screens/favourite/favourite_screen.dart';
 import 'package:sixam_mart/view/screens/home/home_screen.dart';
@@ -56,7 +57,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       HomeScreen(),
       FavouriteScreen(),
       // CartScreen(fromNav: true),
-      OrderScreen(),
+      Container(),
+      // OrderScreen(),
       NotificationScreen(),
       Container(),
     ];
@@ -161,7 +163,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           BottomNavItem(
                               iconData: Images.imgCategory,
                               isSelected: _pageIndex == 2,
-                              onTap: () => _setPage(2)
+                              onTap: () => Get.bottomSheet(CategoryScreen(),
+                                  backgroundColor: Colors.transparent,
+                                  isScrollControlled: true)
+                              // _setPage(2)
                               // Get.toNamed(RouteHelper.getCategoryRoute())
                               ),
                           //Expanded(child: SizedBox()),
