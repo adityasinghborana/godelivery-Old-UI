@@ -634,5 +634,7 @@
   "create_new_password": "أنشئ كلمة مرور جديدة",
   "your_new_password": "يجب أن تكون كلمة المرور الجديدة مختلفة عن كلمة المرور المستخدمة سابقًا",
   "enter_confirm_password": "أدخل تأكيد كلمة المرور",
-  "both_password_must_match": "يجب أن تتطابق كلتا كلمة المرور"
+  "both_password_must_match": "يجب أن تتطابق كلتا كلمة المرور",
+  "all_categories": "جميع الفئات",
+  "confirm_location": "قم بتأكيد الموقع"
 }

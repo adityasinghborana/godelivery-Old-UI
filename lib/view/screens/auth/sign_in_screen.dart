@@ -299,86 +299,86 @@ class _SignInScreenState extends State<SignInScreen> {
                               ],
                             ),
                           ),
-                          // Container(
-                          //   decoration: BoxDecoration(
-                          //     borderRadius: BorderRadius.circular(
-                          //         Dimensions.RADIUS_SMALL),
-                          //     color: Theme.of(context).cardColor,
-                          //     boxShadow: [
-                          //       BoxShadow(
-                          //           color:
-                          //               Colors.grey[Get.isDarkMode ? 800 : 200],
-                          //           spreadRadius: 1,
-                          //           blurRadius: 5)
-                          //     ],
-                          //   ),
-                          //   child: Column(children: [
-                          //     Row(children: [
-                          //       CodePickerWidget(
-                          //         onChanged: (CountryCode countryCode) {
-                          //           _countryDialCode = countryCode.dialCode;
-                          //         },
-                          //         initialSelection: _countryDialCode != null
-                          //             ? CountryCode.fromCountryCode(
-                          //                     Get.find<SplashController>()
-                          //                         .configModel
-                          //                         .country)
-                          //                 .code
-                          //             : Get.find<LocalizationController>()
-                          //                 .locale
-                          //                 .countryCode,
-                          //         favorite: [
-                          //           CountryCode.fromCountryCode(
-                          //                   Get.find<SplashController>()
-                          //                       .configModel
-                          //                       .country)
-                          //               .code
-                          //         ],
-                          //         showDropDownButton: true,
-                          //         padding: EdgeInsets.zero,
-                          //         showFlagMain: true,
-                          //         flagWidth: 30,
-                          //         dialogBackgroundColor:
-                          //             Theme.of(context).cardColor,
-                          //         textStyle: robotoRegular.copyWith(
-                          //           fontSize: Dimensions.fontSizeLarge,
-                          //           color: Theme.of(context)
-                          //               .textTheme
-                          //               .bodyText1
-                          //               .color,
-                          //         ),
-                          //       ),
-                          //       Expanded(
-                          //           flex: 1,
-                          //           child: CustomTextField(
-                          //             hintText: 'phone'.tr,
-                          //             controller: _phoneController,
-                          //             focusNode: _phoneFocus,
-                          //             nextFocus: _passwordFocus,
-                          //             inputType: TextInputType.phone,
-                          //             divider: false,
-                          //           )),
-                          //     ]),
-                          //     Padding(
-                          //         padding: EdgeInsets.symmetric(
-                          //             horizontal:
-                          //                 Dimensions.PADDING_SIZE_LARGE),
-                          //         child: Divider(height: 1)),
-                          //     CustomTextField(
-                          //       hintText: 'password'.tr,
-                          //       controller: _passwordController,
-                          //       focusNode: _passwordFocus,
-                          //       inputAction: TextInputAction.done,
-                          //       inputType: TextInputType.visiblePassword,
-                          //       prefixIcon: Images.lock,
-                          //       isPassword: true,
-                          //       onSubmit: (text) => (GetPlatform.isWeb &&
-                          //               authController.acceptTerms)
-                          //           ? _login(authController, _countryDialCode)
-                          //           : null,
-                          //     ),
-                          //   ]),
-                          // ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                  Dimensions.RADIUS_SMALL),
+                              color: Theme.of(context).cardColor,
+                              boxShadow: [
+                                BoxShadow(
+                                    color:
+                                        Colors.grey[Get.isDarkMode ? 800 : 200],
+                                    spreadRadius: 1,
+                                    blurRadius: 5)
+                              ],
+                            ),
+                            child: Column(children: [
+                              Row(children: [
+                                CodePickerWidget(
+                                  onChanged: (CountryCode countryCode) {
+                                    _countryDialCode = countryCode.dialCode;
+                                  },
+                                  initialSelection: _countryDialCode != null
+                                      ? CountryCode.fromCountryCode(
+                                              Get.find<SplashController>()
+                                                  .configModel
+                                                  .country)
+                                          .code
+                                      : Get.find<LocalizationController>()
+                                          .locale
+                                          .countryCode,
+                                  favorite: [
+                                    CountryCode.fromCountryCode(
+                                            Get.find<SplashController>()
+                                                .configModel
+                                                .country)
+                                        .code
+                                  ],
+                                  showDropDownButton: true,
+                                  padding: EdgeInsets.zero,
+                                  showFlagMain: true,
+                                  flagWidth: 30,
+                                  dialogBackgroundColor:
+                                      Theme.of(context).cardColor,
+                                  textStyle: robotoRegular.copyWith(
+                                    fontSize: Dimensions.fontSizeLarge,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodyText1
+                                        .color,
+                                  ),
+                                ),
+                                Expanded(
+                                    flex: 1,
+                                    child: CustomTextField(
+                                      hintText: 'phone'.tr,
+                                      controller: _phoneController,
+                                      focusNode: _phoneFocus,
+                                      nextFocus: _passwordFocus,
+                                      inputType: TextInputType.phone,
+                                      divider: false,
+                                    )),
+                              ]),
+                              Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal:
+                                          Dimensions.PADDING_SIZE_LARGE),
+                                  child: Divider(height: 1)),
+                              CustomTextField(
+                                hintText: 'password'.tr,
+                                controller: _passwordController,
+                                focusNode: _passwordFocus,
+                                inputAction: TextInputAction.done,
+                                inputType: TextInputType.visiblePassword,
+                                prefixIcon: Images.lock,
+                                isPassword: true,
+                                onSubmit: (text) => (GetPlatform.isWeb &&
+                                        authController.acceptTerms)
+                                    ? _login(authController, _countryDialCode)
+                                    : null,
+                              ),
+                            ]),
+                          ),
                           SizedBox(height: 10),
 
                           Padding(

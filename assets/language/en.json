@@ -634,5 +634,7 @@
   "another_email": "try another email address",
   "create_new_password": "Create new password",
   "your_new_password": "Your new password must be different from previous used password",
-  "both_password_must_match": "Both password must match"
+  "both_password_must_match": "Both password must match",
+  "all_categories": "All Categories",
+  "confirm_location": "Confirm Location"
 }

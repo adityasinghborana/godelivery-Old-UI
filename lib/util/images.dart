@@ -112,4 +112,7 @@ class Images {
   static const String icCall = 'assets/image/ic_call.png';
   static const String imgSpalshBg = 'assets/image/img_splash_bg.png';
   static const String imgEmail = 'assets/image/img_email.png';
+  static const String icNotification = 'assets/image/ic_notification.png';
+  static const String icPickMarkerPin = 'assets/image/ic_map_pin.png';
+  static const String imgMarkerBanner = 'assets/image/img_marker_banner.png';
 }
