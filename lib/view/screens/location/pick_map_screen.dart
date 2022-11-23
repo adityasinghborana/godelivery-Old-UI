@@ -5,6 +5,7 @@ import 'package:sixam_mart/helper/responsive_helper.dart';
 import 'package:sixam_mart/util/app_colors.dart';
 import 'package:sixam_mart/util/dimensions.dart';
 import 'package:sixam_mart/util/images.dart';
+import 'package:sixam_mart/util/styles.dart';
 import 'package:sixam_mart/view/base/custom_button.dart';
 import 'package:sixam_mart/view/base/custom_snackbar.dart';
 import 'package:sixam_mart/view/base/menu_drawer.dart';
@@ -12,6 +13,7 @@ import 'package:sixam_mart/view/base/web_menu_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:sixam_mart/view/screens/location/widget/change_address_bottomsheet.dart';
 import 'package:sixam_mart/view/screens/location/widget/serach_location_widget.dart';
 
 class PickMapScreen extends StatefulWidget {
@@ -169,88 +171,269 @@ class _PickMapScreenState extends State<PickMapScreen> {
                               topRight: Radius.circular(10))),
 
                       // height: 100,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 29, 20, 53),
-                        child: CustomButton(
-                          buttonText: locationController.inZone
-                              ? widget.fromAddAddress
-                                  ? 'pick_address'.tr
-                                  : 'confirm_location'.tr
-                              // 'pick_location'.tr
-                              : 'service_not_available_in_this_area'.tr,
-                          onPressed: (locationController.buttonDisabled ||
-                                  locationController.loading)
-                              ? null
-                              : () {
-                                  if (locationController
-                                              .pickPosition.latitude !=
-                                          0 &&
-                                      locationController
-                                          .pickAddress.isNotEmpty) {
-                                    if (widget.onPicked != null) {
-                                      AddressModel _address = AddressModel(
-                                        latitude: locationController
-                                            .pickPosition.latitude
-                                            .toString(),
-                                        longitude: locationController
-                                            .pickPosition.longitude
-                                            .toString(),
-                                        addressType: 'others',
-                                        address: locationController.pickAddress,
-                                        contactPersonName: locationController
-                                            .getUserAddress()
-                                            .contactPersonName,
-                                        contactPersonNumber: locationController
-                                            .getUserAddress()
-                                            .contactPersonNumber,
-                                      );
-                                      widget.onPicked(_address);
-                                      Get.back();
-                                    } else if (widget.fromAddAddress) {
-                                      if (widget.googleMapController != null) {
-                                        widget.googleMapController.moveCamera(
-                                            CameraUpdate.newCameraPosition(
-                                                CameraPosition(
-                                                    target: LatLng(
-                                                      locationController
-                                                          .pickPosition
-                                                          .latitude,
-                                                      locationController
-                                                          .pickPosition
-                                                          .longitude,
-                                                    ),
-                                                    zoom: 16)));
-                                        locationController.setAddAddressData();
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20, left: 20),
+                            child: Text(
+                                'select_delevery_location'.tr.toUpperCase(),
+                                style: robotoBlack.copyWith(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xff5c6678))),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(27, 32, 20, 18),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        Images.icLocation,
+                                        height: 30,
+                                        width: 30,
+                                      ),
+                                      SizedBox(width: 22),
+                                      Text('Sector A',
+                                          style: robotoBlack.copyWith(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w700,
+                                              color: Color(0xff373a41))),
+                                    ],
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    Get.bottomSheet(
+                                      ChangeAddressBottomSheet(
+                                          pickAddress:
+                                              locationController.pickAddress),
+                                      // backgroundColor: Colors.transparent,
+                                      isScrollControlled: true,
+                                    );
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 15, vertical: 6),
+                                    decoration: BoxDecoration(
+                                      color: Color(0xffe3e3e3),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Text('change'.tr.toUpperCase(),
+                                        style: robotoBlack.copyWith(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w700,
+                                            color: Color(0xffbf1d2d))),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20),
+                            child: Text(locationController.pickAddress,
+                                style: robotoBlack.copyWith(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: Color(0xff979797))),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(20, 30, 20, 53),
+                            child: CustomButton(
+                              buttonText: locationController.inZone
+                                  ? widget.fromAddAddress
+                                      ? 'pick_address'.tr
+                                      : 'confirm_location'.tr
+                                  // 'pick_location'.tr
+                                  : 'service_not_available_in_this_area'.tr,
+                              onPressed: (locationController.buttonDisabled ||
+                                      locationController.loading)
+                                  ? null
+                                  : () {
+                                      if (locationController
+                                                  .pickPosition.latitude !=
+                                              0 &&
+                                          locationController
+                                              .pickAddress.isNotEmpty) {
+                                        if (widget.onPicked != null) {
+                                          AddressModel _address = AddressModel(
+                                            latitude: locationController
+                                                .pickPosition.latitude
+                                                .toString(),
+                                            longitude: locationController
+                                                .pickPosition.longitude
+                                                .toString(),
+                                            addressType: 'others',
+                                            address:
+                                                locationController.pickAddress,
+                                            contactPersonName:
+                                                locationController
+                                                    .getUserAddress()
+                                                    .contactPersonName,
+                                            contactPersonNumber:
+                                                locationController
+                                                    .getUserAddress()
+                                                    .contactPersonNumber,
+                                          );
+                                          widget.onPicked(_address);
+                                          Get.back();
+                                        } else if (widget.fromAddAddress) {
+                                          if (widget.googleMapController !=
+                                              null) {
+                                            widget.googleMapController
+                                                .moveCamera(CameraUpdate
+                                                    .newCameraPosition(
+                                                        CameraPosition(
+                                                            target: LatLng(
+                                                              locationController
+                                                                  .pickPosition
+                                                                  .latitude,
+                                                              locationController
+                                                                  .pickPosition
+                                                                  .longitude,
+                                                            ),
+                                                            zoom: 16)));
+                                            locationController
+                                                .setAddAddressData();
+                                          }
+                                          Get.back();
+                                        } else {
+                                          AddressModel _address = AddressModel(
+                                            latitude: locationController
+                                                .pickPosition.latitude
+                                                .toString(),
+                                            longitude: locationController
+                                                .pickPosition.longitude
+                                                .toString(),
+                                            addressType: 'others',
+                                            address:
+                                                locationController.pickAddress,
+                                          );
+                                          locationController
+                                              .saveAddressAndNavigate(
+                                            _address,
+                                            widget.fromSignUp,
+                                            widget.route,
+                                            widget.canRoute,
+                                            ResponsiveHelper.isDesktop(context),
+                                          );
+                                        }
+                                      } else {
+                                        showCustomSnackBar(
+                                            'pick_an_address'.tr);
                                       }
-                                      Get.back();
-                                    } else {
-                                      AddressModel _address = AddressModel(
-                                        latitude: locationController
-                                            .pickPosition.latitude
-                                            .toString(),
-                                        longitude: locationController
-                                            .pickPosition.longitude
-                                            .toString(),
-                                        addressType: 'others',
-                                        address: locationController.pickAddress,
-                                      );
-                                      locationController.saveAddressAndNavigate(
-                                        _address,
-                                        widget.fromSignUp,
-                                        widget.route,
-                                        widget.canRoute,
-                                        ResponsiveHelper.isDesktop(context),
-                                      );
-                                    }
-                                  } else {
-                                    showCustomSnackBar('pick_an_address'.tr);
-                                  }
-                                },
-                        ),
+                                    },
+                            ),
+                          ),
+                        ],
                       ),
                     )
                   : Center(child: CircularProgressIndicator()),
             ),
+            // Positioned(
+            //   bottom: 0,
+            //   left: 0,
+            //   right: 0,
+            //   child: !locationController.isLoading
+            //       ? Container(
+            //           decoration: BoxDecoration(
+            //               color: Colors.white,
+            //               borderRadius: BorderRadius.only(
+            //                   topLeft: Radius.circular(10),
+            //                   topRight: Radius.circular(10))),
+
+            //           // height: 100,
+            //           child: Padding(
+            //             padding: const EdgeInsets.fromLTRB(20, 29, 20, 53),
+            //             child: CustomButton(
+            //               buttonText: locationController.inZone
+            //                   ? widget.fromAddAddress
+            //                       ? 'pick_address'.tr
+            //                       : 'confirm_location'.tr
+            //                   // 'pick_location'.tr
+            //                   : 'service_not_available_in_this_area'.tr,
+            //               onPressed: (locationController.buttonDisabled ||
+            //                       locationController.loading)
+            //                   ? null
+            //                   : () {
+            //                       if (locationController
+            //                                   .pickPosition.latitude !=
+            //                               0 &&
+            //                           locationController
+            //                               .pickAddress.isNotEmpty) {
+            //                         if (widget.onPicked != null) {
+            //                           AddressModel _address = AddressModel(
+            //                             latitude: locationController
+            //                                 .pickPosition.latitude
+            //                                 .toString(),
+            //                             longitude: locationController
+            //                                 .pickPosition.longitude
+            //                                 .toString(),
+            //                             addressType: 'others',
+            //                             address: locationController.pickAddress,
+            //                             contactPersonName: locationController
+            //                                 .getUserAddress()
+            //                                 .contactPersonName,
+            //                             contactPersonNumber: locationController
+            //                                 .getUserAddress()
+            //                                 .contactPersonNumber,
+            //                           );
+            //                           widget.onPicked(_address);
+            //                           Get.back();
+            //                         } else if (widget.fromAddAddress) {
+            //                           if (widget.googleMapController != null) {
+            //                             widget.googleMapController.moveCamera(
+            //                                 CameraUpdate.newCameraPosition(
+            //                                     CameraPosition(
+            //                                         target: LatLng(
+            //                                           locationController
+            //                                               .pickPosition
+            //                                               .latitude,
+            //                                           locationController
+            //                                               .pickPosition
+            //                                               .longitude,
+            //                                         ),
+            //                                         zoom: 16)));
+            //                             locationController.setAddAddressData();
+            //                           }
+            //                           Get.back();
+            //                         } else {
+            //                           AddressModel _address = AddressModel(
+            //                             latitude: locationController
+            //                                 .pickPosition.latitude
+            //                                 .toString(),
+            //                             longitude: locationController
+            //                                 .pickPosition.longitude
+            //                                 .toString(),
+            //                             addressType: 'others',
+            //                             address: locationController.pickAddress,
+            //                           );
+            //                           locationController.saveAddressAndNavigate(
+            //                             _address,
+            //                             widget.fromSignUp,
+            //                             widget.route,
+            //                             widget.canRoute,
+            //                             ResponsiveHelper.isDesktop(context),
+            //                           );
+            //                         }
+            //                       } else {
+            //                         showCustomSnackBar('pick_an_address'.tr);
+            //                       }
+            //                     },
+            //             ),
+            //           ),
+
+            //         )
+            //       : Center(child: CircularProgressIndicator()),
+            // ),
           ]);
         }),
       ))),

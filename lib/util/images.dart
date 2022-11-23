@@ -115,4 +115,5 @@ class Images {
   static const String icNotification = 'assets/image/ic_notification.png';
   static const String icPickMarkerPin = 'assets/image/ic_map_pin.png';
   static const String imgMarkerBanner = 'assets/image/img_marker_banner.png';
+  static const String icLocation = 'assets/image/ic_location.png';
 }

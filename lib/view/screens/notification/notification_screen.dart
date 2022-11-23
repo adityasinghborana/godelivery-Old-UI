@@ -206,6 +206,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                   ),
                                 ),
                               );
+
                               // Column(
                               //     crossAxisAlignment:
                               //         CrossAxisAlignment.start,

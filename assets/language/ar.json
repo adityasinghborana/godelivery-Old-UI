@@ -636,5 +636,15 @@
   "enter_confirm_password": "أدخل تأكيد كلمة المرور",
   "both_password_must_match": "يجب أن تتطابق كلتا كلمة المرور",
   "all_categories": "جميع الفئات",
-  "confirm_location": "قم بتأكيد الموقع"
+  "confirm_location": "قم بتأكيد الموقع",
+  "select_delevery_location": "حدد موقع التسليم",
+  "change": "يتغيرون",
+  "your_address": "عناوينك",
+  "edit": "يحرر",
+  "confirm": "يتأكد",
+  "otp_verify": "التحقق من OTP",
+  "otp_sent": "تم إرسال OTP إلى",
+  "have_you_receive_otp": "هل تلقيت OTP؟",
+  "resend_otp": "إعادة إرسال OTP",
+  "call_me": "كلمني"
 }

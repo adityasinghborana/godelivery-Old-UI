@@ -636,5 +636,15 @@
   "your_new_password": "Your new password must be different from previous used password",
   "both_password_must_match": "Both password must match",
   "all_categories": "All Categories",
-  "confirm_location": "Confirm Location"
+  "confirm_location": "Confirm Location",
+  "select_delevery_location": "Select Delivery Location",
+  "change": "Change",
+  "your_address": "Your Addresses",
+  "edit": "Edit",
+  "confirm": "Confirm",
+  "otp_verify": "OTP Verification",
+  "otp_sent": "OTP sent to",
+  "have_you_receive_otp": "Have you receive OTP?",
+  "resend_otp": "resend OTP",
+  "call_me": "call me"
 }

@@ -50,6 +50,7 @@ dependencies:
   fwfh_text_style: ^2.22.8+1
   expandable_bottom_sheet: ^1.1.1+1
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
