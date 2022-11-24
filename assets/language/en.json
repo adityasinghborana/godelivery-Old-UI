@@ -646,5 +646,6 @@
   "otp_sent": "OTP sent to",
   "have_you_receive_otp": "Have you receive OTP?",
   "resend_otp": "resend OTP",
-  "call_me": "call me"
+  "call_me": "call me",
+  "account": "Account"
 }

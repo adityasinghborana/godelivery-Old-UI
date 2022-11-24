@@ -116,4 +116,10 @@ class Images {
   static const String icPickMarkerPin = 'assets/image/ic_map_pin.png';
   static const String imgMarkerBanner = 'assets/image/img_marker_banner.png';
   static const String icLocation = 'assets/image/ic_location.png';
+  static const String imgProfileBg = 'assets/image/img_profile_bg.png';
+  static const String icEdit = 'assets/image/ic_edit.png';
+  static const String icMyOrder = 'assets/image/ic_order.png';
+  static const String icMyFavourite = 'assets/image/ic_favourites.png';
+  static const String icMyWallet = 'assets/image/ic_wallet.png';
+  static const String icSavedAddress = 'assets/image/ic_saved_add.png';
 }

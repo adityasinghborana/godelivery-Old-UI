@@ -646,5 +646,6 @@
   "otp_sent": "تم إرسال OTP إلى",
   "have_you_receive_otp": "هل تلقيت OTP؟",
   "resend_otp": "إعادة إرسال OTP",
-  "call_me": "كلمني"
+  "call_me": "كلمني",
+  "account": "الحساب"
 }
