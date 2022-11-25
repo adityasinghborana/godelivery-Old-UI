@@ -4,6 +4,7 @@ import 'package:sixam_mart/view/base/footer_view.dart';
 import 'package:sixam_mart/view/base/item_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sixam_mart/view/screens/favourite/widget/fav_store_list_tile.dart';
 
 class FavItemView extends StatelessWidget {
   final bool isStore;
@@ -20,14 +21,29 @@ class FavItemView extends StatelessWidget {
           },
           child: SingleChildScrollView(
             physics: AlwaysScrollableScrollPhysics(),
-            child: FooterView(
-              child: Container(
-                width: Dimensions.WEB_MAX_WIDTH,
-                child: ItemsView(
-                  isStore: isStore, items: wishController.wishItemList, stores: wishController.wishStoreList,
-                  noDataText: 'no_wish_data_found'.tr, isFeatured: true,
+            child: Column(
+              children: [
+                FooterView(
+                  child: Container(
+                    width: Dimensions.WEB_MAX_WIDTH,
+                    child: isStore
+                        ? ListView.builder(
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: 5,
+                            itemBuilder: (BuildContext context, int index) {
+                              return FavStoreListTile();
+                            })
+                        : ItemsView(
+                            isStore: isStore,
+                            items: wishController.wishItemList,
+                            stores: wishController.wishStoreList,
+                            noDataText: 'no_wish_data_found'.tr,
+                            isFeatured: true,
+                          ),
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
         );

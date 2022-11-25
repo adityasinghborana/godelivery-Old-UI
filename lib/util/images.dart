@@ -122,4 +122,22 @@ class Images {
   static const String icMyFavourite = 'assets/image/ic_favourites.png';
   static const String icMyWallet = 'assets/image/ic_wallet.png';
   static const String icSavedAddress = 'assets/image/ic_saved_add.png';
+  static const String icVouchers = 'assets/image/ic_voucher.png';
+  static const String icGift = 'assets/image/ic_gift.png';
+  static const String icContact = 'assets/image/ic_contact.png';
+  static const String icInviteFrd = 'assets/image/ic_invite_frd.png';
+  static const String icAbout = 'assets/image/ic_about.png';
+  static const String icLogout = 'assets/image/ic_logOut.png';
+  static const String imgFavStoreImage = 'assets/image/img_decor_image.png';
+  static const String imgDiscount = 'assets/image/img_discount.png';
+  static const String imgDelivery = 'assets/image/img_delivery.png';
+  static const String imgStoreHeart = 'assets/image/ic_store_heart.png';
+  static const String imgStoreImgBg = 'assets/image/ic_store_img_bg.png';
+  static const String icRating = 'assets/image/ic_rating.png';
+  static const String imgVouchers = 'assets/image/img_vouchers.png';
+  static const String imgInviteFrnd = 'assets/image/img_invite_frd.png';
+  static const String imgGift = 'assets/image/img_gift.png';
+  static const String imgRightArrow = 'assets/image/img_right.png';
+  static const String imgLeftArrow = 'assets/image/img_left.png';
+  static const String icCalender = 'assets/image/ic_calendar.png';
 }
