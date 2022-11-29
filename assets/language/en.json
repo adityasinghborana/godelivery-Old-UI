@@ -671,5 +671,17 @@
   "gift_message": "Gift Message",
   "from_name": "From: Name",
   "send_on_this_date": "Send on this date",
-  "procced_to_pay": "Procced To Pay"
+  "procced_to_pay": "Procced To Pay",
+  "work": "Work",
+  "details_address": "A detailed address will help our Delivery Partner reach your doorstep easily",
+  "house_flat_block": "House / Flat / Block No.",
+  "apartment_road_area": "Apartment / Road / Area (Optional)",
+  "postcode": "PostCode",
+  "direction_to_reach": "Direction to reach (optional)",
+  "eg_ring_the_bell": "e.g. Ring the bell on the red gate",
+  "save_the_address": "Save This Address As",
+  "other": "Other",
+  "new_address": "New Address",
+  "delete": "Delete",
+  "are_you_sure": "Are you sure you want to Delete the address?"
 }

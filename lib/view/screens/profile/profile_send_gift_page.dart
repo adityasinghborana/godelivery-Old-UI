@@ -117,7 +117,13 @@ class _ProfileSendGiftPageState extends State<ProfileSendGiftPage> {
                       height: 20,
                     ),
                     RadioListTile(
-                      title: Text("send_by_email".tr),
+                      title: Text(
+                        "send_by_email".tr,
+                        style: robotoRegular.copyWith(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xff979797)),
+                      ),
                       value: "send_by_email".tr,
                       groupValue: _isTrue,
                       onChanged: (value) {

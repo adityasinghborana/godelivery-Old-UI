@@ -13,6 +13,8 @@ import 'package:sixam_mart/view/base/web_menu_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:sixam_mart/view/screens/dashboard/dashboard_screen.dart';
+import 'package:sixam_mart/view/screens/location/widget/add_address_bottomsheet.dart';
 import 'package:sixam_mart/view/screens/location/widget/change_address_bottomsheet.dart';
 import 'package:sixam_mart/view/screens/location/widget/serach_location_widget.dart';
 
@@ -258,6 +260,14 @@ class _PickMapScreenState extends State<PickMapScreen> {
                                       locationController.loading)
                                   ? null
                                   : () {
+                                      // Get.bottomSheet(
+                                      //   AddAddressBottomSheet(
+                                      //       pickAddress:
+                                      //           locationController.pickAddress),
+                                      //   // backgroundColor: Colors.transparent,
+                                      //   isScrollControlled: true,
+                                      // );
+                                      Get.to(DashboardScreen(pageIndex: 0));
                                       if (locationController
                                                   .pickPosition.latitude !=
                                               0 &&

@@ -1,9 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 import 'package:sixam_mart/view/base/custom_button.dart';
+import 'package:sixam_mart/view/screens/location/widget/add_address_bottomsheet.dart';
+import 'package:sixam_mart/view/screens/location/widget/new_address_list_tile.dart';
 
 class ChangeAddressBottomSheet extends StatefulWidget {
   final String pickAddress;
@@ -15,7 +17,6 @@ class ChangeAddressBottomSheet extends StatefulWidget {
 }
 
 class _ChangeAddressBottomSheetState extends State<ChangeAddressBottomSheet> {
-  int _value = 1;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,141 +31,49 @@ class _ChangeAddressBottomSheetState extends State<ChangeAddressBottomSheet> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('your_address'.tr.toUpperCase(),
-                style: robotoBlack.copyWith(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xff5c6678))),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        Images.icLocation,
-                        height: 30,
-                        width: 30,
-                      ),
-                      SizedBox(width: 22),
-                      Text('Sector A',
-                          style: robotoBlack.copyWith(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xff373a41))),
-                    ],
+            InkWell(
+              onTap: () {
+                Navigator.pop(context);
+                Get.bottomSheet(
+                  AddAddressBottomSheet(pickAddress: widget.pickAddress),
+                  // backgroundColor: Colors.transparent,
+                  isScrollControlled: true,
+                );
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.add,
+                    color: Color(0xff0eacd7),
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text('edit'.tr,
-                        style: robotoBlack.copyWith(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xff0eacd7))),
-                    SizedBox(
-                      width: 30,
-                    ),
-                  Radio(
-                        activeColor: Color(0xff0eacd7),
-                        value: 2,
-                        groupValue: _value,
-                        onChanged: ((value) {
-                          setState(() {
-                            _value = value;
-                          });
-                        })),
-                  ],
-                )
-              ],
-            ),
-            SizedBox(height: 20),
-            Text(widget.pickAddress,
-                style: robotoBlack.copyWith(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xff979797))),
-            SizedBox(
-              height: 15,
-            ),
-            Divider(
-              thickness: 1,
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text('new_address'.tr.toUpperCase(),
+                      style: robotoBlack.copyWith(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xff0eacd7),
+                      )),
+                ],
+              ),
             ),
             SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        Images.icLocation,
-                        height: 30,
-                        width: 30,
-                      ),
-                      SizedBox(width: 22),
-                      Text('home'.tr,
-                          style: robotoBlack.copyWith(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xff373a41))),
-                    ],
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text('edit'.tr,
-                        style: robotoBlack.copyWith(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xff0eacd7))),
-                    SizedBox(
-                      width: 30,
-                    ),
-                    Radio(
-                        activeColor: Color(0xff0eacd7),
-                        value: 2,
-                        groupValue: _value,
-                        onChanged: ((value) {
-                          setState(() {
-                            _value = value;
-                          });
-                        })),
-                    // Container(
-                    //   height: 24,
-                    //   width: 24,
-                    //   decoration: BoxDecoration(
-                    //       border: Border.all(color: Color(0xff979797)),
-                    //       borderRadius: BorderRadius.circular(12),
-                    //       color: Color(0xfff6f6f6)),
-                    // )
-                  ],
-                )
-              ],
-            ),
-            SizedBox(height: 20),
-            Text(widget.pickAddress,
-                style: robotoBlack.copyWith(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xff979797))),
+            ListView.separated(
+                shrinkWrap: true,
+                separatorBuilder: (context, index) => Divider(thickness: 1),
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return NewAddressListTile(
+                    pickAddres: widget.pickAddress,
+                  );
+                }),
             SizedBox(
-              height: 38,
+              height: 20,
             ),
             CustomButton(
               radius: 10,

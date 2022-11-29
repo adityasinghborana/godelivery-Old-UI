@@ -1,4 +1,5 @@
 import 'package:sixam_mart/controller/auth_controller.dart';
+import 'package:sixam_mart/controller/theme_controller.dart';
 import 'package:sixam_mart/controller/user_controller.dart';
 import 'package:sixam_mart/util/dimensions.dart';
 import 'package:sixam_mart/util/images.dart';
@@ -8,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:sixam_mart/view/screens/profile/profile_invite_friend_page.dart';
 import 'package:sixam_mart/view/screens/profile/profile_send_gift_page.dart';
 import 'package:sixam_mart/view/screens/profile/profile_voucher_page.dart';
+import 'package:sixam_mart/view/screens/profile/widget/profile_button.dart';
 
 class ProfileBgWidget extends StatelessWidget {
   final Widget circularImage;
@@ -26,7 +28,7 @@ class ProfileBgWidget extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(children: [
             SizedBox(
-              height: 800,
+              height: 900,
               child: Stack(children: [
                 Center(
                   child: Container(
@@ -235,6 +237,13 @@ class ProfileBgWidget extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
+                          ProfileButton(
+                              icon: Icons.dark_mode,
+                              title: 'dark_mode'.tr,
+                              isButtonActive: Get.isDarkMode,
+                              onTap: () {
+                                Get.find<ThemeController>().toggleTheme();
+                              }),
                           Padding(
                             padding: const EdgeInsets.only(
                                 left: 22, right: 35, top: 44, bottom: 33),

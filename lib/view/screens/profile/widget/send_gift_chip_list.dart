@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sixam_mart/util/styles.dart';
 
@@ -20,15 +19,7 @@ class _SendGiftChipListState extends State<SendGiftChipList> {
         onTap: () {
           setState(() {
             isTapped = !isTapped;
-            if (widget.selectedIndex.isEmpty) {
-              isTapped = false;
-            }
-            // isTapped = false;
-            // if (widget.selectedIndex.isNotEmpty) {
-            //   isTapped = true;
-            // } else if (widget.selectedIndex.isEmpty) {
-            //   isTapped = false;
-            // }
+            print("--1" + widget.selectedIndex);
           });
           // widget.selectedIndex;
           print("selected index-->" + widget.selectedIndex);
