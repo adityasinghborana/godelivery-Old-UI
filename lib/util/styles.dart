@@ -1,6 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/state_manager.dart';
 import 'package:sixam_mart/util/app_colors.dart';
 import 'package:sixam_mart/util/dimensions.dart';
-import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 final robotoRegular = TextStyle(
   fontFamily: 'Roboto',
@@ -56,14 +59,23 @@ final InputDecoration textFieldInputDecoration2 = InputDecoration(
   fillColor: AppColors.redAccentColor,
   border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(6.0),
-      borderSide: BorderSide(color: Color(0xff979797))),
+      borderSide: BorderSide(
+        color: Color(0xff979797),
+      )),
   enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(6.0),
-      borderSide: BorderSide(color: Color(0xff979797))),
+      borderSide: BorderSide(
+        color: Color(0xff979797),
+      )),
   focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(6.0),
-      borderSide: BorderSide(color: Color(0xff979797))),
-  hintStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+      borderSide: BorderSide(
+        color: Color(0xff979797),
+      )),
+  hintStyle: TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  ),
   contentPadding: const EdgeInsets.only(left: 21, right: 8, bottom: 13, top: 8),
 );
 

@@ -1,12 +1,16 @@
 import 'package:sixam_mart/controller/auth_controller.dart';
 import 'package:sixam_mart/controller/theme_controller.dart';
 import 'package:sixam_mart/controller/user_controller.dart';
+import 'package:sixam_mart/helper/route_helper.dart';
 import 'package:sixam_mart/util/dimensions.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sixam_mart/view/screens/order/order_screen.dart';
+import 'package:sixam_mart/view/screens/profile/profile_about_page.dart';
 import 'package:sixam_mart/view/screens/profile/profile_invite_friend_page.dart';
+import 'package:sixam_mart/view/screens/profile/profile_saved_address_page.dart';
 import 'package:sixam_mart/view/screens/profile/profile_send_gift_page.dart';
 import 'package:sixam_mart/view/screens/profile/profile_voucher_page.dart';
 import 'package:sixam_mart/view/screens/profile/widget/profile_button.dart';
@@ -24,7 +28,7 @@ class ProfileBgWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<UserController>(builder: (userController) {
       return Scaffold(
-        backgroundColor: Color(0xfff6f6f6),
+        backgroundColor: Theme.of(context).cardColor,
         body: SingleChildScrollView(
           child: Column(children: [
             SizedBox(
@@ -100,7 +104,7 @@ class ProfileBgWidget extends StatelessWidget {
                           style: robotoMedium.copyWith(
                               fontSize: 18,
                               fontWeight: FontWeight.w700,
-                              color: Colors.white),
+                              color: Theme.of(context).cardColor),
                         ),
                         SizedBox(
                           height: 10,
@@ -110,7 +114,7 @@ class ProfileBgWidget extends StatelessWidget {
                               ? '${userController.userInfoModel.email}'
                               : 'email'.tr,
                           style: robotoMedium.copyWith(
-                            color: Colors.white,
+                            color: Theme.of(context).cardColor,
                             fontSize: 13,
                             fontWeight: FontWeight.w700,
                           ),
@@ -120,10 +124,15 @@ class ProfileBgWidget extends StatelessWidget {
                 Positioned(
                   top: 110,
                   right: 30,
-                  child: Image.asset(
-                    Images.icEdit,
-                    height: 30,
-                    width: 30,
+                  child: InkWell(
+                    onTap: () {
+                      Get.toNamed(RouteHelper.getUpdateProfileRoute());
+                    },
+                    child: Image.asset(
+                      Images.icEdit,
+                      height: 30,
+                      width: 30,
+                    ),
                   ),
                 ),
                 Positioned(
@@ -132,8 +141,14 @@ class ProfileBgWidget extends StatelessWidget {
                   right: 10,
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12)),
+                        color: Theme.of(context).cardColor,
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey[Get.isDarkMode ? 800 : 200],
+                              blurRadius: 5,
+                              spreadRadius: 1)
+                        ]),
 
                     // height: 100,
                     // width: 100,
@@ -144,24 +159,31 @@ class ProfileBgWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                Images.icMyOrder,
-                                height: 98,
-                                width: 54,
-                              ),
-                              Text(
-                                "my_order".tr,
-                                style: robotoMedium.copyWith(
-                                  color: Color(0xff09323e),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
+                          InkWell(
+                            onTap: () {
+                              Get.to(OrderScreen());
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  Images.icMyOrder,
+                                  height: 98,
+                                  width: 54,
                                 ),
-                              )
-                            ],
+                                Text(
+                                  "my_order".tr,
+                                  style: robotoMedium.copyWith(
+                                    color: Get.isDarkMode
+                                        ? Colors.white
+                                        : Color(0xff09323e),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -175,7 +197,9 @@ class ProfileBgWidget extends StatelessWidget {
                               Text(
                                 "my_favourites".tr,
                                 style: robotoMedium.copyWith(
-                                  color: Color(0xff09323e),
+                                  color: Get.isDarkMode
+                                      ? Colors.white
+                                      : Color(0xff09323e),
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -194,31 +218,40 @@ class ProfileBgWidget extends StatelessWidget {
                               Text(
                                 "my_wallet".tr,
                                 style: robotoMedium.copyWith(
-                                  color: Color(0xff09323e),
+                                  color: Get.isDarkMode
+                                      ? Colors.white
+                                      : Color(0xff09323e),
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                 ),
                               )
                             ],
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                Images.icSavedAddress,
-                                height: 98,
-                                width: 54,
-                              ),
-                              Text(
-                                "saved_address".tr,
-                                style: robotoMedium.copyWith(
-                                  color: Color(0xff09323e),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
+                          InkWell(
+                            onTap: () {
+                              Get.to(ProfileSavedAddressPage());
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  Images.icSavedAddress,
+                                  height: 98,
+                                  width: 54,
                                 ),
-                              )
-                            ],
+                                Text(
+                                  "saved_address".tr,
+                                  style: robotoMedium.copyWith(
+                                    color: Get.isDarkMode
+                                        ? Colors.white
+                                        : Color(0xff09323e),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -231,8 +264,14 @@ class ProfileBgWidget extends StatelessWidget {
                     right: 10,
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12)),
+                          color: Theme.of(context).cardColor,
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[Get.isDarkMode ? 800 : 200],
+                                blurRadius: 5,
+                                spreadRadius: 1)
+                          ]),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -269,7 +308,9 @@ class ProfileBgWidget extends StatelessWidget {
                                         Text(
                                           "vouchers".tr,
                                           style: robotoMedium.copyWith(
-                                            color: Color(0xff09323e),
+                                            color: Get.isDarkMode
+                                                ? Colors.white
+                                                : Color(0xff09323e),
                                             fontSize: 16,
                                             fontWeight: FontWeight.w400,
                                           ),
@@ -280,7 +321,9 @@ class ProfileBgWidget extends StatelessWidget {
                                   Icon(
                                     Icons.arrow_forward_ios,
                                     size: 24,
-                                    color: Color(0xff09323e),
+                                    color: Get.isDarkMode
+                                        ? Colors.white
+                                        : Color(0xff09323e),
                                   )
                                 ],
                               ),
@@ -311,7 +354,9 @@ class ProfileBgWidget extends StatelessWidget {
                                         Text(
                                           "send_gift".tr,
                                           style: robotoMedium.copyWith(
-                                            color: Color(0xff09323e),
+                                            color: Get.isDarkMode
+                                                ? Colors.white
+                                                : Color(0xff09323e),
                                             fontSize: 16,
                                             fontWeight: FontWeight.w400,
                                           ),
@@ -322,7 +367,9 @@ class ProfileBgWidget extends StatelessWidget {
                                   Icon(
                                     Icons.arrow_forward_ios,
                                     size: 24,
-                                    color: Color(0xff09323e),
+                                    color: Get.isDarkMode
+                                        ? Colors.white
+                                        : Color(0xff09323e),
                                   )
                                 ],
                               ),
@@ -347,7 +394,9 @@ class ProfileBgWidget extends StatelessWidget {
                                       Text(
                                         "contact_pre".tr,
                                         style: robotoMedium.copyWith(
-                                          color: Color(0xff09323e),
+                                          color: Get.isDarkMode
+                                              ? Colors.white
+                                              : Color(0xff09323e),
                                           fontSize: 16,
                                           fontWeight: FontWeight.w400,
                                         ),
@@ -358,7 +407,9 @@ class ProfileBgWidget extends StatelessWidget {
                                 Icon(
                                   Icons.arrow_forward_ios,
                                   size: 24,
-                                  color: Color(0xff09323e),
+                                  color: Get.isDarkMode
+                                      ? Colors.white
+                                      : Color(0xff09323e),
                                 )
                               ],
                             ),
@@ -394,7 +445,9 @@ class ProfileBgWidget extends StatelessWidget {
                                             Text(
                                               "invite_frd".tr,
                                               style: robotoMedium.copyWith(
-                                                color: Color(0xff09323e),
+                                                color: Get.isDarkMode
+                                                    ? Colors.white
+                                                    : Color(0xff09323e),
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w400,
                                               ),
@@ -415,7 +468,9 @@ class ProfileBgWidget extends StatelessWidget {
                                   Icon(
                                     Icons.arrow_forward_ios,
                                     size: 24,
-                                    color: Color(0xff09323e),
+                                    color: Get.isDarkMode
+                                        ? Colors.white
+                                        : Color(0xff09323e),
                                   )
                                 ],
                               ),
@@ -424,35 +479,46 @@ class ProfileBgWidget extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(
                                 left: 22, right: 35, bottom: 33),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Image.asset(Images.icAbout,
-                                        width: 24, height: 15),
-                                    SizedBox(width: 20),
-                                    Text(
-                                      "about".tr,
-                                      style: robotoMedium.copyWith(
-                                        color: Color(0xff09323e),
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
+                            child: InkWell(
+                              onTap: () {
+                                Get.to(ProfileAboutPage());
+                              },
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Image.asset(Images.icAbout,
+                                          width: 24, height: 15),
+                                      SizedBox(width: 20),
+                                      Text(
+                                        "about".tr,
+                                        style: robotoMedium.copyWith(
+                                          color: Get.isDarkMode
+                                              ? Colors.white
+                                              : Color(0xff09323e),
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Divider(
                               thickness: 1,
-                              color: Color(0xff000000),
+                              color: Get.isDarkMode
+                                  ? Colors.white
+                                  : Color(0xff000000),
                             ),
                           ),
                           SizedBox(
@@ -473,7 +539,9 @@ class ProfileBgWidget extends StatelessWidget {
                               Text(
                                 "logout".tr,
                                 style: robotoMedium.copyWith(
-                                  color: Color(0xff09323e),
+                                  color: Get.isDarkMode
+                                      ? Colors.white
+                                      : Color(0xff09323e),
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -490,9 +558,7 @@ class ProfileBgWidget extends StatelessWidget {
             ),
 
             //old design
-            // Expanded(
-            //   child: mainWidget,
-            // ),
+            //mainWidget,
           ]),
         ),
       );

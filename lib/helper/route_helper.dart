@@ -391,9 +391,10 @@ class RouteHelper {
           return getRoute(Get.arguments != null
               ? Get.arguments
               : OrderDetailsScreen(
-                  orderId: int.parse(Get.parameters['id'] ?? '0'),
-                  orderModel: null,
-                  fromNotification: Get.parameters['from'] == 'true'));
+                  // orderId: int.parse(Get.parameters['id'] ?? '0'),
+                  // orderModel: null,
+                  // fromNotification: Get.parameters['from'] == 'true'
+                  ));
         }),
     GetPage(name: profile, page: () => getRoute(ProfileScreen())),
     GetPage(name: updateProfile, page: () => getRoute(UpdateProfileScreen())),

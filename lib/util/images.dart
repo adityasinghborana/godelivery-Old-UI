@@ -140,4 +140,23 @@ class Images {
   static const String imgRightArrow = 'assets/image/img_right.png';
   static const String imgLeftArrow = 'assets/image/img_left.png';
   static const String icCalender = 'assets/image/ic_calendar.png';
+  static const String icProApple = 'assets/image/ic_pro_apple.png';
+  static const String icProFacebook = 'assets/image/ic_pro_facebook.png';
+  static const String icProGoogle = 'assets/image/ic_pro_google.png';
+  static const String icProCalender = 'assets/image/ic_calender.png';
+  static const String imgMyOrder = 'assets/image/img_my_order.png';
+  static const String icDelivery = 'assets/image/ic_delivery.png';
+  static const String icBackArrow = 'assets/image/ic_back_arrow.png';
+  static const String icHome = 'assets/image/ic_home.png';
+  static const String icClock = 'assets/image/ic_clock.png';
+  static const String icAdd = 'assets/image/ic_add.png';
+  static const String icMinus = 'assets/image/ic_minus.png';
+  static const String icGoingPackage = 'assets/image/ic_going_package.png';
+  static const String icPickup = 'assets/image/ic_pickup.png';
+  static const String icBike = 'assets/image/ic_bike.png';
+  static const String icPickedUp = 'assets/image/ic_picked_up.png';
+  static const String imgPlaceholder = 'assets/image/placeholder.png';
+  static const String icStar = 'assets/image/ic_star.png';
+  static const String icMessage = 'assets/image/ic_message.png';
+  static const String icPhone = 'assets/image/ic_phone.png';
 }

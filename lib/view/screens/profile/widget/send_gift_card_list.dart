@@ -38,34 +38,36 @@ class _SendGiftCardState extends State<SendGiftCard> {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Food",
-                            style: robotoRegular.copyWith(
-                                fontSize: 26,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xff09323e)),
-                          ),
-                          SizedBox(height: 3),
-                          Text(
-                            "Gift card",
-                            style: robotoRegular.copyWith(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xff09323e)),
-                          ),
-                          SizedBox(height: 61),
-                          Image.asset(
-                            Images.logo,
-                            width: 55,
-                            height: 25,
-                          )
-                        ],
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Food",
+                              style: robotoRegular.copyWith(
+                                  fontSize: 26,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xff09323e)),
+                            ),
+                            SizedBox(height: 3),
+                            Text(
+                              "Gift card",
+                              style: robotoRegular.copyWith(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xff09323e)),
+                            ),
+                            SizedBox(height: 61),
+                            Image.asset(
+                              Images.logo,
+                              width: 55,
+                              height: 25,
+                            )
+                          ],
+                        ),
                       ),
-                      SizedBox(width: 68),
+                      //SizedBox(width: 60),
                       Image.asset(Images.imgGift)
                     ],
                   )
