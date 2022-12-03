@@ -20,6 +20,7 @@ import 'package:sixam_mart/view/base/confirmation_dialog.dart';
 import 'package:sixam_mart/view/base/custom_app_bar.dart';
 import 'package:sixam_mart/view/base/custom_button.dart';
 import 'package:sixam_mart/view/base/menu_drawer.dart';
+import 'package:sixam_mart/view/screens/checkout/payment_screen.dart';
 import 'package:sixam_mart/view/screens/order/order_item_list.dart';
 import 'package:sixam_mart/view/screens/order/order_screen.dart';
 import 'package:sixam_mart/view/screens/profile/profile_about_page.dart';
@@ -676,7 +677,9 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                     radius: 10,
                     buttonText: 'pay_now'.tr,
                     fontSize: 17,
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(PaymentScreen());
+                    },
                   ),
                 ),
               ],

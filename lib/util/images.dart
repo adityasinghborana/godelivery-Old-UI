@@ -159,4 +159,12 @@ class Images {
   static const String icStar = 'assets/image/ic_star.png';
   static const String icMessage = 'assets/image/ic_message.png';
   static const String icPhone = 'assets/image/ic_phone.png';
+  static const String imgAtmCard = 'assets/image/img_atm_card.png';
+  static const String imgPaypal = 'assets/image/img_paypal.png';
+  static const String icSearch = 'assets/image/ic_search.png';
+  static const String icLike = 'assets/image/ic_like.png';
+  static const String icShere = 'assets/image/ic_shere.png';
+  static const String icGroceryDetails = 'assets/image/img_grocery_details.png';
+  static const String imgFruit = 'assets/image/img_fruit.png';
+  static const String icHeart = 'assets/image/ic_heart.png';
 }

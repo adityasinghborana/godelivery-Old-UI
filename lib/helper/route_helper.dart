@@ -418,15 +418,14 @@ class RouteHelper {
         name: orderSuccess,
         page: () =>
             getRoute(OrderSuccessfulScreen(orderID: Get.parameters['id']))),
-    GetPage(
-        name: payment,
-        page: () => getRoute(PaymentScreen(
-            orderModel: OrderModel(
-                id: int.parse(Get.parameters['id']),
-                orderType: Get.parameters['type'],
-                userId: int.parse(
-                  Get.parameters['user'],
-                ))))),
+    GetPage(name: payment, page: () => getRoute(PaymentScreen(
+        // orderModel: OrderModel(
+        //     id: int.parse(Get.parameters['id']),
+        //     orderType: Get.parameters['type'],
+        //     userId: int.parse(
+        //       Get.parameters['user'],
+        //     ))
+        ))),
     GetPage(
         name: checkout,
         page: () {

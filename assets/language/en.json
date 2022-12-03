@@ -721,5 +721,14 @@
   "very_good": "Very Good",
   "good": "Good",
   "bad": "Bad",
-  "very_bad": "Very Bad"
+  "very_bad": "Very Bad",
+  "payment_method": "Payment Method",
+  "add_card": "Add Card",
+  "account_profile_for_security": "This data will be displayed in your account profile for security",
+  "grocery": "Grocery",
+  "search_by_item": "Search by item name",
+  "pickup": "Pick-up",
+  "see_more": "see more...",
+  "recommended": "Recommended",
+  "veg_only": "Veg Only"
 }
