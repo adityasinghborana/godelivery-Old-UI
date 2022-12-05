@@ -388,7 +388,9 @@ class ItemController extends GetxController implements GetxService {
             );
     } else {
       Get.toNamed(RouteHelper.getItemDetailsRoute(item.id, inStore),
-          arguments: ItemDetailsScreen(item: item, inStorePage: inStore));
+          arguments: ItemDetailsScreen(
+              // item: item, inStorePage: inStore
+              ));
     }
   }
 }

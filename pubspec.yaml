@@ -51,6 +51,7 @@ dependencies:
   fwfh_text_style: ^2.22.8+1
   expandable_bottom_sheet: ^1.1.1+1
   flutter_rating_bar: ^4.0.1
+  dots_indicator: ^2.1.0
 
 
 dev_dependencies:

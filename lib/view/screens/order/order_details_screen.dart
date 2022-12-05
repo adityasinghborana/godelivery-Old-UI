@@ -1,33 +1,19 @@
 import 'dart:async';
-import 'dart:ui';
-
 import 'package:photo_view/photo_view.dart';
 import 'package:sixam_mart/controller/order_controller.dart';
 import 'package:sixam_mart/controller/splash_controller.dart';
-import 'package:sixam_mart/controller/theme_controller.dart';
-import 'package:sixam_mart/data/model/body/notification_body.dart';
-import 'package:sixam_mart/data/model/response/conversation_model.dart';
 import 'package:sixam_mart/data/model/response/order_details_model.dart';
 import 'package:sixam_mart/data/model/response/order_model.dart';
-import 'package:sixam_mart/helper/date_converter.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
 import 'package:sixam_mart/helper/responsive_helper.dart';
 import 'package:sixam_mart/helper/route_helper.dart';
 import 'package:sixam_mart/util/dimensions.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 import 'package:sixam_mart/view/base/confirmation_dialog.dart';
-import 'package:sixam_mart/view/base/custom_app_bar.dart';
 import 'package:sixam_mart/view/base/custom_button.dart';
-import 'package:sixam_mart/view/base/menu_drawer.dart';
 import 'package:sixam_mart/view/screens/checkout/payment_screen.dart';
 import 'package:sixam_mart/view/screens/order/order_item_list.dart';
-import 'package:sixam_mart/view/screens/order/order_screen.dart';
-import 'package:sixam_mart/view/screens/profile/profile_about_page.dart';
-import 'package:sixam_mart/view/screens/profile/profile_invite_friend_page.dart';
-import 'package:sixam_mart/view/screens/profile/profile_send_gift_page.dart';
-import 'package:sixam_mart/view/screens/profile/profile_voucher_page.dart';
-import 'package:sixam_mart/view/screens/profile/widget/profile_button.dart';
+import 'package:sixam_mart/view/screens/order/popular_order_list_tile.dart';
 import 'package:sixam_mart/view/screens/review/rate_review_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -90,1268 +76,1069 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
         //   return true;
         // }
       },
-      child: Scaffold(
-        // appBar: CustomAppBar(
-        //     title: 'order_details'.tr,
-        //     onBackPressed: () {
-        //       Get.back();
-        //       // if (widget.fromNotification) {
-        //       //   Get.offAllNamed(RouteHelper.getInitialRoute());
-        //       // } else {
-        //       //   Get.back();
-        //       // }
-        //     }),
-        endDrawer: MenuDrawer(),
-        body: GetBuilder<OrderController>(builder: (orderController) {
-          double _deliveryCharge = 0;
-          double _itemsPrice = 0;
-          double _discount = 0;
-          double _couponDiscount = 0;
-          double _tax = 0;
-          double _addOns = 0;
-          double _dmTips = 0;
-          OrderModel _order = orderController.trackModel;
-          bool _parcel = false;
-          if (orderController.orderDetails != null) {
-            _parcel = _order.orderType == 'parcel';
-            _deliveryCharge = _order.deliveryCharge;
-            _couponDiscount = _order.couponDiscountAmount;
-            _discount = _order.storeDiscountAmount;
-            _tax = _order.totalTaxAmount;
-            _dmTips = _order.dmTips;
-            for (OrderDetailsModel orderDetails
-                in orderController.orderDetails) {
-              for (AddOn addOn in orderDetails.addOns) {
-                _addOns = _addOns + (addOn.price * addOn.quantity);
-              }
-              _itemsPrice =
-                  _itemsPrice + (orderDetails.price * orderDetails.quantity);
+      child:
+          // Scaffold(
+          // appBar: CustomAppBar(
+          //     title: 'order_details'.tr,
+          //     onBackPressed: () {
+          //       Get.back();
+          //       // if (widget.fromNotification) {
+          //       //   Get.offAllNamed(RouteHelper.getInitialRoute());
+          //       // } else {
+          //       //   Get.back();
+          //       // }
+          //     }),
+          // endDrawer: MenuDrawer(),
+          // body:
+          GetBuilder<OrderController>(builder: (orderController) {
+        double _deliveryCharge = 0;
+        double _itemsPrice = 0;
+        double _discount = 0;
+        double _couponDiscount = 0;
+        double _tax = 0;
+        double _addOns = 0;
+        double _dmTips = 0;
+        OrderModel _order = orderController.trackModel;
+        bool _parcel = false;
+        if (orderController.orderDetails != null) {
+          _parcel = _order.orderType == 'parcel';
+          _deliveryCharge = _order.deliveryCharge;
+          _couponDiscount = _order.couponDiscountAmount;
+          _discount = _order.storeDiscountAmount;
+          _tax = _order.totalTaxAmount;
+          _dmTips = _order.dmTips;
+          for (OrderDetailsModel orderDetails in orderController.orderDetails) {
+            for (AddOn addOn in orderDetails.addOns) {
+              _addOns = _addOns + (addOn.price * addOn.quantity);
             }
+            _itemsPrice =
+                _itemsPrice + (orderDetails.price * orderDetails.quantity);
           }
-          double _subTotal = _itemsPrice + _addOns;
-          double _total = _itemsPrice +
-              _addOns -
-              _discount +
-              _tax +
-              _deliveryCharge -
-              _couponDiscount +
-              _dmTips;
+        }
+        double _subTotal = _itemsPrice + _addOns;
+        double _total = _itemsPrice +
+            _addOns -
+            _discount +
+            _tax +
+            _deliveryCharge -
+            _couponDiscount +
+            _dmTips;
 
-          return SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Stack(
+        return Container(
+          height: 650,
+          decoration: BoxDecoration(
+            color: Theme.of(context).cardColor,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          ),
+
+          // height: 100,
+          // width: 100,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 22, right: 20, top: 34),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'your_order'.tr,
+                        textAlign: TextAlign.center,
+                        style: robotoRegular.copyWith(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xff0a191e)),
+                      ),
+                      InkWell(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: Icon(Icons.close,
+                              size: 19, color: Color(0xff0a191e)))
+                    ],
+                  ),
+                  SizedBox(height: 24),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 13, vertical: 18),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Color(0xfff8f8f8)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Column(mainAxisSize: MainAxisSize.min, children: [
-                          Container(
-                            height: 950,
-                            child: Stack(children: [
-                              SizedBox(
-                                width: context.width,
-                                height: 300,
-                                child: Center(
-                                    child: Image.asset(Images.imgFavStoreImage,
-                                        height: 300,
-                                        //width: Dimensions.WEB_MAX_WIDTH,
-                                        fit: BoxFit.cover)),
-                              ),
-                              Positioned(
-                                  top: 55,
-                                  left: 20,
-                                  // right: 0,
-                                  child: InkWell(
-                                    onTap: () {
-                                      Get.back();
-                                    },
-                                    child: Image.asset(
-                                      Images.icBackArrow,
-                                      height: 32,
-                                      width: 32,
-                                    ),
-                                  )),
-                              Positioned(
-                                top: 150,
-                                left: 0,
-                                right: 0,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context).cardColor,
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20),
-                                        topRight: Radius.circular(20)),
-                                  ),
-
-                                  // height: 100,
-                                  // width: 100,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 22, right: 20, top: 34),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Image.asset(Images.icHome,
+                                      width: 27, height: 25),
+                                  SizedBox(width: 15),
+                                  Expanded(
                                     child: Column(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                          MainAxisAlignment.center,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'your_order'.tr,
-                                              textAlign: TextAlign.center,
-                                              style: robotoRegular.copyWith(
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Color(0xff0a191e)),
-                                            ),
-                                            Icon(Icons.close,
-                                                size: 19,
-                                                color: Color(0xff0a191e))
-                                          ],
+                                        Text(
+                                          'Satya Nilayam',
+                                          textAlign: TextAlign.center,
+                                          style: robotoRegular.copyWith(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w700,
+                                              color: Color(0xff09323e)),
                                         ),
-                                        SizedBox(height: 24),
-                                        Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 13, vertical: 18),
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(12),
-                                              color: Color(0xfff8f8f8)),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  Expanded(
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Image.asset(
-                                                            Images.icHome,
-                                                            width: 27,
-                                                            height: 25),
-                                                        SizedBox(width: 15),
-                                                        Expanded(
-                                                          child: Column(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                'Satya Nilayam',
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style: robotoRegular.copyWith(
-                                                                    fontSize:
-                                                                        12,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w700,
-                                                                    color: Color(
-                                                                        0xff09323e)),
-                                                              ),
-                                                              Align(
-                                                                alignment: Alignment
-                                                                    .centerLeft,
-                                                                child: Text(
-                                                                  '21-42-34, Banjara',
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                  style: robotoRegular.copyWith(
-                                                                      fontSize:
-                                                                          10,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400,
-                                                                      color: Color(
-                                                                          0xff686868)),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    'change_address'.tr,
-                                                    textAlign: TextAlign.center,
-                                                    style:
-                                                        robotoRegular.copyWith(
-                                                            fontSize: 10,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color: Color(
-                                                                0xff0a191e)),
-                                                  ),
-                                                ],
-                                              ),
-                                              SizedBox(height: 15),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  Expanded(
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Image.asset(
-                                                            Images.icClock,
-                                                            width: 32,
-                                                            height: 32),
-                                                        SizedBox(width: 15),
-                                                        Text(
-                                                          '30 mins',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: robotoRegular
-                                                              .copyWith(
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w700,
-                                                                  color: Color(
-                                                                      0xff09323e)),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    'schedule_time',
-                                                    textAlign: TextAlign.center,
-                                                    style:
-                                                        robotoRegular.copyWith(
-                                                            fontSize: 10,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color: Color(
-                                                                0xff0a191e)),
-                                                  ),
-                                                ],
-                                              )
-                                            ],
+                                        Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            '21-42-34, Banjara',
+                                            textAlign: TextAlign.center,
+                                            style: robotoRegular.copyWith(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w400,
+                                                color: Color(0xff686868)),
                                           ),
                                         ),
-                                        SizedBox(height: 24),
-                                        SizedBox(
-                                          height: 300,
-                                          child: ListView.builder(
-                                              itemCount: 5,
-                                              shrinkWrap: true,
-                                              // physics:
-                                              //     NeverScrollableScrollPhysics(),
-                                              itemBuilder: ((context, index) {
-                                                return OrderItemList();
-                                              })),
-                                        ),
-                                        // SizedBox(height: 23),
-                                        // Text(
-                                        //   'Order number #410049',
-                                        //   textAlign: TextAlign.center,
-                                        //   style: robotoRegular.copyWith(
-                                        //       fontSize: 16,
-                                        //       fontWeight: FontWeight.w700,
-                                        //       color: Color(0xff09323e)),
-                                        // ),
-                                        // SizedBox(height: 33),
-                                        // Container(
-                                        //   decoration: BoxDecoration(
-                                        //       borderRadius:
-                                        //           BorderRadius.circular(12),
-                                        //       border: Border.all(
-                                        //           color: Color(0xffdfdfdf))),
-                                        //   child: Row(
-                                        //     mainAxisAlignment:
-                                        //         MainAxisAlignment.spaceEvenly,
-                                        //     children: [
-                                        //       Column(
-                                        //         children: [
-                                        //           Image.asset(Images.icGoingPackage,
-                                        //               width: 24, height: 24),
-                                        //           Text(
-                                        //             'Going for package',
-                                        //             textAlign: TextAlign.center,
-                                        //             style: robotoRegular.copyWith(
-                                        //                 fontSize: 10,
-                                        //                 fontWeight: FontWeight.w400,
-                                        //                 color: Color(0xff0a191e)),
-                                        //           ),
-                                        //         ],
-                                        //       ),
-                                        //       Column(
-                                        //         children: [
-                                        //           Image.asset(Images.icGoingPackage,
-                                        //               width: 24, height: 24),
-                                        //           Text(
-                                        //             'Going for package',
-                                        //             textAlign: TextAlign.center,
-                                        //             style: robotoRegular.copyWith(
-                                        //                 fontSize: 10,
-                                        //                 fontWeight: FontWeight.w400,
-                                        //                 color: Color(0xff0a191e)),
-                                        //           ),
-                                        //         ],
-                                        //       ),
-                                        //       Column(
-                                        //         children: [
-                                        //           Image.asset(Images.icGoingPackage,
-                                        //               width: 24, height: 24),
-                                        //           Text(
-                                        //             'Going for package',
-                                        //             textAlign: TextAlign.center,
-                                        //             style: robotoRegular.copyWith(
-                                        //                 fontSize: 10,
-                                        //                 fontWeight: FontWeight.w400,
-                                        //                 color: Color(0xff0a191e)),
-                                        //           ),
-                                        //         ],
-                                        //       ),
-                                        //       Column(
-                                        //         children: [
-                                        //           Image.asset(Images.icGoingPackage,
-                                        //               width: 24, height: 24),
-                                        //           Text(
-                                        //             'Going for package',
-                                        //             textAlign: TextAlign.center,
-                                        //             style: robotoRegular.copyWith(
-                                        //                 fontSize: 10,
-                                        //                 fontWeight: FontWeight.w400,
-                                        //                 color: Color(0xff0a191e)),
-                                        //           ),
-                                        //         ],
-                                        //       )
-                                        //     ],
-                                        //   ),
-                                        // )
-
-                                        // ,
-                                        SizedBox(height: 30),
-
-                                        TextFormField(
-                                          decoration:
-                                              textFieldInputDecoration.copyWith(
-                                                  contentPadding:
-                                                      EdgeInsets.symmetric(
-                                                          vertical: 9,
-                                                          horizontal: 15),
-                                                  border: OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                          color: Color(
-                                                              0xffd0d0d9))),
-                                                  hintText:
-                                                      'enter_promo_code'.tr,
-                                                  hintStyle: TextStyle(
-                                                      fontSize: 12,
-                                                      color: Color(0xffd0d0d9),
-                                                      fontWeight:
-                                                          FontWeight.w700)),
-                                          onSaved: (value) {
-                                            setState(() {
-                                              // password = value!.trim();
-                                            });
-                                          },
-                                        ),
-                                        SizedBox(height: 28),
-                                        Card(
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                          ),
-                                          elevation: 5,
-                                          child: Container(
-                                            padding: EdgeInsets.symmetric(
-                                                vertical: 18),
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(5)),
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Padding(
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      horizontal: 13),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        'subtotal'.tr,
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: robotoRegular
-                                                            .copyWith(
-                                                                fontSize: 12,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w700,
-                                                                color: Color(
-                                                                    0xff0a191e)),
-                                                      ),
-                                                      Text(
-                                                        '₦100',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: robotoRegular
-                                                            .copyWith(
-                                                                fontSize: 12,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                color: Color(
-                                                                    0xff050505)),
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
-                                                SizedBox(height: 14),
-                                                Padding(
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      horizontal: 13),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        'delivery'.tr,
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: robotoRegular
-                                                            .copyWith(
-                                                                fontSize: 12,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w700,
-                                                                color: Color(
-                                                                    0xff0a191e)),
-                                                      ),
-                                                      Text(
-                                                        '₦45',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: robotoRegular
-                                                            .copyWith(
-                                                                fontSize: 12,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                color: Color(
-                                                                    0xff050505)),
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
-                                                SizedBox(height: 5),
-                                                Divider(
-                                                    color: Color(0xff000000)),
-                                                SizedBox(height: 14),
-                                                Padding(
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      horizontal: 13),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        'total'.tr,
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: robotoRegular
-                                                            .copyWith(
-                                                                fontSize: 12,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w700,
-                                                                color: Color(
-                                                                    0xff0a191e)),
-                                                      ),
-                                                      Text(
-                                                        '₦270',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: robotoRegular
-                                                            .copyWith(
-                                                                fontSize: 12,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                color: Color(
-                                                                    0xff050505)),
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(height: 30),
                                       ],
                                     ),
                                   ),
-                                ),
+                                ],
                               ),
-                              Positioned(
-                                  top: 695,
-                                  right: 20,
-                                  // bottom: ,
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: 16, horizontal: 29),
-                                    decoration: BoxDecoration(
-                                        color: Color(0xffbf1d2d),
-                                        borderRadius: BorderRadius.circular(5)),
-                                    child: Text(
-                                      'apply'.tr,
-                                      textAlign: TextAlign.center,
-                                      style: robotoRegular.copyWith(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w700,
-                                          color: Color(0xffffffff)),
-                                    ),
-                                  ))
-                            ]),
-                          ),
-
-                          //old design
-                          //mainWidget,
-                        ]),
+                            ),
+                            Text(
+                              'change_address'.tr,
+                              textAlign: TextAlign.center,
+                              style: robotoRegular.copyWith(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff0a191e)),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 15),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Image.asset(Images.icClock,
+                                      width: 32, height: 32),
+                                  SizedBox(width: 15),
+                                  Text(
+                                    '30 mins',
+                                    textAlign: TextAlign.center,
+                                    style: robotoRegular.copyWith(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w700,
+                                        color: Color(0xff09323e)),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Text(
+                              'schedule_time',
+                              textAlign: TextAlign.center,
+                              style: robotoRegular.copyWith(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff0a191e)),
+                            ),
+                          ],
+                        )
                       ],
                     ),
-                  ],
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20, right: 20, bottom: 30),
-                  child: CustomButton(
-                    radius: 10,
-                    buttonText: 'pay_now'.tr,
-                    fontSize: 17,
-                    onPressed: () {
-                      Get.to(PaymentScreen());
-                    },
                   ),
-                ),
-              ],
+                  SizedBox(height: 24),
+                  SizedBox(
+                    height: 200,
+                    child: ListView.builder(
+                        itemCount: 3,
+                        shrinkWrap: true,
+                        // physics: NeverScrollableScrollPhysics(),
+                        itemBuilder: ((context, index) {
+                          return OrderItemList();
+                        })),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    'popular_order',
+                    textAlign: TextAlign.center,
+                    style: robotoRegular.copyWith(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xff000000)),
+                  ),
+                  SizedBox(height: 15),
+                  SizedBox(
+                    height: 100,
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 5,
+                        shrinkWrap: true,
+                        itemBuilder: ((context, index) {
+                          return PopularOrderListTile();
+                        })),
+                  ),
+                  SizedBox(height: 30),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            decoration: textFieldInputDecoration.copyWith(
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 9, horizontal: 15),
+                                border: OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Color(0xffd0d0d9))),
+                                hintText: 'enter_promo_code'.tr,
+                                suffixIcon: Container(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 16, horizontal: 29),
+                                  decoration: BoxDecoration(
+                                      color: Color(0xffbf1d2d),
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: Text(
+                                    'apply'.tr,
+                                    textAlign: TextAlign.center,
+                                    style: robotoRegular.copyWith(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w700,
+                                        color: Color(0xffffffff)),
+                                  ),
+                                ),
+                                hintStyle: TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xffd0d0d9),
+                                    fontWeight: FontWeight.w700)),
+                            onSaved: (value) {
+                              setState(() {
+                                // password = value!.trim();
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 28),
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    elevation: 5,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 18),
+                      decoration:
+                          BoxDecoration(borderRadius: BorderRadius.circular(5)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 13),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'subtotal'.tr,
+                                  textAlign: TextAlign.center,
+                                  style: robotoRegular.copyWith(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
+                                      color: Color(0xff0a191e)),
+                                ),
+                                Text(
+                                  '₦100',
+                                  textAlign: TextAlign.center,
+                                  style: robotoRegular.copyWith(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff050505)),
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 14),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 13),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'delivery'.tr,
+                                  textAlign: TextAlign.center,
+                                  style: robotoRegular.copyWith(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
+                                      color: Color(0xff0a191e)),
+                                ),
+                                Text(
+                                  '₦45',
+                                  textAlign: TextAlign.center,
+                                  style: robotoRegular.copyWith(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff050505)),
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Divider(color: Color(0xff000000)),
+                          SizedBox(height: 14),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 13),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'total'.tr,
+                                  textAlign: TextAlign.center,
+                                  style: robotoRegular.copyWith(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
+                                      color: Color(0xff0a191e)),
+                                ),
+                                Text(
+                                  '₦270',
+                                  textAlign: TextAlign.center,
+                                  style: robotoRegular.copyWith(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff050505)),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 20, right: 20, bottom: 30),
+                    child: CustomButton(
+                      radius: 10,
+                      buttonText: 'pay_now'.tr,
+                      fontSize: 17,
+                      onPressed: () {
+                        Get.to(PaymentScreen());
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
-          );
-          // orderController.orderDetails != null
-          //     ?
-          // Column(children: [
-          //   Expanded(
-          //       child: Scrollbar(
-          //           child: SingleChildScrollView(
-          //     physics: BouncingScrollPhysics(),
-          //     padding: ResponsiveHelper.isDesktop(context)
-          //         ? EdgeInsets.zero
-          //         : EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
-          //     child: FooterView(
-          //         child: SizedBox(
-          //             width: Dimensions.WEB_MAX_WIDTH,
-          //             child: Column(
-          //                 crossAxisAlignment: CrossAxisAlignment.start,
-          //                 children: [
-          //                   Row(children: [
-          //                     Text(
-          //                         '${_parcel ? 'delivery_id'.tr : 'order_id'.tr}:',
-          //                         style: robotoRegular),
-          //                     SizedBox(
-          //                         width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-          //                     Text(_order.id.toString(), style: robotoMedium),
-          //                     SizedBox(
-          //                         width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-          //                     Expanded(child: SizedBox()),
-          //                     Icon(Icons.watch_later, size: 17),
-          //                     SizedBox(
-          //                         width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-          //                     Text(
-          //                       DateConverter.dateTimeStringToDateTime(
-          //                           _order.createdAt),
-          //                       style: robotoRegular,
-          //                     ),
-          //                   ]),
-          //                   SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+          ),
+        );
 
-          //                   _order.scheduled == 1
-          //                       ? Row(children: [
-          //                           Text('${'scheduled_at'.tr}:',
-          //                               style: robotoRegular),
-          //                           SizedBox(
-          //                               width: Dimensions
-          //                                   .PADDING_SIZE_EXTRA_SMALL),
-          //                           Text(
-          //                               DateConverter.dateTimeStringToDateTime(
-          //                                   _order.scheduleAt),
-          //                               style: robotoMedium),
-          //                         ])
-          //                       : SizedBox(),
-          //                   SizedBox(
-          //                       height: _order.scheduled == 1
-          //                           ? Dimensions.PADDING_SIZE_SMALL
-          //                           : 0),
+        // Positioned(
+        //                         top: 695,
+        //                         right: 20,
+        //                         // bottom: ,
+        //                         child: Container(
+        //                           padding: EdgeInsets.symmetric(
+        //                               vertical: 16, horizontal: 29),
+        //                           decoration: BoxDecoration(
+        //                               color: Color(0xffbf1d2d),
+        //                               borderRadius: BorderRadius.circular(5)),
+        //                           child: Text(
+        //                             'apply'.tr,
+        //                             textAlign: TextAlign.center,
+        //                             style: robotoRegular.copyWith(
+        //                                 fontSize: 12,
+        //                                 fontWeight: FontWeight.w700,
+        //                                 color: Color(0xffffffff)),
+        //                           ),
+        //                         ))
+        // orderController.orderDetails != null
+        //     ?
+        // Column(children: [
+        //   Expanded(
+        //       child: Scrollbar(
+        //           child: SingleChildScrollView(
+        //     physics: BouncingScrollPhysics(),
+        //     padding: ResponsiveHelper.isDesktop(context)
+        //         ? EdgeInsets.zero
+        //         : EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+        //     child: FooterView(
+        //         child: SizedBox(
+        //             width: Dimensions.WEB_MAX_WIDTH,
+        //             child: Column(
+        //                 crossAxisAlignment: CrossAxisAlignment.start,
+        //                 children: [
+        //                   Row(children: [
+        //                     Text(
+        //                         '${_parcel ? 'delivery_id'.tr : 'order_id'.tr}:',
+        //                         style: robotoRegular),
+        //                     SizedBox(
+        //                         width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+        //                     Text(_order.id.toString(), style: robotoMedium),
+        //                     SizedBox(
+        //                         width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+        //                     Expanded(child: SizedBox()),
+        //                     Icon(Icons.watch_later, size: 17),
+        //                     SizedBox(
+        //                         width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+        //                     Text(
+        //                       DateConverter.dateTimeStringToDateTime(
+        //                           _order.createdAt),
+        //                       style: robotoRegular,
+        //                     ),
+        //                   ]),
+        //                   SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
 
-          //                   Get.find<SplashController>()
-          //                           .configModel
-          //                           .orderDeliveryVerification
-          //                       ? Row(children: [
-          //                           Text('${'delivery_verification_code'.tr}:',
-          //                               style: robotoRegular),
-          //                           SizedBox(
-          //                               width: Dimensions
-          //                                   .PADDING_SIZE_EXTRA_SMALL),
-          //                           Text(_order.otp, style: robotoMedium),
-          //                         ])
-          //                       : SizedBox(),
-          //                   SizedBox(
-          //                       height: Get.find<SplashController>()
-          //                               .configModel
-          //                               .orderDeliveryVerification
-          //                           ? 10
-          //                           : 0),
+        //                   _order.scheduled == 1
+        //                       ? Row(children: [
+        //                           Text('${'scheduled_at'.tr}:',
+        //                               style: robotoRegular),
+        //                           SizedBox(
+        //                               width: Dimensions
+        //                                   .PADDING_SIZE_EXTRA_SMALL),
+        //                           Text(
+        //                               DateConverter.dateTimeStringToDateTime(
+        //                                   _order.scheduleAt),
+        //                               style: robotoMedium),
+        //                         ])
+        //                       : SizedBox(),
+        //                   SizedBox(
+        //                       height: _order.scheduled == 1
+        //                           ? Dimensions.PADDING_SIZE_SMALL
+        //                           : 0),
 
-          //                   Row(children: [
-          //                     Text(_order.orderType.tr, style: robotoMedium),
-          //                     Expanded(child: SizedBox()),
-          //                     Container(
-          //                       padding: EdgeInsets.symmetric(
-          //                           horizontal: Dimensions.PADDING_SIZE_SMALL,
-          //                           vertical:
-          //                               Dimensions.PADDING_SIZE_EXTRA_SMALL),
-          //                       decoration: BoxDecoration(
-          //                         color: Theme.of(context).primaryColor,
-          //                         borderRadius: BorderRadius.circular(
-          //                             Dimensions.RADIUS_SMALL),
-          //                       ),
-          //                       child: Text(
-          //                         _order.paymentMethod == 'cash_on_delivery'
-          //                             ? 'cash_on_delivery'.tr
-          //                             : _order.paymentMethod == 'wallet'
-          //                                 ? 'wallet_payment'.tr
-          //                                 : 'digital_payment'.tr,
-          //                         style: robotoRegular.copyWith(
-          //                             color: Theme.of(context).cardColor,
-          //                             fontSize: Dimensions.fontSizeExtraSmall),
-          //                       ),
-          //                     ),
-          //                   ]),
-          //                   Divider(height: Dimensions.PADDING_SIZE_LARGE),
+        //                   Get.find<SplashController>()
+        //                           .configModel
+        //                           .orderDeliveryVerification
+        //                       ? Row(children: [
+        //                           Text('${'delivery_verification_code'.tr}:',
+        //                               style: robotoRegular),
+        //                           SizedBox(
+        //                               width: Dimensions
+        //                                   .PADDING_SIZE_EXTRA_SMALL),
+        //                           Text(_order.otp, style: robotoMedium),
+        //                         ])
+        //                       : SizedBox(),
+        //                   SizedBox(
+        //                       height: Get.find<SplashController>()
+        //                               .configModel
+        //                               .orderDeliveryVerification
+        //                           ? 10
+        //                           : 0),
 
-          //                   Padding(
-          //                     padding: EdgeInsets.symmetric(
-          //                         vertical:
-          //                             Dimensions.PADDING_SIZE_EXTRA_SMALL),
-          //                     child: Row(children: [
-          //                       Text(
-          //                           '${_parcel ? 'charge_pay_by'.tr : 'item'.tr}:',
-          //                           style: robotoRegular),
-          //                       SizedBox(
-          //                           width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-          //                       Text(
-          //                         _parcel
-          //                             ? _order.chargePayer.tr
-          //                             : orderController.orderDetails.length
-          //                                 .toString(),
-          //                         style: robotoMedium.copyWith(
-          //                             color: Theme.of(context).primaryColor),
-          //                       ),
-          //                       Expanded(child: SizedBox()),
-          //                       Container(
-          //                           height: 7,
-          //                           width: 7,
-          //                           decoration: BoxDecoration(
-          //                             color: (_order.orderStatus == 'failed' ||
-          //                                     _order.orderStatus == 'refunded')
-          //                                 ? Colors.red
-          //                                 : Colors.green,
-          //                             shape: BoxShape.circle,
-          //                           )),
-          //                       SizedBox(
-          //                           width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-          //                       Text(
-          //                         _order.orderStatus == 'delivered'
-          //                             ? '${'delivered_at'.tr} ${DateConverter.dateTimeStringToDateTime(_order.delivered)}'
-          //                             : _order.orderStatus.tr,
-          //                         style: robotoRegular.copyWith(
-          //                             fontSize: Dimensions.fontSizeSmall),
-          //                       ),
-          //                     ]),
-          //                   ),
-          //                   Divider(height: Dimensions.PADDING_SIZE_LARGE),
-          //                   SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+        //                   Row(children: [
+        //                     Text(_order.orderType.tr, style: robotoMedium),
+        //                     Expanded(child: SizedBox()),
+        //                     Container(
+        //                       padding: EdgeInsets.symmetric(
+        //                           horizontal: Dimensions.PADDING_SIZE_SMALL,
+        //                           vertical:
+        //                               Dimensions.PADDING_SIZE_EXTRA_SMALL),
+        //                       decoration: BoxDecoration(
+        //                         color: Theme.of(context).primaryColor,
+        //                         borderRadius: BorderRadius.circular(
+        //                             Dimensions.RADIUS_SMALL),
+        //                       ),
+        //                       child: Text(
+        //                         _order.paymentMethod == 'cash_on_delivery'
+        //                             ? 'cash_on_delivery'.tr
+        //                             : _order.paymentMethod == 'wallet'
+        //                                 ? 'wallet_payment'.tr
+        //                                 : 'digital_payment'.tr,
+        //                         style: robotoRegular.copyWith(
+        //                             color: Theme.of(context).cardColor,
+        //                             fontSize: Dimensions.fontSizeExtraSmall),
+        //                       ),
+        //                     ),
+        //                   ]),
+        //                   Divider(height: Dimensions.PADDING_SIZE_LARGE),
 
-          //                   _parcel
-          //                       ? CardWidget(
-          //                           child: Column(
-          //                               crossAxisAlignment:
-          //                                   CrossAxisAlignment.stretch,
-          //                               children: [
-          //                               DetailsWidget(
-          //                                   title: 'sender_details'.tr,
-          //                                   address: _order.deliveryAddress),
-          //                               SizedBox(
-          //                                   height:
-          //                                       Dimensions.PADDING_SIZE_LARGE),
-          //                               DetailsWidget(
-          //                                   title: 'receiver_details'.tr,
-          //                                   address: _order.receiverDetails),
-          //                             ]))
-          //                       : ListView.builder(
-          //                           shrinkWrap: true,
-          //                           physics: NeverScrollableScrollPhysics(),
-          //                           itemCount:
-          //                               orderController.orderDetails.length,
-          //                           padding: EdgeInsets.zero,
-          //                           itemBuilder: (context, index) {
-          //                             return OrderItemWidget(
-          //                                 order: _order,
-          //                                 orderDetails: orderController
-          //                                     .orderDetails[index]);
-          //                           },
-          //                         ),
-          //                   SizedBox(
-          //                       height: _parcel
-          //                           ? Dimensions.PADDING_SIZE_LARGE
-          //                           : 0),
+        //                   Padding(
+        //                     padding: EdgeInsets.symmetric(
+        //                         vertical:
+        //                             Dimensions.PADDING_SIZE_EXTRA_SMALL),
+        //                     child: Row(children: [
+        //                       Text(
+        //                           '${_parcel ? 'charge_pay_by'.tr : 'item'.tr}:',
+        //                           style: robotoRegular),
+        //                       SizedBox(
+        //                           width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+        //                       Text(
+        //                         _parcel
+        //                             ? _order.chargePayer.tr
+        //                             : orderController.orderDetails.length
+        //                                 .toString(),
+        //                         style: robotoMedium.copyWith(
+        //                             color: Theme.of(context).primaryColor),
+        //                       ),
+        //                       Expanded(child: SizedBox()),
+        //                       Container(
+        //                           height: 7,
+        //                           width: 7,
+        //                           decoration: BoxDecoration(
+        //                             color: (_order.orderStatus == 'failed' ||
+        //                                     _order.orderStatus == 'refunded')
+        //                                 ? Colors.red
+        //                                 : Colors.green,
+        //                             shape: BoxShape.circle,
+        //                           )),
+        //                       SizedBox(
+        //                           width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+        //                       Text(
+        //                         _order.orderStatus == 'delivered'
+        //                             ? '${'delivered_at'.tr} ${DateConverter.dateTimeStringToDateTime(_order.delivered)}'
+        //                             : _order.orderStatus.tr,
+        //                         style: robotoRegular.copyWith(
+        //                             fontSize: Dimensions.fontSizeSmall),
+        //                       ),
+        //                     ]),
+        //                   ),
+        //                   Divider(height: Dimensions.PADDING_SIZE_LARGE),
+        //                   SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
 
-          //                   Row(
-          //                       crossAxisAlignment: CrossAxisAlignment.start,
-          //                       children: [
-          //                         (Get.find<SplashController>()
-          //                                     .getModule(_order.moduleType)
-          //                                     .orderAttachment &&
-          //                                 _order.orderAttachment != null &&
-          //                                 _order.orderAttachment.isNotEmpty)
-          //                             ? Column(
-          //                                 crossAxisAlignment:
-          //                                     CrossAxisAlignment.start,
-          //                                 children: [
-          //                                     Text('prescription'.tr,
-          //                                         style: robotoRegular),
-          //                                     SizedBox(
-          //                                         height: Dimensions
-          //                                             .PADDING_SIZE_SMALL),
-          //                                     InkWell(
-          //                                       onTap: () => openDialog(context,
-          //                                           '${Get.find<SplashController>().configModel.baseUrls.orderAttachmentUrl}/${_order.orderAttachment}'),
-          //                                       child: Center(
-          //                                           child: ClipRRect(
-          //                                         borderRadius:
-          //                                             BorderRadius.circular(
-          //                                                 Dimensions
-          //                                                     .RADIUS_SMALL),
-          //                                         child: CustomImage(
-          //                                           image:
-          //                                               '${Get.find<SplashController>().configModel.baseUrls.orderAttachmentUrl}/${_order.orderAttachment}',
-          //                                           width: 100,
-          //                                           height: 100,
-          //                                         ),
-          //                                       )),
-          //                                     ),
-          //                                     SizedBox(
-          //                                         height: Dimensions
-          //                                             .PADDING_SIZE_LARGE),
-          //                                   ])
-          //                             : SizedBox(),
-          //                         SizedBox(
-          //                             width: (Get.find<SplashController>()
-          //                                         .getModule(_order.moduleType)
-          //                                         .orderAttachment &&
-          //                                     _order.orderAttachment != null &&
-          //                                     _order.orderAttachment.isNotEmpty)
-          //                                 ? Dimensions.PADDING_SIZE_SMALL
-          //                                 : 0),
-          //                         (_order.orderNote != null &&
-          //                                 _order.orderNote.isNotEmpty)
-          //                             ? Expanded(
-          //                                 child: Column(
-          //                                     crossAxisAlignment:
-          //                                         CrossAxisAlignment.start,
-          //                                     children: [
-          //                                       Text('additional_note'.tr,
-          //                                           style: robotoRegular),
-          //                                       SizedBox(
-          //                                           height: Dimensions
-          //                                               .PADDING_SIZE_SMALL),
-          //                                       Container(
-          //                                         width:
-          //                                             Dimensions.WEB_MAX_WIDTH,
-          //                                         padding: EdgeInsets.all(
-          //                                             Dimensions
-          //                                                 .PADDING_SIZE_SMALL),
-          //                                         decoration: BoxDecoration(
-          //                                           borderRadius:
-          //                                               BorderRadius.circular(
-          //                                                   Dimensions
-          //                                                       .RADIUS_SMALL),
-          //                                           border: Border.all(
-          //                                               width: 1,
-          //                                               color: Theme.of(context)
-          //                                                   .disabledColor),
-          //                                         ),
-          //                                         child: Text(
-          //                                           _order.orderNote,
-          //                                           style:
-          //                                               robotoRegular.copyWith(
-          //                                                   fontSize: Dimensions
-          //                                                       .fontSizeSmall,
-          //                                                   color: Theme.of(
-          //                                                           context)
-          //                                                       .disabledColor),
-          //                                         ),
-          //                                       ),
-          //                                       SizedBox(
-          //                                           height: Dimensions
-          //                                               .PADDING_SIZE_LARGE),
-          //                                     ]),
-          //                               )
-          //                             : SizedBox(),
-          //                       ]),
+        //                   _parcel
+        //                       ? CardWidget(
+        //                           child: Column(
+        //                               crossAxisAlignment:
+        //                                   CrossAxisAlignment.stretch,
+        //                               children: [
+        //                               DetailsWidget(
+        //                                   title: 'sender_details'.tr,
+        //                                   address: _order.deliveryAddress),
+        //                               SizedBox(
+        //                                   height:
+        //                                       Dimensions.PADDING_SIZE_LARGE),
+        //                               DetailsWidget(
+        //                                   title: 'receiver_details'.tr,
+        //                                   address: _order.receiverDetails),
+        //                             ]))
+        //                       : ListView.builder(
+        //                           shrinkWrap: true,
+        //                           physics: NeverScrollableScrollPhysics(),
+        //                           itemCount:
+        //                               orderController.orderDetails.length,
+        //                           padding: EdgeInsets.zero,
+        //                           itemBuilder: (context, index) {
+        //                             return OrderItemWidget(
+        //                                 order: _order,
+        //                                 orderDetails: orderController
+        //                                     .orderDetails[index]);
+        //                           },
+        //                         ),
+        //                   SizedBox(
+        //                       height: _parcel
+        //                           ? Dimensions.PADDING_SIZE_LARGE
+        //                           : 0),
 
-          //                   CardWidget(
-          //                       showCard: _parcel,
-          //                       child: Column(
-          //                           crossAxisAlignment:
-          //                               CrossAxisAlignment.start,
-          //                           children: [
-          //                             Text(
-          //                                 _parcel
-          //                                     ? 'parcel_category'.tr
-          //                                     : Get.find<SplashController>()
-          //                                             .getModule(
-          //                                                 _order.moduleType)
-          //                                             .showRestaurantText
-          //                                         ? 'restaurant_details'.tr
-          //                                         : 'store_details'.tr,
-          //                                 style: robotoRegular),
-          //                             SizedBox(
-          //                                 height: Dimensions
-          //                                     .PADDING_SIZE_EXTRA_SMALL),
-          //                             (_parcel && _order.parcelCategory == null)
-          //                                 ? Text(
-          //                                     'no_parcel_category_data_found'
-          //                                         .tr,
-          //                                     style: robotoMedium)
-          //                                 : (!_parcel && _order.store == null)
-          //                                     ? Center(
-          //                                         child: Padding(
-          //                                         padding: const EdgeInsets
-          //                                                 .symmetric(
-          //                                             vertical: Dimensions
-          //                                                 .PADDING_SIZE_SMALL),
-          //                                         child: Text(
-          //                                             'no_restaurant_data_found'
-          //                                                 .tr,
-          //                                             maxLines: 1,
-          //                                             overflow:
-          //                                                 TextOverflow.ellipsis,
-          //                                             style: robotoRegular.copyWith(
-          //                                                 fontSize: Dimensions
-          //                                                     .fontSizeSmall)),
-          //                                       ))
-          //                                     : Row(children: [
-          //                                         ClipOval(
-          //                                             child: CustomImage(
-          //                                           image: _parcel
-          //                                               ? '${Get.find<SplashController>().configModel.baseUrls.parcelCategoryImageUrl}/${_order.parcelCategory.image}'
-          //                                               : '${Get.find<SplashController>().configModel.baseUrls.storeImageUrl}/${_order.store.logo}',
-          //                                           height: 35,
-          //                                           width: 35,
-          //                                           fit: BoxFit.cover,
-          //                                         )),
-          //                                         SizedBox(
-          //                                             width: Dimensions
-          //                                                 .PADDING_SIZE_SMALL),
+        //                   Row(
+        //                       crossAxisAlignment: CrossAxisAlignment.start,
+        //                       children: [
+        //                         (Get.find<SplashController>()
+        //                                     .getModule(_order.moduleType)
+        //                                     .orderAttachment &&
+        //                                 _order.orderAttachment != null &&
+        //                                 _order.orderAttachment.isNotEmpty)
+        //                             ? Column(
+        //                                 crossAxisAlignment:
+        //                                     CrossAxisAlignment.start,
+        //                                 children: [
+        //                                     Text('prescription'.tr,
+        //                                         style: robotoRegular),
+        //                                     SizedBox(
+        //                                         height: Dimensions
+        //                                             .PADDING_SIZE_SMALL),
+        //                                     InkWell(
+        //                                       onTap: () => openDialog(context,
+        //                                           '${Get.find<SplashController>().configModel.baseUrls.orderAttachmentUrl}/${_order.orderAttachment}'),
+        //                                       child: Center(
+        //                                           child: ClipRRect(
+        //                                         borderRadius:
+        //                                             BorderRadius.circular(
+        //                                                 Dimensions
+        //                                                     .RADIUS_SMALL),
+        //                                         child: CustomImage(
+        //                                           image:
+        //                                               '${Get.find<SplashController>().configModel.baseUrls.orderAttachmentUrl}/${_order.orderAttachment}',
+        //                                           width: 100,
+        //                                           height: 100,
+        //                                         ),
+        //                                       )),
+        //                                     ),
+        //                                     SizedBox(
+        //                                         height: Dimensions
+        //                                             .PADDING_SIZE_LARGE),
+        //                                   ])
+        //                             : SizedBox(),
+        //                         SizedBox(
+        //                             width: (Get.find<SplashController>()
+        //                                         .getModule(_order.moduleType)
+        //                                         .orderAttachment &&
+        //                                     _order.orderAttachment != null &&
+        //                                     _order.orderAttachment.isNotEmpty)
+        //                                 ? Dimensions.PADDING_SIZE_SMALL
+        //                                 : 0),
+        //                         (_order.orderNote != null &&
+        //                                 _order.orderNote.isNotEmpty)
+        //                             ? Expanded(
+        //                                 child: Column(
+        //                                     crossAxisAlignment:
+        //                                         CrossAxisAlignment.start,
+        //                                     children: [
+        //                                       Text('additional_note'.tr,
+        //                                           style: robotoRegular),
+        //                                       SizedBox(
+        //                                           height: Dimensions
+        //                                               .PADDING_SIZE_SMALL),
+        //                                       Container(
+        //                                         width:
+        //                                             Dimensions.WEB_MAX_WIDTH,
+        //                                         padding: EdgeInsets.all(
+        //                                             Dimensions
+        //                                                 .PADDING_SIZE_SMALL),
+        //                                         decoration: BoxDecoration(
+        //                                           borderRadius:
+        //                                               BorderRadius.circular(
+        //                                                   Dimensions
+        //                                                       .RADIUS_SMALL),
+        //                                           border: Border.all(
+        //                                               width: 1,
+        //                                               color: Theme.of(context)
+        //                                                   .disabledColor),
+        //                                         ),
+        //                                         child: Text(
+        //                                           _order.orderNote,
+        //                                           style:
+        //                                               robotoRegular.copyWith(
+        //                                                   fontSize: Dimensions
+        //                                                       .fontSizeSmall,
+        //                                                   color: Theme.of(
+        //                                                           context)
+        //                                                       .disabledColor),
+        //                                         ),
+        //                                       ),
+        //                                       SizedBox(
+        //                                           height: Dimensions
+        //                                               .PADDING_SIZE_LARGE),
+        //                                     ]),
+        //                               )
+        //                             : SizedBox(),
+        //                       ]),
 
-          //                                         Expanded(
-          //                                             child: Column(
-          //                                                 crossAxisAlignment:
-          //                                                     CrossAxisAlignment
-          //                                                         .start,
-          //                                                 children: [
-          //                                               Text(
-          //                                                 _parcel
-          //                                                     ? _order
-          //                                                         .parcelCategory
-          //                                                         .name
-          //                                                     : _order
-          //                                                         .store.name,
-          //                                                 maxLines: 1,
-          //                                                 overflow: TextOverflow
-          //                                                     .ellipsis,
-          //                                                 style: robotoRegular
-          //                                                     .copyWith(
-          //                                                         fontSize:
-          //                                                             Dimensions
-          //                                                                 .fontSizeSmall),
-          //                                               ),
-          //                                               Text(
-          //                                                 _parcel
-          //                                                     ? _order
-          //                                                         .parcelCategory
-          //                                                         .description
-          //                                                     : _order.store
-          //                                                         .address,
-          //                                                 maxLines: 1,
-          //                                                 overflow: TextOverflow
-          //                                                     .ellipsis,
-          //                                                 style: robotoRegular.copyWith(
-          //                                                     fontSize: Dimensions
-          //                                                         .fontSizeSmall,
-          //                                                     color: Theme.of(
-          //                                                             context)
-          //                                                         .disabledColor),
-          //                                               ),
-          //                                             ])),
+        //                   CardWidget(
+        //                       showCard: _parcel,
+        //                       child: Column(
+        //                           crossAxisAlignment:
+        //                               CrossAxisAlignment.start,
+        //                           children: [
+        //                             Text(
+        //                                 _parcel
+        //                                     ? 'parcel_category'.tr
+        //                                     : Get.find<SplashController>()
+        //                                             .getModule(
+        //                                                 _order.moduleType)
+        //                                             .showRestaurantText
+        //                                         ? 'restaurant_details'.tr
+        //                                         : 'store_details'.tr,
+        //                                 style: robotoRegular),
+        //                             SizedBox(
+        //                                 height: Dimensions
+        //                                     .PADDING_SIZE_EXTRA_SMALL),
+        //                             (_parcel && _order.parcelCategory == null)
+        //                                 ? Text(
+        //                                     'no_parcel_category_data_found'
+        //                                         .tr,
+        //                                     style: robotoMedium)
+        //                                 : (!_parcel && _order.store == null)
+        //                                     ? Center(
+        //                                         child: Padding(
+        //                                         padding: const EdgeInsets
+        //                                                 .symmetric(
+        //                                             vertical: Dimensions
+        //                                                 .PADDING_SIZE_SMALL),
+        //                                         child: Text(
+        //                                             'no_restaurant_data_found'
+        //                                                 .tr,
+        //                                             maxLines: 1,
+        //                                             overflow:
+        //                                                 TextOverflow.ellipsis,
+        //                                             style: robotoRegular.copyWith(
+        //                                                 fontSize: Dimensions
+        //                                                     .fontSizeSmall)),
+        //                                       ))
+        //                                     : Row(children: [
+        //                                         ClipOval(
+        //                                             child: CustomImage(
+        //                                           image: _parcel
+        //                                               ? '${Get.find<SplashController>().configModel.baseUrls.parcelCategoryImageUrl}/${_order.parcelCategory.image}'
+        //                                               : '${Get.find<SplashController>().configModel.baseUrls.storeImageUrl}/${_order.store.logo}',
+        //                                           height: 35,
+        //                                           width: 35,
+        //                                           fit: BoxFit.cover,
+        //                                         )),
+        //                                         SizedBox(
+        //                                             width: Dimensions
+        //                                                 .PADDING_SIZE_SMALL),
 
-          //                                         (!_parcel &&
-          //                                                 _order.orderType ==
-          //                                                     'take_away' &&
-          //                                                 (_order.orderStatus ==
-          //                                                         'pending' ||
-          //                                                     _order.orderStatus ==
-          //                                                         'accepted' ||
-          //                                                     _order.orderStatus ==
-          //                                                         'confirmed' ||
-          //                                                     _order.orderStatus ==
-          //                                                         'processing' ||
-          //                                                     _order.orderStatus ==
-          //                                                         'handover' ||
-          //                                                     _order.orderStatus ==
-          //                                                         'picked_up'))
-          //                                             ? TextButton.icon(
-          //                                                 onPressed: () async {
-          //                                                   if (!_parcel) {
-          //                                                     String url =
-          //                                                         'https://www.google.com/maps/dir/?api=1&destination=${_order.store.latitude}'
-          //                                                         ',${_order.store.longitude}&mode=d';
-          //                                                     if (await canLaunchUrlString(
-          //                                                         url)) {
-          //                                                       await launchUrlString(
-          //                                                           url);
-          //                                                     } else {
-          //                                                       showCustomSnackBar(
-          //                                                           'unable_to_launch_google_map'
-          //                                                               .tr);
-          //                                                     }
-          //                                                   }
-          //                                                 },
-          //                                                 icon: Icon(
-          //                                                     Icons.directions),
-          //                                                 label: Text(
-          //                                                     'direction'.tr),
-          //                                               )
-          //                                             : SizedBox(),
+        //                                         Expanded(
+        //                                             child: Column(
+        //                                                 crossAxisAlignment:
+        //                                                     CrossAxisAlignment
+        //                                                         .start,
+        //                                                 children: [
+        //                                               Text(
+        //                                                 _parcel
+        //                                                     ? _order
+        //                                                         .parcelCategory
+        //                                                         .name
+        //                                                     : _order
+        //                                                         .store.name,
+        //                                                 maxLines: 1,
+        //                                                 overflow: TextOverflow
+        //                                                     .ellipsis,
+        //                                                 style: robotoRegular
+        //                                                     .copyWith(
+        //                                                         fontSize:
+        //                                                             Dimensions
+        //                                                                 .fontSizeSmall),
+        //                                               ),
+        //                                               Text(
+        //                                                 _parcel
+        //                                                     ? _order
+        //                                                         .parcelCategory
+        //                                                         .description
+        //                                                     : _order.store
+        //                                                         .address,
+        //                                                 maxLines: 1,
+        //                                                 overflow: TextOverflow
+        //                                                     .ellipsis,
+        //                                                 style: robotoRegular.copyWith(
+        //                                                     fontSize: Dimensions
+        //                                                         .fontSizeSmall,
+        //                                                     color: Theme.of(
+        //                                                             context)
+        //                                                         .disabledColor),
+        //                                               ),
+        //                                             ])),
 
-          //                                         (!_parcel &&
-          //                                                 _order.orderStatus !=
-          //                                                     'delivered' &&
-          //                                                 _order.orderStatus !=
-          //                                                     'failed' &&
-          //                                                 _order.orderStatus !=
-          //                                                     'canceled' &&
-          //                                                 _order.orderStatus !=
-          //                                                     'refunded')
-          //                                             ? TextButton.icon(
-          //                                                 onPressed: () async {
-          //                                                   await Get.toNamed(
-          //                                                       RouteHelper
-          //                                                           .getChatRoute(
-          //                                                     notificationBody:
-          //                                                         NotificationBody(
-          //                                                             orderId:
-          //                                                                 _order
-          //                                                                     .id,
-          //                                                             restaurantId: _order
-          //                                                                 .store
-          //                                                                 .vendorId),
-          //                                                     user: User(
-          //                                                         id: _order
-          //                                                             .store
-          //                                                             .vendorId,
-          //                                                         fName: _order
-          //                                                             .store
-          //                                                             .name,
-          //                                                         lName: '',
-          //                                                         image: _order
-          //                                                             .store
-          //                                                             .logo),
-          //                                                   ));
-          //                                                 },
-          //                                                 icon: Icon(
-          //                                                     Icons
-          //                                                         .chat_bubble_outline,
-          //                                                     color: Theme.of(
-          //                                                             context)
-          //                                                         .primaryColor,
-          //                                                     size: 20),
-          //                                                 label: Text(
-          //                                                   'chat'.tr,
-          //                                                   style: robotoRegular.copyWith(
-          //                                                       fontSize: Dimensions
-          //                                                           .fontSizeSmall,
-          //                                                       color: Theme.of(
-          //                                                               context)
-          //                                                           .primaryColor),
-          //                                                 ),
-          //                                               )
-          //                                             : SizedBox(),
+        //                                         (!_parcel &&
+        //                                                 _order.orderType ==
+        //                                                     'take_away' &&
+        //                                                 (_order.orderStatus ==
+        //                                                         'pending' ||
+        //                                                     _order.orderStatus ==
+        //                                                         'accepted' ||
+        //                                                     _order.orderStatus ==
+        //                                                         'confirmed' ||
+        //                                                     _order.orderStatus ==
+        //                                                         'processing' ||
+        //                                                     _order.orderStatus ==
+        //                                                         'handover' ||
+        //                                                     _order.orderStatus ==
+        //                                                         'picked_up'))
+        //                                             ? TextButton.icon(
+        //                                                 onPressed: () async {
+        //                                                   if (!_parcel) {
+        //                                                     String url =
+        //                                                         'https://www.google.com/maps/dir/?api=1&destination=${_order.store.latitude}'
+        //                                                         ',${_order.store.longitude}&mode=d';
+        //                                                     if (await canLaunchUrlString(
+        //                                                         url)) {
+        //                                                       await launchUrlString(
+        //                                                           url);
+        //                                                     } else {
+        //                                                       showCustomSnackBar(
+        //                                                           'unable_to_launch_google_map'
+        //                                                               .tr);
+        //                                                     }
+        //                                                   }
+        //                                                 },
+        //                                                 icon: Icon(
+        //                                                     Icons.directions),
+        //                                                 label: Text(
+        //                                                     'direction'.tr),
+        //                                               )
+        //                                             : SizedBox(),
 
-          //                                         // !_parcel ? TextButton.icon(
-          //                                         //   onPressed: () async {
-          //                                         //     _timer?.cancel();
-          //                                         //     await Get.toNamed(RouteHelper.getChatRoute(orderModel: widget.orderModel, isStore: true));
-          //                                         //     _startApiCall();
-          //                                         //   },
-          //                                         //   icon: Icon(Icons.message, color: Theme.of(context).primaryColor, size: 20),
-          //                                         //   label: Text(
-          //                                         //     'message'.tr,
-          //                                         //     style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).primaryColor),
-          //                                         //   ),
-          //                                         // ) : SizedBox(),
-          //                                       ]),
-          //                           ])),
-          //                   SizedBox(
-          //                       height: _parcel
-          //                           ? 0
-          //                           : Dimensions.PADDING_SIZE_LARGE),
+        //                                         (!_parcel &&
+        //                                                 _order.orderStatus !=
+        //                                                     'delivered' &&
+        //                                                 _order.orderStatus !=
+        //                                                     'failed' &&
+        //                                                 _order.orderStatus !=
+        //                                                     'canceled' &&
+        //                                                 _order.orderStatus !=
+        //                                                     'refunded')
+        //                                             ? TextButton.icon(
+        //                                                 onPressed: () async {
+        //                                                   await Get.toNamed(
+        //                                                       RouteHelper
+        //                                                           .getChatRoute(
+        //                                                     notificationBody:
+        //                                                         NotificationBody(
+        //                                                             orderId:
+        //                                                                 _order
+        //                                                                     .id,
+        //                                                             restaurantId: _order
+        //                                                                 .store
+        //                                                                 .vendorId),
+        //                                                     user: User(
+        //                                                         id: _order
+        //                                                             .store
+        //                                                             .vendorId,
+        //                                                         fName: _order
+        //                                                             .store
+        //                                                             .name,
+        //                                                         lName: '',
+        //                                                         image: _order
+        //                                                             .store
+        //                                                             .logo),
+        //                                                   ));
+        //                                                 },
+        //                                                 icon: Icon(
+        //                                                     Icons
+        //                                                         .chat_bubble_outline,
+        //                                                     color: Theme.of(
+        //                                                             context)
+        //                                                         .primaryColor,
+        //                                                     size: 20),
+        //                                                 label: Text(
+        //                                                   'chat'.tr,
+        //                                                   style: robotoRegular.copyWith(
+        //                                                       fontSize: Dimensions
+        //                                                           .fontSizeSmall,
+        //                                                       color: Theme.of(
+        //                                                               context)
+        //                                                           .primaryColor),
+        //                                                 ),
+        //                                               )
+        //                                             : SizedBox(),
 
-          //                   // Total
-          //                   _parcel
-          //                       ? SizedBox()
-          //                       : Column(
-          //                           crossAxisAlignment:
-          //                               CrossAxisAlignment.start,
-          //                           children: [
-          //                               Row(
-          //                                   mainAxisAlignment:
-          //                                       MainAxisAlignment.spaceBetween,
-          //                                   children: [
-          //                                     Text('item_price'.tr,
-          //                                         style: robotoRegular),
-          //                                     Text(
-          //                                         PriceConverter.convertPrice(
-          //                                             _itemsPrice),
-          //                                         style: robotoRegular),
-          //                                   ]),
-          //                               SizedBox(height: 10),
-          //                               Get.find<SplashController>()
-          //                                       .getModule(_order.moduleType)
-          //                                       .addOn
-          //                                   ? Row(
-          //                                       mainAxisAlignment:
-          //                                           MainAxisAlignment
-          //                                               .spaceBetween,
-          //                                       children: [
-          //                                         Text('addons'.tr,
-          //                                             style: robotoRegular),
-          //                                         Text(
-          //                                             '(+) ${PriceConverter.convertPrice(_addOns)}',
-          //                                             style: robotoRegular),
-          //                                       ],
-          //                                     )
-          //                                   : SizedBox(),
-          //                               Get.find<SplashController>()
-          //                                       .getModule(_order.moduleType)
-          //                                       .addOn
-          //                                   ? Divider(
-          //                                       thickness: 1,
-          //                                       color: Theme.of(context)
-          //                                           .hintColor
-          //                                           .withOpacity(0.5),
-          //                                     )
-          //                                   : SizedBox(),
-          //                               Get.find<SplashController>()
-          //                                       .getModule(_order.moduleType)
-          //                                       .addOn
-          //                                   ? Row(
-          //                                       mainAxisAlignment:
-          //                                           MainAxisAlignment
-          //                                               .spaceBetween,
-          //                                       children: [
-          //                                         Text('subtotal'.tr,
-          //                                             style: robotoMedium),
-          //                                         Text(
-          //                                             PriceConverter
-          //                                                 .convertPrice(
-          //                                                     _subTotal),
-          //                                             style: robotoMedium),
-          //                                       ],
-          //                                     )
-          //                                   : SizedBox(),
-          //                               SizedBox(
-          //                                   height: Get.find<SplashController>()
-          //                                           .getModule(
-          //                                               _order.moduleType)
-          //                                           .addOn
-          //                                       ? 10
-          //                                       : 0),
-          //                               Row(
-          //                                   mainAxisAlignment:
-          //                                       MainAxisAlignment.spaceBetween,
-          //                                   children: [
-          //                                     Text('discount'.tr,
-          //                                         style: robotoRegular),
-          //                                     Text(
-          //                                         '(-) ${PriceConverter.convertPrice(_discount)}',
-          //                                         style: robotoRegular),
-          //                                   ]),
-          //                               SizedBox(height: 10),
-          //                               _couponDiscount > 0
-          //                                   ? Row(
-          //                                       mainAxisAlignment:
-          //                                           MainAxisAlignment
-          //                                               .spaceBetween,
-          //                                       children: [
-          //                                           Text('coupon_discount'.tr,
-          //                                               style: robotoRegular),
-          //                                           Text(
-          //                                             '(-) ${PriceConverter.convertPrice(_couponDiscount)}',
-          //                                             style: robotoRegular,
-          //                                           ),
-          //                                         ])
-          //                                   : SizedBox(),
-          //                               SizedBox(
-          //                                   height:
-          //                                       _couponDiscount > 0 ? 10 : 0),
-          //                               Row(
-          //                                   mainAxisAlignment:
-          //                                       MainAxisAlignment.spaceBetween,
-          //                                   children: [
-          //                                     Text('vat_tax'.tr,
-          //                                         style: robotoRegular),
-          //                                     Text(
-          //                                         '(+) ${PriceConverter.convertPrice(_tax)}',
-          //                                         style: robotoRegular),
-          //                                   ]),
-          //                               SizedBox(height: 10),
-          //                               (_dmTips > 0)
-          //                                   ? Row(
-          //                                       mainAxisAlignment:
-          //                                           MainAxisAlignment
-          //                                               .spaceBetween,
-          //                                       children: [
-          //                                         Text('delivery_man_tips'.tr,
-          //                                             style: robotoRegular),
-          //                                         Text(
-          //                                             '(+) ${PriceConverter.convertPrice(_dmTips)}',
-          //                                             style: robotoRegular),
-          //                                       ],
-          //                                     )
-          //                                   : SizedBox(),
-          //                               SizedBox(height: _dmTips > 0 ? 10 : 0),
-          //                               Row(
-          //                                   mainAxisAlignment:
-          //                                       MainAxisAlignment.spaceBetween,
-          //                                   children: [
-          //                                     Text('delivery_fee'.tr,
-          //                                         style: robotoRegular),
-          //                                     _deliveryCharge > 0
-          //                                         ? Text(
-          //                                             '(+) ${PriceConverter.convertPrice(_deliveryCharge)}',
-          //                                             style: robotoRegular,
-          //                                           )
-          //                                         : Text('free'.tr,
-          //                                             style: robotoRegular
-          //                                                 .copyWith(
-          //                                                     color: Theme.of(
-          //                                                             context)
-          //                                                         .primaryColor)),
-          //                                   ]),
-          //                             ]),
+        //                                         // !_parcel ? TextButton.icon(
+        //                                         //   onPressed: () async {
+        //                                         //     _timer?.cancel();
+        //                                         //     await Get.toNamed(RouteHelper.getChatRoute(orderModel: widget.orderModel, isStore: true));
+        //                                         //     _startApiCall();
+        //                                         //   },
+        //                                         //   icon: Icon(Icons.message, color: Theme.of(context).primaryColor, size: 20),
+        //                                         //   label: Text(
+        //                                         //     'message'.tr,
+        //                                         //     style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).primaryColor),
+        //                                         //   ),
+        //                                         // ) : SizedBox(),
+        //                                       ]),
+        //                           ])),
+        //                   SizedBox(
+        //                       height: _parcel
+        //                           ? 0
+        //                           : Dimensions.PADDING_SIZE_LARGE),
 
-          //                   Padding(
-          //                     padding: EdgeInsets.symmetric(
-          //                         vertical: Dimensions.PADDING_SIZE_SMALL),
-          //                     child: Divider(
-          //                         thickness: 1,
-          //                         color: Theme.of(context)
-          //                             .hintColor
-          //                             .withOpacity(0.5)),
-          //                   ),
+        //                   // Total
+        //                   _parcel
+        //                       ? SizedBox()
+        //                       : Column(
+        //                           crossAxisAlignment:
+        //                               CrossAxisAlignment.start,
+        //                           children: [
+        //                               Row(
+        //                                   mainAxisAlignment:
+        //                                       MainAxisAlignment.spaceBetween,
+        //                                   children: [
+        //                                     Text('item_price'.tr,
+        //                                         style: robotoRegular),
+        //                                     Text(
+        //                                         PriceConverter.convertPrice(
+        //                                             _itemsPrice),
+        //                                         style: robotoRegular),
+        //                                   ]),
+        //                               SizedBox(height: 10),
+        //                               Get.find<SplashController>()
+        //                                       .getModule(_order.moduleType)
+        //                                       .addOn
+        //                                   ? Row(
+        //                                       mainAxisAlignment:
+        //                                           MainAxisAlignment
+        //                                               .spaceBetween,
+        //                                       children: [
+        //                                         Text('addons'.tr,
+        //                                             style: robotoRegular),
+        //                                         Text(
+        //                                             '(+) ${PriceConverter.convertPrice(_addOns)}',
+        //                                             style: robotoRegular),
+        //                                       ],
+        //                                     )
+        //                                   : SizedBox(),
+        //                               Get.find<SplashController>()
+        //                                       .getModule(_order.moduleType)
+        //                                       .addOn
+        //                                   ? Divider(
+        //                                       thickness: 1,
+        //                                       color: Theme.of(context)
+        //                                           .hintColor
+        //                                           .withOpacity(0.5),
+        //                                     )
+        //                                   : SizedBox(),
+        //                               Get.find<SplashController>()
+        //                                       .getModule(_order.moduleType)
+        //                                       .addOn
+        //                                   ? Row(
+        //                                       mainAxisAlignment:
+        //                                           MainAxisAlignment
+        //                                               .spaceBetween,
+        //                                       children: [
+        //                                         Text('subtotal'.tr,
+        //                                             style: robotoMedium),
+        //                                         Text(
+        //                                             PriceConverter
+        //                                                 .convertPrice(
+        //                                                     _subTotal),
+        //                                             style: robotoMedium),
+        //                                       ],
+        //                                     )
+        //                                   : SizedBox(),
+        //                               SizedBox(
+        //                                   height: Get.find<SplashController>()
+        //                                           .getModule(
+        //                                               _order.moduleType)
+        //                                           .addOn
+        //                                       ? 10
+        //                                       : 0),
+        //                               Row(
+        //                                   mainAxisAlignment:
+        //                                       MainAxisAlignment.spaceBetween,
+        //                                   children: [
+        //                                     Text('discount'.tr,
+        //                                         style: robotoRegular),
+        //                                     Text(
+        //                                         '(-) ${PriceConverter.convertPrice(_discount)}',
+        //                                         style: robotoRegular),
+        //                                   ]),
+        //                               SizedBox(height: 10),
+        //                               _couponDiscount > 0
+        //                                   ? Row(
+        //                                       mainAxisAlignment:
+        //                                           MainAxisAlignment
+        //                                               .spaceBetween,
+        //                                       children: [
+        //                                           Text('coupon_discount'.tr,
+        //                                               style: robotoRegular),
+        //                                           Text(
+        //                                             '(-) ${PriceConverter.convertPrice(_couponDiscount)}',
+        //                                             style: robotoRegular,
+        //                                           ),
+        //                                         ])
+        //                                   : SizedBox(),
+        //                               SizedBox(
+        //                                   height:
+        //                                       _couponDiscount > 0 ? 10 : 0),
+        //                               Row(
+        //                                   mainAxisAlignment:
+        //                                       MainAxisAlignment.spaceBetween,
+        //                                   children: [
+        //                                     Text('vat_tax'.tr,
+        //                                         style: robotoRegular),
+        //                                     Text(
+        //                                         '(+) ${PriceConverter.convertPrice(_tax)}',
+        //                                         style: robotoRegular),
+        //                                   ]),
+        //                               SizedBox(height: 10),
+        //                               (_dmTips > 0)
+        //                                   ? Row(
+        //                                       mainAxisAlignment:
+        //                                           MainAxisAlignment
+        //                                               .spaceBetween,
+        //                                       children: [
+        //                                         Text('delivery_man_tips'.tr,
+        //                                             style: robotoRegular),
+        //                                         Text(
+        //                                             '(+) ${PriceConverter.convertPrice(_dmTips)}',
+        //                                             style: robotoRegular),
+        //                                       ],
+        //                                     )
+        //                                   : SizedBox(),
+        //                               SizedBox(height: _dmTips > 0 ? 10 : 0),
+        //                               Row(
+        //                                   mainAxisAlignment:
+        //                                       MainAxisAlignment.spaceBetween,
+        //                                   children: [
+        //                                     Text('delivery_fee'.tr,
+        //                                         style: robotoRegular),
+        //                                     _deliveryCharge > 0
+        //                                         ? Text(
+        //                                             '(+) ${PriceConverter.convertPrice(_deliveryCharge)}',
+        //                                             style: robotoRegular,
+        //                                           )
+        //                                         : Text('free'.tr,
+        //                                             style: robotoRegular
+        //                                                 .copyWith(
+        //                                                     color: Theme.of(
+        //                                                             context)
+        //                                                         .primaryColor)),
+        //                                   ]),
+        //                             ]),
 
-          //                   Row(
-          //                       mainAxisAlignment:
-          //                           MainAxisAlignment.spaceBetween,
-          //                       children: [
-          //                         Text('total_amount'.tr,
-          //                             style: robotoMedium.copyWith(
-          //                               fontSize: Dimensions.fontSizeLarge,
-          //                               color: Theme.of(context).primaryColor,
-          //                             )),
-          //                         Text(
-          //                           PriceConverter.convertPrice(_total),
-          //                           style: robotoMedium.copyWith(
-          //                               fontSize: Dimensions.fontSizeLarge,
-          //                               color: Theme.of(context).primaryColor),
-          //                         ),
-          //                       ]),
+        //                   Padding(
+        //                     padding: EdgeInsets.symmetric(
+        //                         vertical: Dimensions.PADDING_SIZE_SMALL),
+        //                     child: Divider(
+        //                         thickness: 1,
+        //                         color: Theme.of(context)
+        //                             .hintColor
+        //                             .withOpacity(0.5)),
+        //                   ),
 
-          //                   SizedBox(
-          //                       height: ResponsiveHelper.isDesktop(context)
-          //                           ? Dimensions.PADDING_SIZE_LARGE
-          //                           : 0),
-          //                   ResponsiveHelper.isDesktop(context)
-          //                       ? _bottomView(orderController, _order, _parcel)
-          //                       : SizedBox(),
-          //                 ]))),
-          //   ))),
-          //   ResponsiveHelper.isDesktop(context)
-          //       ? SizedBox()
-          //       : _bottomView(orderController, _order, _parcel),
-          // ]);
-          // : Center(child: CircularProgressIndicator());
-        }),
-      ),
+        //                   Row(
+        //                       mainAxisAlignment:
+        //                           MainAxisAlignment.spaceBetween,
+        //                       children: [
+        //                         Text('total_amount'.tr,
+        //                             style: robotoMedium.copyWith(
+        //                               fontSize: Dimensions.fontSizeLarge,
+        //                               color: Theme.of(context).primaryColor,
+        //                             )),
+        //                         Text(
+        //                           PriceConverter.convertPrice(_total),
+        //                           style: robotoMedium.copyWith(
+        //                               fontSize: Dimensions.fontSizeLarge,
+        //                               color: Theme.of(context).primaryColor),
+        //                         ),
+        //                       ]),
+
+        //                   SizedBox(
+        //                       height: ResponsiveHelper.isDesktop(context)
+        //                           ? Dimensions.PADDING_SIZE_LARGE
+        //                           : 0),
+        //                   ResponsiveHelper.isDesktop(context)
+        //                       ? _bottomView(orderController, _order, _parcel)
+        //                       : SizedBox(),
+        //                 ]))),
+        //   ))),
+        //   ResponsiveHelper.isDesktop(context)
+        //       ? SizedBox()
+        //       : _bottomView(orderController, _order, _parcel),
+        // ]);
+        // : Center(child: CircularProgressIndicator());
+      }),
+      // ),
     );
   }
 

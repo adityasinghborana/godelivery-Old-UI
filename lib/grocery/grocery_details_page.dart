@@ -8,6 +8,7 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:sixam_mart/grocery/grocery_category_list_tile.dart';
 import 'package:sixam_mart/grocery/grocery_details_category_list.dart';
 import 'package:sixam_mart/grocery/grocery_details_item_list.dart';
+import 'package:sixam_mart/grocery/widget/grocery_cart_bottomsheet.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 
@@ -19,6 +20,8 @@ class GroceryDetailsPage extends StatefulWidget {
 }
 
 class _GroceryDetailsPageState extends State<GroceryDetailsPage> {
+  bool isDelivered = false;
+  bool pikedUp = false;
   bool isSwitch = false;
   @override
   Widget build(BuildContext context) {
@@ -335,26 +338,55 @@ class _GroceryDetailsPageState extends State<GroceryDetailsPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 13, vertical: 6),
-                            decoration: BoxDecoration(
-                                color: Color(0xffbf1d2d),
-                                borderRadius: BorderRadius.circular(6)),
-                            child: Text("delivery".tr,
-                                style: robotoMedium.copyWith(
-                                  color: Color(0xffffffff),
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700,
-                                )),
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                isDelivered = !isDelivered;
+                              });
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 13, vertical: 6),
+                              decoration: BoxDecoration(
+                                  color: isDelivered
+                                      ? Color(0xffbf1d2d)
+                                      : Colors.transparent,
+                                  borderRadius: BorderRadius.circular(6)),
+                              child: Text("delivery".tr,
+                                  style: robotoMedium.copyWith(
+                                    color: isDelivered
+                                        ? Color(0xffffffff)
+                                        : Color(0xff979797),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                  )),
+                            ),
                           ),
                           SizedBox(width: 30),
-                          Text("pickup".tr,
-                              style: robotoMedium.copyWith(
-                                color: Color(0xff979797),
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                              )),
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                pikedUp = !pikedUp;
+                              });
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 13, vertical: 6),
+                              decoration: BoxDecoration(
+                                  color: pikedUp
+                                      ? Color(0xffbf1d2d)
+                                      : Colors.transparent,
+                                  borderRadius: BorderRadius.circular(6)),
+                              child: Text("pickup".tr,
+                                  style: robotoMedium.copyWith(
+                                    color: pikedUp
+                                        ? Color(0xffffffff)
+                                        : Color(0xff979797),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                  )),
+                            ),
+                          ),
                         ],
                       ),
                       SizedBox(height: 30),
@@ -466,17 +498,25 @@ class _GroceryDetailsPageState extends State<GroceryDetailsPage> {
                       ],
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 9, horizontal: 21),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(9),
-                        color: Color(0xffbf1d2d)),
-                    child: Text("view_cart".tr,
-                        style: robotoMedium.copyWith(
-                          color: Color(0xffffffff),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                        )),
+                  InkWell(
+                    onTap: () {
+                      Get.bottomSheet(GroceryCartBottomsheet(),
+                          backgroundColor: Colors.transparent,
+                          isScrollControlled: true);
+                    },
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 9, horizontal: 21),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(9),
+                          color: Color(0xffbf1d2d)),
+                      child: Text("view_cart".tr,
+                          style: robotoMedium.copyWith(
+                            color: Color(0xffffffff),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                          )),
+                    ),
                   )
                 ],
               ),

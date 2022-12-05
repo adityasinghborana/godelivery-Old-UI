@@ -34,7 +34,9 @@ class _OrderLitTilePageState extends State<OrderLitTilePage> {
       PaginatedOrderModel paginatedOrderModel;
       return InkWell(
         onTap: () {
-          Get.to(OrderDetailsScreen());
+          Get.bottomSheet(OrderDetailsScreen(),
+              backgroundColor: Colors.transparent, isScrollControlled: true);
+          // Get.to(;
           // Get.toNamed(
           //   RouteHelper.getOrderDetailsRoute(paginatedOrderModel.orders[0].id),
           //   arguments: OrderDetailsScreen(

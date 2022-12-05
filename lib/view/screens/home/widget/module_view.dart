@@ -48,7 +48,7 @@ class ModuleView extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     return InkWell(
                       onTap: () => Get.to(GroceryPage()),
-                      // splashController.switchModule(index, true),
+                      //splashController.switchModule(index, true),
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(21, 20, 18, 15),
                         child: Container(

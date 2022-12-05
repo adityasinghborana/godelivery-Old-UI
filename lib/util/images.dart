@@ -167,4 +167,9 @@ class Images {
   static const String icGroceryDetails = 'assets/image/img_grocery_details.png';
   static const String imgFruit = 'assets/image/img_fruit.png';
   static const String icHeart = 'assets/image/ic_heart.png';
+  static const String imgBanana = 'assets/image/img_banana.png';
+  static const String icDelete = 'assets/image/ic_delete_cart.png';
+  static const String icSliderImage = 'assets/image/img_slider.png';
+  static const String icShare = 'assets/image/ic_share.png';
+  static const String icRedHeart = 'assets/image/ic_red_heart.png';
 }

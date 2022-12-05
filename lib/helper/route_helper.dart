@@ -544,8 +544,9 @@ class RouteHelper {
         page: () => getRoute(Get.arguments != null
             ? Get.arguments
             : ItemDetailsScreen(
-                item: Item(id: int.parse(Get.parameters['id'])),
-                inStorePage: Get.parameters['page'] == 'restaurant'))),
+                // item: Item(id: int.parse(Get.parameters['id'])),
+                // inStorePage: Get.parameters['page'] == 'restaurant'
+                ))),
     GetPage(
         name: wallet,
         page: () => getRoute(

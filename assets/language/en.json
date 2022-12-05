@@ -730,5 +730,12 @@
   "pickup": "Pick-up",
   "see_more": "see more...",
   "recommended": "Recommended",
-  "veg_only": "Veg Only"
+  "veg_only": "Veg Only",
+  "cart": "Cart",
+  "delivery_free": "Spend ₦100 for a ₦0 delivery fee ",
+  "popular_order": "Popular with orders like yours",
+  "choose_weight": "Choose Weight",
+  "rate_the_product": "Rate the product",
+  "rate_it": "Rate it",
+  "related_products": "Related products"
 }
