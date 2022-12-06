@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sixam_mart/grocery/grocery_details_page.dart';
@@ -6,7 +5,8 @@ import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 
 class GoceryItemListTile extends StatefulWidget {
-  const GoceryItemListTile({Key key}) : super(key: key);
+  final int selectedIndex;
+  const GoceryItemListTile({Key key, this.selectedIndex}) : super(key: key);
 
   @override
   State<GoceryItemListTile> createState() => _GoceryItemListTileState();
@@ -22,10 +22,12 @@ class _GoceryItemListTileState extends State<GoceryItemListTile> {
         children: [
           InkWell(
             onTap: () {
-              Get.to(GroceryDetailsPage());
+              Get.to(GroceryDetailsPage(
+                selectedIndex: widget.selectedIndex,
+              ));
             },
             child: Padding(
-                padding: const EdgeInsets.only(left: 20, right: 17, top: 30),
+                padding: const EdgeInsets.only(left: 20, right: 17, top: 15),
                 child: Stack(
                   children: [
                     Column(

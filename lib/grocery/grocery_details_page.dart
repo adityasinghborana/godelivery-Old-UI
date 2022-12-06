@@ -1,11 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:sixam_mart/grocery/grocery_category_list_tile.dart';
 import 'package:sixam_mart/grocery/grocery_details_category_list.dart';
 import 'package:sixam_mart/grocery/grocery_details_item_list.dart';
 import 'package:sixam_mart/grocery/widget/grocery_cart_bottomsheet.dart';
@@ -13,7 +8,8 @@ import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 
 class GroceryDetailsPage extends StatefulWidget {
-  const GroceryDetailsPage({Key key}) : super(key: key);
+  final int selectedIndex;
+  const GroceryDetailsPage({Key key, this.selectedIndex}) : super(key: key);
 
   @override
   State<GroceryDetailsPage> createState() => _GroceryDetailsPageState();
@@ -334,61 +330,132 @@ class _GroceryDetailsPageState extends State<GroceryDetailsPage> {
                             ]),
                       ),
                       SizedBox(height: 18),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              setState(() {
-                                isDelivered = !isDelivered;
-                              });
-                            },
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 13, vertical: 6),
-                              decoration: BoxDecoration(
-                                  color: isDelivered
-                                      ? Color(0xffbf1d2d)
-                                      : Colors.transparent,
-                                  borderRadius: BorderRadius.circular(6)),
-                              child: Text("delivery".tr,
-                                  style: robotoMedium.copyWith(
-                                    color: isDelivered
-                                        ? Color(0xffffffff)
-                                        : Color(0xff979797),
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w700,
-                                  )),
+                      widget.selectedIndex == 1
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      isDelivered = !isDelivered;
+                                    });
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 13, vertical: 6),
+                                    decoration: BoxDecoration(
+                                        color: isDelivered
+                                            ? Color(0xff0eacd7)
+                                            : Colors.transparent,
+                                        borderRadius: BorderRadius.circular(6)),
+                                    child: Text("chat".tr.toUpperCase(),
+                                        style: robotoMedium.copyWith(
+                                          color: isDelivered
+                                              ? Color(0xffffffff)
+                                              : Color(0xff979797),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w700,
+                                        )),
+                                  ),
+                                ),
+                                SizedBox(width: 30),
+                                InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      pikedUp = !pikedUp;
+                                    });
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 13, vertical: 6),
+                                    decoration: BoxDecoration(
+                                        color: pikedUp
+                                            ? Color(0xff0eacd7)
+                                            : Colors.transparent,
+                                        borderRadius: BorderRadius.circular(6)),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Image.asset(
+                                          Images.icCallPharmacy,
+                                          color: pikedUp
+                                              ? Color(0xffffffff)
+                                              : Color(0xff0eacd7),
+                                        ),
+                                        SizedBox(width: 10),
+                                        Text("call_me".tr.toUpperCase(),
+                                            style: robotoMedium.copyWith(
+                                              color: pikedUp
+                                                  ? Color(0xffffffff)
+                                                  : Color(0xff0eacd7),
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w700,
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      isDelivered = !isDelivered;
+                                    });
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 13, vertical: 6),
+                                    decoration: BoxDecoration(
+                                        color: isDelivered
+                                            ? Color(0xffbf1d2d)
+                                            : Colors.transparent,
+                                        borderRadius: BorderRadius.circular(6)),
+                                    child: Text("delivery".tr,
+                                        style: robotoMedium.copyWith(
+                                          color: isDelivered
+                                              ? Color(0xffffffff)
+                                              : Color(0xff979797),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w700,
+                                        )),
+                                  ),
+                                ),
+                                SizedBox(width: 30),
+                                InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      pikedUp = !pikedUp;
+                                    });
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 13, vertical: 6),
+                                    decoration: BoxDecoration(
+                                        color: pikedUp
+                                            ? Color(0xffbf1d2d)
+                                            : Colors.transparent,
+                                        borderRadius: BorderRadius.circular(6)),
+                                    child: Text("pickup".tr,
+                                        style: robotoMedium.copyWith(
+                                          color: pikedUp
+                                              ? Color(0xffffffff)
+                                              : Color(0xff979797),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w700,
+                                        )),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          SizedBox(width: 30),
-                          InkWell(
-                            onTap: () {
-                              setState(() {
-                                pikedUp = !pikedUp;
-                              });
-                            },
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 13, vertical: 6),
-                              decoration: BoxDecoration(
-                                  color: pikedUp
-                                      ? Color(0xffbf1d2d)
-                                      : Colors.transparent,
-                                  borderRadius: BorderRadius.circular(6)),
-                              child: Text("pickup".tr,
-                                  style: robotoMedium.copyWith(
-                                    color: pikedUp
-                                        ? Color(0xffffffff)
-                                        : Color(0xff979797),
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w700,
-                                  )),
-                            ),
-                          ),
-                        ],
-                      ),
                       SizedBox(height: 30),
                       Container(
                         height: 30,

@@ -5,7 +5,6 @@ import 'package:sixam_mart/controller/cart_controller.dart';
 import 'package:sixam_mart/controller/item_controller.dart';
 import 'package:sixam_mart/controller/splash_controller.dart';
 import 'package:sixam_mart/data/model/response/cart_model.dart';
-import 'package:sixam_mart/grocery/widget/grocery_weight_list_tile.dart';
 import 'package:sixam_mart/helper/responsive_helper.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
@@ -16,24 +15,37 @@ import 'package:sixam_mart/view/screens/item/widget/details_web_view.dart';
 import 'package:sixam_mart/view/screens/item/widget/item_image_view.dart';
 import 'package:sixam_mart/view/screens/order/popular_order_list_tile.dart';
 
-enum weight { kgs, kg, k }
-
 class ItemDetailsScreen extends StatefulWidget {
   // final Item item;
   // final bool inStorePage;
-  // ItemDetailsScreen({@required this.item, @required this.inStorePage});
+  ItemDetailsScreen();
 
   @override
   State<ItemDetailsScreen> createState() => _ItemDetailsScreenState();
 }
 
 class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
-  double rating;
+  int value;
+
+  List buttonOptions = [
+    "1Kgs",
+    "2Kgs",
+    "500gms",
+  ];
+  int count = 1;
+  double _rating = 0.0;
   double initialRating = 2.0;
   final Size size = Get.size;
   GlobalKey<ScaffoldMessengerState> _globalKey = GlobalKey();
   final GlobalKey<DetailsAppBarState> _key = GlobalKey();
-  weight _character = weight.kgs;
+
+  counter() {
+    count++;
+  }
+
+  decrement() {
+    count = 1;
+  }
 
   @override
   void initState() {
@@ -448,7 +460,78 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                                                 itemCount: 3,
                                                 shrinkWrap: true,
                                                 itemBuilder: ((context, index) {
-                                                  return GroceryWeightListTile();
+                                                  return Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Expanded(
+                                                          flex: 1,
+                                                          child: RadioListTile(
+                                                            value: index,
+                                                            groupValue: value,
+                                                            activeColor: Color(
+                                                                0xff188962),
+                                                            onChanged: (ind) =>
+                                                                setState(() =>
+                                                                    value =
+                                                                        ind),
+                                                            title: Text(
+                                                              buttonOptions[
+                                                                  index],
+                                                              style: robotoRegular.copyWith(
+                                                                  fontSize: 14,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700,
+                                                                  color: Color(
+                                                                      0xff09323e)),
+                                                            ),
+                                                          )),
+                                                      Expanded(
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              '₦39'.tr,
+                                                              style: robotoRegular.copyWith(
+                                                                  fontSize: 16,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700,
+                                                                  color: Color(
+                                                                      0xff09323e)),
+                                                            ),
+                                                            SizedBox(width: 14),
+                                                            Text(
+                                                              '₦39'.tr,
+                                                              style: robotoRegular.copyWith(
+                                                                  fontSize: 14,
+                                                                  decoration:
+                                                                      TextDecoration
+                                                                          .lineThrough,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700,
+                                                                  color: Color(
+                                                                      0xff979797)),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      )
+                                                    ],
+                                                  );
+
+                                                  //     GroceryWeightListTile(
+                                                  //   selecteIndex: index,
+                                                  // );
                                                 })),
                                           ),
                                           SizedBox(height: 35),
@@ -458,38 +541,52 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
                                             children: [
-                                              Container(
-                                                padding: EdgeInsets.all(7),
-                                                decoration: BoxDecoration(
-                                                    color: Color(0xff0eacd7),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8)),
-                                                child: Image.asset(
-                                                    Images.icDelete,
-                                                    height: 16,
-                                                    width: 15),
+                                              InkWell(
+                                                onTap: () {
+                                                  setState(() {
+                                                    decrement();
+                                                  });
+                                                },
+                                                child: Container(
+                                                  padding: EdgeInsets.all(7),
+                                                  decoration: BoxDecoration(
+                                                      color: Color(0xff0eacd7),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8)),
+                                                  child: Image.asset(
+                                                      Images.icDelete,
+                                                      height: 16,
+                                                      width: 15),
+                                                ),
                                               ),
                                               SizedBox(width: 35),
-                                              Text("1",
+                                              Text(count.toString(),
                                                   style: robotoMedium.copyWith(
                                                     color: Color(0xff09323e),
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.w700,
                                                   )),
                                               SizedBox(width: 35),
-                                              Container(
-                                                padding: EdgeInsets.all(7),
-                                                decoration: BoxDecoration(
-                                                    color: Color(0xff0eacd7),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8)),
-                                                child: Image.asset(
-                                                  Images.icAdd,
-                                                  height: 16,
-                                                  width: 15,
-                                                  color: Color(0xffffffff),
+                                              InkWell(
+                                                onTap: () {
+                                                  setState(() {
+                                                    counter();
+                                                  });
+                                                },
+                                                child: Container(
+                                                  padding: EdgeInsets.all(7),
+                                                  decoration: BoxDecoration(
+                                                      color: Color(0xff0eacd7),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8)),
+                                                  child: Image.asset(
+                                                    Images.icAdd,
+                                                    height: 16,
+                                                    width: 15,
+                                                    color: Color(0xffffffff),
+                                                  ),
                                                 ),
                                               )
                                             ],
@@ -524,14 +621,11 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                                                 CrossAxisAlignment.center,
                                             children: [
                                               RatingBar.builder(
-                                                ignoreGestures: true,
-                                                // minRating: 1,
-                                                initialRating: initialRating,
+                                                minRating: 0,
                                                 direction: Axis.horizontal,
                                                 allowHalfRating: true,
                                                 itemSize: 30,
                                                 itemCount: 5,
-                                                updateOnDrag: true,
                                                 itemPadding:
                                                     const EdgeInsets.symmetric(
                                                         horizontal: 1.0),
@@ -540,11 +634,10 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                                                   Icons.star,
                                                   color: Colors.amber,
                                                 ),
-                                                onRatingUpdate: (rating) {
-                                                  print(rating.toString());
-                                                  rating = rating;
-                                                  //  ratting = rating.toString();
-                                                  // ratting = rating as String;
+                                                onRatingUpdate: (krating) {
+                                                  setState(() {
+                                                    _rating = krating;
+                                                  });
                                                 },
                                               ),
                                               Container(

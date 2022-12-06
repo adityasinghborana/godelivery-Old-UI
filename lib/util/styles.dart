@@ -79,6 +79,29 @@ final InputDecoration textFieldInputDecoration2 = InputDecoration(
   contentPadding: const EdgeInsets.only(left: 21, right: 8, bottom: 13, top: 8),
 );
 
+final InputDecoration textFieldInputDecoration3 = InputDecoration(
+  fillColor: AppColors.redAccentColor,
+  border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(6.0),
+      borderSide: BorderSide(
+        color: Color(0xffdedede),
+      )),
+  enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(6.0),
+      borderSide: BorderSide(
+        color: Color(0xffdedede),
+      )),
+  focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(6.0),
+      borderSide: BorderSide(
+        color: Color(0xffdedede),
+      )),
+  hintStyle: TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  ),
+  contentPadding: const EdgeInsets.only(left: 21, right: 8, bottom: 13, top: 8),
+);
 
 // final InputDecoration textFieldInputDecoration3 = InputDecoration(
 //   fillColor: AppColors.redAccentColor,

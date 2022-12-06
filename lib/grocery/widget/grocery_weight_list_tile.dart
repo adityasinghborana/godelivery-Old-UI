@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:sixam_mart/util/styles.dart';
 
-enum weight { kgs }
-
-class Kgs {
-  final String _value;
-  Kgs(this._value);
-}
-
 class GroceryWeightListTile extends StatefulWidget {
+  final int selecteIndex;
+  final int num;
+  final buttonOptions;
   const GroceryWeightListTile({
     Key key,
+    this.num,
+    this.selecteIndex,
+    this.buttonOptions,
   }) : super(key: key);
 
   @override
@@ -19,15 +18,19 @@ class GroceryWeightListTile extends StatefulWidget {
 }
 
 class _GroceryWeightListTileState extends State<GroceryWeightListTile> {
-  int _currentTimeValue = 1;
+  int value;
 
-  List buttonOptions = [
-    Kgs("1Kgs"),
-    Kgs("2Kgs"),
-    Kgs("500gms"),
-  ];
+  // List buttonOptions = [
+  //   "1Kgs",
+  //   "2Kgs",
+  //   "500gms",
+  // ];
 
-  weight _character = weight.kgs;
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -35,23 +38,20 @@ class _GroceryWeightListTileState extends State<GroceryWeightListTile> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Expanded(
-          flex: 1,
-          child: RadioListTile<weight>(
-            title: Text('2 Kgs',
-                style: robotoMedium.copyWith(
-                  color: Color(0xff09323e),
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                )),
-            value: weight.kgs,
-            groupValue: _character,
-            onChanged: (weight value) {
-              setState(() {
-                _character = value;
-              });
-            },
-          ),
-        ),
+            flex: 1,
+            child: RadioListTile(
+              value: widget.selecteIndex,
+              groupValue: value,
+              activeColor: Color(0xff188962),
+              onChanged: (ind) => setState(() => value = ind),
+              title: Text(
+                widget.buttonOptions[widget.selecteIndex],
+                style: robotoRegular.copyWith(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                    color: Color(0xff09323e)),
+              ),
+            )),
         Expanded(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,

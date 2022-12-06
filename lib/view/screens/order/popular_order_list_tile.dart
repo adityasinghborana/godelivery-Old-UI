@@ -1,5 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:sixam_mart/grocery/widget/grocery_weight_bottomsheet.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 
@@ -71,18 +73,27 @@ class _PopularOrderListTileState extends State<PopularOrderListTile> {
                     SizedBox(width: 50),
                     Row(
                       children: [
-                        Container(
-                          height: 30,
-                          width: 30,
-                          padding: EdgeInsets.all(7),
-                          decoration: BoxDecoration(
-                              color: Color(0xff0eacd7),
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Image.asset(
-                            Images.icAdd,
-                            height: 18,
-                            width: 18,
-                            color: Color(0xffffffff),
+                        InkWell(
+                          onTap: () {
+                            Get.bottomSheet(
+                              GroceryWeightBottomsheet(),
+                              backgroundColor: Colors.transparent,
+                              isScrollControlled: true,
+                            );
+                          },
+                          child: Container(
+                            height: 30,
+                            width: 30,
+                            padding: EdgeInsets.all(7),
+                            decoration: BoxDecoration(
+                                color: Color(0xff0eacd7),
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Image.asset(
+                              Images.icAdd,
+                              height: 18,
+                              width: 18,
+                              color: Color(0xffffffff),
+                            ),
                           ),
                         ),
                       ],

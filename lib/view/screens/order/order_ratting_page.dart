@@ -13,6 +13,7 @@ class OrderRattingPage extends StatefulWidget {
 }
 
 class _OrderRattingPageState extends State<OrderRattingPage> {
+  double _rating = 0.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -299,8 +300,7 @@ class _OrderRattingPageState extends State<OrderRattingPage> {
                             ),
                             SizedBox(height: 21),
                             RatingBar.builder(
-                              ignoreGestures: true,
-                              minRating: 2,
+                              minRating: 0,
                               direction: Axis.horizontal,
                               allowHalfRating: true,
                               itemSize: 30,
@@ -311,10 +311,10 @@ class _OrderRattingPageState extends State<OrderRattingPage> {
                                 Icons.star,
                                 color: Colors.amber,
                               ),
-                              onRatingUpdate: (rating) {
-                                print(rating.toString());
-                                //  ratting = rating.toString();
-                                // ratting = rating as String;
+                              onRatingUpdate: (krating) {
+                                setState(() {
+                                  _rating = krating;
+                                });
                               },
                             ),
                             SizedBox(height: 10),

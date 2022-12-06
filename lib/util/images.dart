@@ -172,4 +172,12 @@ class Images {
   static const String icSliderImage = 'assets/image/img_slider.png';
   static const String icShare = 'assets/image/ic_share.png';
   static const String icRedHeart = 'assets/image/ic_red_heart.png';
+  static const String imgWeight = 'assets/image/img_weight.png';
+  static const String icMedicines = 'assets/image/ic_medicines.png';
+  static const String icReminder = 'assets/image/ic_reminder.png';
+  static const String icMyRecords = 'assets/image/ic_record.png';
+  static const String icUpload = 'assets/image/ic_upload.png';
+  static const String icCallPharmacy = 'assets/image/ic_call_pharmacy.png';
+  static const String imgReminder = 'assets/image/img_reminder.png';
+  static const String imgHealth = 'assets/image/img_my_health.png';
 }

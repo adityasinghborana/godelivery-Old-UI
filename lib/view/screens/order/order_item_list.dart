@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 
@@ -10,6 +11,17 @@ class OrderItemList extends StatefulWidget {
 }
 
 class _OrderItemListState extends State<OrderItemList> {
+  int count = 1;
+  counter() {
+    count++;
+  }
+
+  decrement() {
+    if (count > 1) {
+      count--;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -70,14 +82,21 @@ class _OrderItemListState extends State<OrderItemList> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset(
-                  Images.icMinus,
-                  width: 12,
-                  height: 11,
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      decrement();
+                    });
+                  },
+                  child: Image.asset(
+                    Images.icMinus,
+                    width: 12,
+                    height: 11,
+                  ),
                 ),
                 SizedBox(width: 15),
                 Text(
-                  '1',
+                  count.toString(),
                   textAlign: TextAlign.center,
                   style: robotoRegular.copyWith(
                       fontSize: 14,
@@ -85,10 +104,17 @@ class _OrderItemListState extends State<OrderItemList> {
                       color: Color(0xffbf1d2d)),
                 ),
                 SizedBox(width: 15),
-                Image.asset(
-                  Images.icAdd,
-                  width: 12,
-                  height: 11,
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      counter();
+                    });
+                  },
+                  child: Image.asset(
+                    Images.icAdd,
+                    width: 12,
+                    height: 11,
+                  ),
                 ),
               ],
             ),

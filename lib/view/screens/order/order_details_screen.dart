@@ -275,7 +275,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                   ),
                   SizedBox(height: 20),
                   Text(
-                    'popular_order',
+                    'popular_order'.tr,
                     textAlign: TextAlign.center,
                     style: robotoRegular.copyWith(
                         fontSize: 16,

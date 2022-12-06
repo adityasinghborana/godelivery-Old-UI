@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sixam_mart/grocery/widget/grocery_weight_bottomsheet.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 import 'package:sixam_mart/view/screens/item/item_details_screen.dart';
@@ -113,22 +114,31 @@ class _GroceryDetailsItemListState extends State<GroceryDetailsItemList> {
                 ),
               ),
               // SizedBox(height: 10),
-              Container(
-                height: 38,
-                // padding: EdgeInsets.symmetric(vertical: 19),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Color(0xff0eacd7)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.add,
-                      size: 30,
-                      color: Color(0xffffffff),
-                    ),
-                  ],
+              InkWell(
+                onTap: () {
+                  Get.bottomSheet(
+                    GroceryWeightBottomsheet(),
+                    backgroundColor: Colors.transparent,
+                    isScrollControlled: true,
+                  );
+                },
+                child: Container(
+                  height: 38,
+                  // padding: EdgeInsets.symmetric(vertical: 19),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Color(0xff0eacd7)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.add,
+                        size: 30,
+                        color: Color(0xffffffff),
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],
