@@ -180,4 +180,15 @@ class Images {
   static const String icCallPharmacy = 'assets/image/ic_call_pharmacy.png';
   static const String imgReminder = 'assets/image/img_reminder.png';
   static const String imgHealth = 'assets/image/img_my_health.png';
+  static const String icPlaceholder = 'assets/image/ic_placeholder.png';
+  static const String icThreeDot = 'assets/image/ic_three_dot.png';
+  static const String icPatientRecord = 'assets/image/ic_patient_record.png';
+  static const String icWeight = 'assets/image/ic_weight.png';
+  static const String icHeight = 'assets/image/ic_height.png';
+  static const String icPdf = 'assets/image/ic_pdf.png';
+  static const String icCamera = 'assets/image/ic_camera.png';
+  static const String icGallery = 'assets/image/ic_galery.png';
+  static const String imgUploadPrescription =
+      'assets/image/img_upload_prescription.png';
+  static const String imgDocumentPlaceholder = 'assets/image/img_document.jpg';
 }

@@ -765,5 +765,14 @@
   "diabetes": "Diabetes",
   "asthma": "Asthma",
   "ulcer": "Ulcer",
-  "seizures": "Seizures"
+  "seizures": "Seizures",
+  "specify_your_problem": "Specify Your Problem if not Listed above",
+  "medicine_list": "Medicine List",
+  "upload_record": "Upload Record",
+  "upload_prescription": "Upload Prescription",
+  "upload": "Upload",
+  "please_upload": "Please upload images of valid prescription from your doctor",
+  "camera": "Camera",
+  "Gallery": "Gallery",
+  "pdf": "Pdf"
 }

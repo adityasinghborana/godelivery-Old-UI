@@ -353,7 +353,7 @@ class _GroceryDetailsPageState extends State<GroceryDetailsPage> {
                                         style: robotoMedium.copyWith(
                                           color: isDelivered
                                               ? Color(0xffffffff)
-                                              : Color(0xff979797),
+                                              : Color(0xff0eacd7),
                                           fontSize: 12,
                                           fontWeight: FontWeight.w700,
                                         )),

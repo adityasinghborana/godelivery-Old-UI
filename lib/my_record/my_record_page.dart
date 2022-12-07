@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:sixam_mart/my_record/add_new_patient_page.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
-
-import '../reminder/reminder_page.dart';
 
 class MyRecordPage extends StatefulWidget {
   const MyRecordPage({Key key}) : super(key: key);
@@ -63,7 +57,7 @@ class _MyRecordPageState extends State<MyRecordPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    'sorry_we_couldn"t'.tr,
+                    'sorry_we_couldn'.tr,
                     textAlign: TextAlign.center,
                     style: robotoRegular.copyWith(
                         fontSize: 14,
