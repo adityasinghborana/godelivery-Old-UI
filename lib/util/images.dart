@@ -191,4 +191,26 @@ class Images {
   static const String imgUploadPrescription =
       'assets/image/img_upload_prescription.png';
   static const String imgDocumentPlaceholder = 'assets/image/img_document.jpg';
+
+  static const String icMessag = 'assets/image/ic_message .png';
+  static const String icSendButton = 'assets/image/ic_send_button.png';
+  static const String icAttechButton = 'assets/image/ic_attech_button.png';
+  static const String imgPaymentSucces = 'assets/image/img_payment_success.png';
+  static const String imgSearch = 'assets/image/img_search.png';
+  static const String icWarning = 'assets/image/ic_warning.png';
+  static const String imgPickUp = 'assets/image/img_pickup.png';
+  static const String icMessageBox = 'assets/image/ic_message_box.png';
+  static const String icLargeEnvelope = 'assets/image/ic_large_envelope.png';
+  static const String icSmall = 'assets/image/ic_small.png';
+  static const String icMedium = 'assets/image/ic_medium.png';
+  static const String icLarger = 'assets/image/ic_larger.png';
+  static const String icXLarger = 'assets/image/ic_x_larger.png';
+  static const String icMobilePhone = 'assets/image/ic_mobile_phone.png';
+
+  static const String icFlour = 'assets/image/ic_flour.png';
+
+  static const String icPackOfFlour = 'assets/image/ic_pack_flour.png';
+  static const String icPaintCan = 'assets/image/ic_paint_can.png';
+  static const String icWashing = 'assets/image/ic_washing.png';
+  static const String icWardrop = 'assets/image/ic_wardrobe.png';
 }

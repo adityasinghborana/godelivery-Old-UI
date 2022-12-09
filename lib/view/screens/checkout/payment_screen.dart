@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:sixam_mart/util/app_constants.dart';
 import 'package:sixam_mart/util/dimensions.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
+import 'package:sixam_mart/view/screens/checkout/widget/payment_succesful_dialog.dart';
 
 class PaymentScreen extends StatefulWidget {
   //final OrderModel orderModel;
@@ -167,23 +169,28 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                 ),
                 SizedBox(height: 30),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 16),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        color: Color(0xff979797),
-                      )),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        Images.imgPaypal,
-                        width: 49,
-                        height: 14,
-                      ),
-                    ],
+                InkWell(
+                  onTap: () {
+                    Get.dialog(PaymentSuccessfulDialog());
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(
+                          color: Color(0xff979797),
+                        )),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          Images.imgPaypal,
+                          width: 49,
+                          height: 14,
+                        ),
+                      ],
+                    ),
                   ),
                 )
               ],

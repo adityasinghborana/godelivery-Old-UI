@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
+import 'package:sixam_mart/common_dialog/delete_dialog.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 
@@ -72,12 +74,19 @@ class _PrescriptionListTileState extends State<PrescriptionListTile> {
               ],
             ),
           ),
-          Text(
-            "delete".tr.toUpperCase(),
-            style: robotoRegular.copyWith(
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-                color: Color(0xff0eacd7)),
+          InkWell(
+            onTap: () {
+              Get.dialog(DeleteDialog(
+                text: 'are_you_sure_delete_record'.tr,
+              ));
+            },
+            child: Text(
+              "delete".tr.toUpperCase(),
+              style: robotoRegular.copyWith(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xff0eacd7)),
+            ),
           ),
         ],
       ),

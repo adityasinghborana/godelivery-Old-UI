@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
 import 'package:sixam_mart/controller/auth_controller.dart';
 import 'package:sixam_mart/controller/order_controller.dart';
@@ -14,7 +13,6 @@ import 'package:sixam_mart/view/screens/favourite/favourite_screen.dart';
 import 'package:sixam_mart/view/screens/home/home_screen.dart';
 import 'package:sixam_mart/view/screens/menu/menu_screen.dart';
 import 'package:sixam_mart/view/screens/notification/notification_screen.dart';
-import 'package:sixam_mart/view/screens/order/order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -306,7 +306,7 @@ class _OrderRattingPageState extends State<OrderRattingPage> {
                               itemSize: 30,
                               itemCount: 5,
                               itemPadding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
+                                  const EdgeInsets.symmetric(horizontal: 15),
                               itemBuilder: (context, _) => const Icon(
                                 Icons.star,
                                 color: Colors.amber,
@@ -319,10 +319,10 @@ class _OrderRattingPageState extends State<OrderRattingPage> {
                             ),
                             SizedBox(height: 10),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                SizedBox(width: 20),
+                                // SizedBox(width: 20),
                                 Text(
                                   'very_bad'.tr,
                                   textAlign: TextAlign.center,
@@ -331,7 +331,7 @@ class _OrderRattingPageState extends State<OrderRattingPage> {
                                       fontWeight: FontWeight.w400,
                                       color: Color(0xff979797)),
                                 ),
-                                SizedBox(width: 45),
+                                // SizedBox(width: 45),
                                 Text(
                                   'bad'.tr,
                                   textAlign: TextAlign.center,
@@ -340,7 +340,7 @@ class _OrderRattingPageState extends State<OrderRattingPage> {
                                       fontWeight: FontWeight.w400,
                                       color: Color(0xff979797)),
                                 ),
-                                SizedBox(width: 47),
+                                // SizedBox(width: 47),
                                 Text(
                                   'good'.tr,
                                   textAlign: TextAlign.center,
@@ -349,7 +349,7 @@ class _OrderRattingPageState extends State<OrderRattingPage> {
                                       fontWeight: FontWeight.w400,
                                       color: Color(0xff979797)),
                                 ),
-                                SizedBox(width: 40),
+                                // SizedBox(width: 40),
                                 Text(
                                   'very_good'.tr,
                                   textAlign: TextAlign.center,
@@ -358,7 +358,7 @@ class _OrderRattingPageState extends State<OrderRattingPage> {
                                       fontWeight: FontWeight.w400,
                                       color: Color(0xff979797)),
                                 ),
-                                SizedBox(width: 25),
+                                // SizedBox(width: 25),
                                 Text(
                                   'excellent'.tr,
                                   textAlign: TextAlign.center,
@@ -405,37 +405,44 @@ class _OrderRattingPageState extends State<OrderRattingPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 67, vertical: 9),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: Color(0xff979797)),
-                          ),
-                          child: Text(
-                            'skip'.tr,
-                            textAlign: TextAlign.center,
-                            style: robotoRegular.copyWith(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xff09323e)),
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 50, vertical: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(color: Color(0xff979797)),
+                            ),
+                            child: Text(
+                              'skip'.tr,
+                              textAlign: TextAlign.center,
+                              style: robotoRegular.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xff09323e)),
+                            ),
                           ),
                         ),
-                        Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 67, vertical: 9),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: Color(0xffbf1d2d)
-                              //border: Border.all(color: Color(0xff979797)),
-                              ),
-                          child: Text(
-                            'confirm'.tr,
-                            textAlign: TextAlign.center,
-                            style: robotoRegular.copyWith(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xffffffff)),
+                        SizedBox(width: 10),
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 50, vertical: 10),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: Color(0xffbf1d2d)
+                                //border: Border.all(color: Color(0xff979797)),
+                                ),
+                            child: Text(
+                              'confirm'.tr,
+                              textAlign: TextAlign.center,
+                              style: robotoRegular.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xffffffff)),
+                            ),
                           ),
                         )
                       ],

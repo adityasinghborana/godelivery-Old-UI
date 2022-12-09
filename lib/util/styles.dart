@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:get/state_manager.dart';
 import 'package:sixam_mart/util/app_colors.dart';
 import 'package:sixam_mart/util/dimensions.dart';
-import 'package:get/get.dart';
 
 final robotoRegular = TextStyle(
   fontFamily: 'Roboto',

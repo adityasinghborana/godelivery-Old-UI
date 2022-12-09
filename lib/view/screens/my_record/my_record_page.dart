@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:get/get_utils/get_utils.dart';
-import 'package:sixam_mart/reminder/reminder_page.dart';
+import 'package:sixam_mart/view/screens/my_record/add_new_patient_page.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 
-class AddReminderPage extends StatefulWidget {
-  const AddReminderPage({Key key}) : super(key: key);
+class MyRecordPage extends StatefulWidget {
+  const MyRecordPage({Key key}) : super(key: key);
 
   @override
-  State<AddReminderPage> createState() => _AddReminderPageState();
+  State<MyRecordPage> createState() => _MyRecordPageState();
 }
 
-class _AddReminderPageState extends State<AddReminderPage> {
+class _MyRecordPageState extends State<MyRecordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +38,7 @@ class _AddReminderPageState extends State<AddReminderPage> {
                           child: Icon(Icons.arrow_back_ios_new)),
                       SizedBox(width: 20),
                       Text(
-                        'reminder'.tr,
+                        'health_record'.tr,
                         style: robotoRegular.copyWith(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
@@ -56,12 +52,12 @@ class _AddReminderPageState extends State<AddReminderPage> {
                   thickness: 4,
                 ),
                 SizedBox(height: 70),
-                Image.asset(Images.imgReminder),
+                Image.asset(Images.imgHealth),
                 SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    'our_reminder_ring'.tr,
+                    'sorry_we_couldn'.tr,
                     textAlign: TextAlign.center,
                     style: robotoRegular.copyWith(
                         fontSize: 14,
@@ -76,7 +72,9 @@ class _AddReminderPageState extends State<AddReminderPage> {
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
             child: InkWell(
               onTap: () {
-                Get.to(ReminderPage());
+                Get.bottomSheet(AddNewPateintPage(),
+                    backgroundColor: Colors.transparent,
+                    isScrollControlled: true);
               },
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 10),
@@ -89,7 +87,7 @@ class _AddReminderPageState extends State<AddReminderPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "add_reminder".tr,
+                      "add_new_patient".tr,
                       style: robotoRegular.copyWith(
                           fontSize: 12,
                           fontWeight: FontWeight.w700,

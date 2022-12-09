@@ -5,7 +5,8 @@ import 'package:sixam_mart/util/styles.dart';
 import 'package:sixam_mart/view/screens/order/order_details_screen.dart';
 
 class GroceryCartBottomsheet extends StatefulWidget {
-  const GroceryCartBottomsheet({Key key}) : super(key: key);
+  final int selectedIndex;
+  const GroceryCartBottomsheet({Key key, this.selectedIndex}) : super(key: key);
 
   @override
   State<GroceryCartBottomsheet> createState() => _GroceryCartBottomsheetState();
@@ -55,26 +56,30 @@ class _GroceryCartBottomsheetState extends State<GroceryCartBottomsheet> {
                     itemCount: 10,
                     shrinkWrap: true,
                     itemBuilder: ((context, index) {
-                      return GroceryCartListTile();
+                      return GroceryCartListTile(
+                          selectedIndex: widget.selectedIndex);
                     })),
               )
             ],
           ),
-          SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.only(left: 30),
-            child: Text("delivery_free".tr,
-                style: robotoMedium.copyWith(
-                  color: Color(0xff75bf27),
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700,
-                )),
-          ),
+          // SizedBox(height: 10),
+          widget.selectedIndex == 1
+              ? SizedBox.fromSize()
+              : Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text("delivery_free".tr,
+                      style: robotoMedium.copyWith(
+                        color: Color(0xff75bf27),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                      )),
+                ),
           SizedBox(height: 7),
           InkWell(
             onTap: () {
               Get.back();
-              Get.bottomSheet(OrderDetailsScreen(),
+              Get.bottomSheet(
+                  OrderDetailsScreen(selectedIndex: widget.selectedIndex),
                   backgroundColor: Colors.transparent,
                   isScrollControlled: true);
               // Get.bottomSheet();

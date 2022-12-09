@@ -5,6 +5,7 @@ import 'package:sixam_mart/controller/cart_controller.dart';
 import 'package:sixam_mart/controller/item_controller.dart';
 import 'package:sixam_mart/controller/splash_controller.dart';
 import 'package:sixam_mart/data/model/response/cart_model.dart';
+import 'package:sixam_mart/grocery/widget/grocery_cart_bottomsheet.dart';
 import 'package:sixam_mart/helper/responsive_helper.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
@@ -16,10 +17,8 @@ import 'package:sixam_mart/view/screens/item/widget/item_image_view.dart';
 import 'package:sixam_mart/view/screens/order/popular_order_list_tile.dart';
 
 class ItemDetailsScreen extends StatefulWidget {
-  // final Item item;
-  // final bool inStorePage;
-  ItemDetailsScreen();
-
+  final int selectedIndex;
+  const ItemDetailsScreen({Key key, this.selectedIndex}) : super(key: key);
   @override
   State<ItemDetailsScreen> createState() => _ItemDetailsScreenState();
 }
@@ -150,7 +149,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
 
         return Scaffold(
             key: _globalKey,
-            backgroundColor: Theme.of(context).cardColor,
+            // backgroundColor: Theme.of(context).cardColor,
             // appBar: ResponsiveHelper.isDesktop(context)
             //     ? CustomAppBar(title: '')
             //     : DetailsAppBar(key: _key),
@@ -275,13 +274,21 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                                                 color: Color(0xff979797)),
                                           ),
                                           SizedBox(height: 30),
-                                          Text(
-                                            'choose_weight'.tr,
-                                            style: robotoRegular.copyWith(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w700,
-                                                color: Color(0xff09323e)),
-                                          ),
+                                          widget.selectedIndex == 1
+                                              ? Text("medicine_strength".tr,
+                                                  style: robotoMedium.copyWith(
+                                                    color: Color(0xff09323e),
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w700,
+                                                  ))
+                                              : Text(
+                                                  'choose_weight'.tr,
+                                                  style: robotoRegular.copyWith(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color: Color(0xff09323e)),
+                                                ),
                                           // SizedBox(height: 20),
                                           // Row(
                                           //   mainAxisAlignment:
@@ -592,6 +599,84 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                                             ],
                                           ),
                                           SizedBox(height: 30),
+                                          widget.selectedIndex == 1
+                                              ? Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                        'product_discription'
+                                                            .tr,
+                                                        style: robotoMedium
+                                                            .copyWith(
+                                                          color:
+                                                              Color(0xff09323e),
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                        )),
+                                                    SizedBox(height: 15),
+                                                    Text(
+                                                        'Panadol Advance works faster and more effectively than standard paracetamol',
+                                                        style: robotoMedium
+                                                            .copyWith(
+                                                          color:
+                                                              Color(0xff979797),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                        )),
+                                                    SizedBox(height: 30),
+                                                    Text('features'.tr,
+                                                        style: robotoMedium
+                                                            .copyWith(
+                                                          color:
+                                                              Color(0xff09323e),
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                        )),
+                                                    SizedBox(height: 15),
+                                                    Text(
+                                                        'Panadol Advance works faster and more effectively than standard paracetamol',
+                                                        style: robotoMedium
+                                                            .copyWith(
+                                                          color:
+                                                              Color(0xff979797),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                        )),
+                                                    SizedBox(height: 30),
+                                                    Text(
+                                                        'warning_of_restriction'
+                                                            .tr,
+                                                        style: robotoMedium
+                                                            .copyWith(
+                                                          color:
+                                                              Color(0xff09323e),
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                        )),
+                                                    SizedBox(height: 15),
+                                                    Text(
+                                                        'Panadol Advance works faster and more effectively than standard paracetamol',
+                                                        style: robotoMedium
+                                                            .copyWith(
+                                                          color:
+                                                              Color(0xff979797),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                        )),
+                                                    SizedBox(height: 30),
+                                                  ],
+                                                )
+                                              : SizedBox.shrink(),
+
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
@@ -679,35 +764,218 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                                                   return PopularOrderListTile();
                                                 })),
                                           ),
-                                          SizedBox(height: 44),
-                                          InkWell(
-                                            onTap: () {
-                                              Get.to(PaymentScreen());
-                                            },
-                                            child: Container(
-                                                padding: EdgeInsets.fromLTRB(
-                                                    11, 15, 27, 15),
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5),
-                                                    color: Color(0xffbf1d2d)),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    Expanded(
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Text("total".tr,
+
+                                          widget.selectedIndex == 0
+                                              ? InkWell(
+                                                  onTap: () {
+                                                    Get.bottomSheet(
+                                                        GroceryCartBottomsheet(
+                                                          selectedIndex: widget
+                                                              .selectedIndex,
+                                                        ),
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        isScrollControlled:
+                                                            true);
+                                                  },
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 44),
+                                                    child: Container(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                11, 15, 27, 15),
+                                                        decoration: BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5),
+                                                            color: Color(
+                                                                0xffbf1d2d)),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Expanded(
+                                                              child: Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Text(
+                                                                      "total"
+                                                                          .tr,
+                                                                      style: robotoMedium
+                                                                          .copyWith(
+                                                                        color: Color(
+                                                                            0xffffffff),
+                                                                        fontSize:
+                                                                            12,
+                                                                        fontWeight:
+                                                                            FontWeight.w700,
+                                                                      )),
+                                                                  SizedBox(
+                                                                      width: 5),
+                                                                  Text("₦20",
+                                                                      style: robotoMedium
+                                                                          .copyWith(
+                                                                        color: Color(
+                                                                            0xffffffff),
+                                                                        fontSize:
+                                                                            16,
+                                                                        fontWeight:
+                                                                            FontWeight.w700,
+                                                                      )),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            Text("continue".tr,
+                                                                style:
+                                                                    robotoMedium
+                                                                        .copyWith(
+                                                                  color: Color(
+                                                                      0xffffffff),
+                                                                  fontSize: 12,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700,
+                                                                )),
+                                                          ],
+                                                        )),
+                                                  ),
+                                                )
+                                              : SizedBox.shrink()
+
+                                          // SizedBox(height: 50)
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  widget.selectedIndex == 1
+                                      ? Container(
+                                          decoration: BoxDecoration(boxShadow: [
+                                            BoxShadow(
+                                                blurRadius: 25.0,
+                                                color: Color(0xff000000)
+                                                    .withOpacity(0.12))
+                                          ]),
+                                          child: Container(
+                                            color: Color(0xffffffff),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 18,
+                                                      vertical: 19),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                Text(
+                                                                    "subtotal"
+                                                                        .tr,
+                                                                    style: robotoMedium
+                                                                        .copyWith(
+                                                                      color: Color(
+                                                                          0xff979797),
+                                                                      fontSize:
+                                                                          14,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                    )),
+                                                                SizedBox(
+                                                                    width: 11),
+                                                                Text("₦ 25.98",
+                                                                    style: robotoMedium
+                                                                        .copyWith(
+                                                                      color: Color(
+                                                                          0xff09323e),
+                                                                      fontSize:
+                                                                          14,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w700,
+                                                                    )),
+                                                              ],
+                                                            ),
+                                                            SizedBox(height: 9),
+                                                            Text(
+                                                                "delivery_free"
+                                                                    .tr,
+                                                                style:
+                                                                    robotoMedium
+                                                                        .copyWith(
+                                                                  color: Color(
+                                                                      0xff75bf27),
+                                                                  fontSize: 12,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700,
+                                                                )),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      InkWell(
+                                                        onTap: () {
+                                                          Get.bottomSheet(
+                                                              GroceryCartBottomsheet(
+                                                                  selectedIndex:
+                                                                      widget
+                                                                          .selectedIndex),
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              isScrollControlled:
+                                                                  true);
+                                                        },
+                                                        child: Container(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                                  vertical: 10,
+                                                                  horizontal:
+                                                                      14),
+                                                          decoration: BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5),
+                                                              color: Color(
+                                                                  0xffbf1d2d)),
+                                                          child: Text(
+                                                              "pay_now".tr,
                                                               style:
                                                                   robotoMedium
                                                                       .copyWith(
@@ -718,38 +986,16 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                                                                     FontWeight
                                                                         .w700,
                                                               )),
-                                                          SizedBox(width: 5),
-                                                          Text("₦20",
-                                                              style:
-                                                                  robotoMedium
-                                                                      .copyWith(
-                                                                color: Color(
-                                                                    0xffffffff),
-                                                                fontSize: 16,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w700,
-                                                              )),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Text("continue".tr,
-                                                        style: robotoMedium
-                                                            .copyWith(
-                                                          color:
-                                                              Color(0xffffffff),
-                                                          fontSize: 12,
-                                                          fontWeight:
-                                                              FontWeight.w700,
-                                                        )),
-                                                  ],
-                                                )),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                          // SizedBox(height: 50)
-                                        ],
-                                      ),
-                                    ),
-                                  )
+                                        )
+                                      : SizedBox.shrink()
 
                                   // ItemTitleView(
                                   //   item: itemController.item,

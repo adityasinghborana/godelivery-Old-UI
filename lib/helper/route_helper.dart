@@ -567,17 +567,17 @@ class RouteHelper {
                 .decode(Get.parameters['user'].replaceAll(' ', '+')))));
           }
           return getRoute(ChatScreen(
-            notificationBody: _notificationBody,
-            user: _user,
-            index: Get.parameters['index'] != 'null'
-                ? int.parse(Get.parameters['index'])
-                : null,
-            fromNotification: Get.parameters['from'] == 'true',
-            conversationID: (Get.parameters['conversation_id'] != null &&
-                    Get.parameters['conversation_id'] != 'null')
-                ? int.parse(Get.parameters['conversation_id'])
-                : null,
-          ));
+              // notificationBody: _notificationBody,
+              // user: _user,
+              // index: Get.parameters['index'] != 'null'
+              //     ? int.parse(Get.parameters['index'])
+              //     : null,
+              // fromNotification: Get.parameters['from'] == 'true',
+              // conversationID: (Get.parameters['conversation_id'] != null &&
+              //         Get.parameters['conversation_id'] != 'null')
+              //     ? int.parse(Get.parameters['conversation_id'])
+              //     : null,
+              ));
         }),
     GetPage(name: conversation, page: () => ConversationScreen()),
     GetPage(

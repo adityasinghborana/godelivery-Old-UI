@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/my_record/patient_list_page.dart';
+import 'package:sixam_mart/view/screens/my_record/patient_list_page.dart';
 import 'package:sixam_mart/util/styles.dart';
 
 class AddNewPateintPage extends StatefulWidget {

@@ -12,7 +12,6 @@ import 'package:sixam_mart/view/base/footer_view.dart';
 import 'package:sixam_mart/view/base/no_data_screen.dart';
 import 'package:sixam_mart/view/base/paginated_list_view.dart';
 import 'package:sixam_mart/view/screens/order/order_category_list.dart';
-import 'package:sixam_mart/view/screens/order/order_details_screen.dart';
 import 'package:sixam_mart/view/screens/order/order_list_tile.dart';
 import 'package:sixam_mart/view/screens/order/widget/order_shimmer.dart';
 import 'package:flutter/material.dart';

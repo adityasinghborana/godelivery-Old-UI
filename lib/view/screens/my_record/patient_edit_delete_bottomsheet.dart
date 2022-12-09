@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:sixam_mart/common_dialog/delete_dialog.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 
@@ -115,27 +116,28 @@ class _PatientEditDeleteBottomsheetState
           ),
           SizedBox(height: 20),
           InkWell(
-            onTap: () {},
-            child: InkWell(
-              onTap: () {},
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: Color(0xffbf1d2d))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "delete".tr,
-                      style: robotoRegular.copyWith(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xffbf1d2d)),
-                    )
-                  ],
-                ),
+            onTap: () {
+              Get.dialog(DeleteDialog(
+                text: 'are_you_sure_delete'.tr,
+              ));
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(color: Color(0xffbf1d2d))),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "delete".tr,
+                    style: robotoRegular.copyWith(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xffbf1d2d)),
+                  )
+                ],
               ),
             ),
           ),

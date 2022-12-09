@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/my_record/add_new_patient_page.dart';
-import 'package:sixam_mart/util/images.dart';
+import 'package:sixam_mart/view/screens/my_record/patient_list_tile.dart';
 import 'package:sixam_mart/util/styles.dart';
 
-class MyRecordPage extends StatefulWidget {
-  const MyRecordPage({Key key}) : super(key: key);
+class PatientListPage extends StatefulWidget {
+  const PatientListPage({Key key}) : super(key: key);
 
   @override
-  State<MyRecordPage> createState() => _MyRecordPageState();
+  State<PatientListPage> createState() => _PatientListPageState();
 }
 
-class _MyRecordPageState extends State<MyRecordPage> {
+class _PatientListPageState extends State<PatientListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 60),
                 Padding(
@@ -51,31 +48,41 @@ class _MyRecordPageState extends State<MyRecordPage> {
                 Divider(
                   thickness: 4,
                 ),
-                SizedBox(height: 70),
-                Image.asset(Images.imgHealth),
-                SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(
-                    'sorry_we_couldn'.tr,
-                    textAlign: TextAlign.center,
-                    style: robotoRegular.copyWith(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff979797)),
+                Expanded(
+                  child: SizedBox(
+                    // height: 530,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ListView.separated(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              return PatientListTile();
+                            },
+                            separatorBuilder: (context, index) {
+                              return Divider(
+                                thickness: 1,
+                                color: Color(0xff979797),
+                              );
+                            },
+                            itemCount: 20,
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+            padding:
+                const EdgeInsets.only(left: 30, right: 30, bottom: 50, top: 10),
             child: InkWell(
-              onTap: () {
-                Get.bottomSheet(AddNewPateintPage(),
-                    backgroundColor: Colors.transparent,
-                    isScrollControlled: true);
-              },
+              onTap: () {},
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(

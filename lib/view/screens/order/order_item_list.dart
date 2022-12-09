@@ -4,7 +4,8 @@ import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 
 class OrderItemList extends StatefulWidget {
-  const OrderItemList({Key key}) : super(key: key);
+  final int selectedIndex;
+  const OrderItemList({Key key, this.selectedIndex}) : super(key: key);
 
   @override
   State<OrderItemList> createState() => _OrderItemListState();
@@ -17,7 +18,9 @@ class _OrderItemListState extends State<OrderItemList> {
   }
 
   decrement() {
-    if (count > 1) {
+    if (widget.selectedIndex == 0) {
+      count = 1;
+    } else if (count > 1) {
       count--;
     }
   }
@@ -76,7 +79,11 @@ class _OrderItemListState extends State<OrderItemList> {
             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 17),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: Color(0xffbf1d2d)),
+              border: Border.all(
+                color: widget.selectedIndex == 0
+                    ? Color(0xff0EACD7)
+                    : Color(0xffbf1d2d),
+              ),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -88,20 +95,35 @@ class _OrderItemListState extends State<OrderItemList> {
                       decrement();
                     });
                   },
-                  child: Image.asset(
-                    Images.icMinus,
-                    width: 12,
-                    height: 11,
-                  ),
+                  child: widget.selectedIndex == 1
+                      ? Image.asset(
+                          Images.icMinus,
+                          width: 15,
+                          height: 15,
+                          color: widget.selectedIndex == 0
+                              ? Color(0xff0EACD7)
+                              : Color(0xffbf1d2d),
+                        )
+                      : Image.asset(
+                          Images.icDelete,
+                          width: 15,
+                          height: 15,
+                          color: widget.selectedIndex == 0
+                              ? Color(0xff0EACD7)
+                              : Color(0xffbf1d2d),
+                        ),
                 ),
                 SizedBox(width: 15),
                 Text(
                   count.toString(),
                   textAlign: TextAlign.center,
                   style: robotoRegular.copyWith(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      color: Color(0xffbf1d2d)),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    color: widget.selectedIndex == 0
+                        ? Color(0xff0EACD7)
+                        : Color(0xffbf1d2d),
+                  ),
                 ),
                 SizedBox(width: 15),
                 InkWell(
@@ -114,6 +136,9 @@ class _OrderItemListState extends State<OrderItemList> {
                     Images.icAdd,
                     width: 12,
                     height: 11,
+                    color: widget.selectedIndex == 0
+                        ? Color(0xff0EACD7)
+                        : Color(0xffbf1d2d),
                   ),
                 ),
               ],

@@ -5,8 +5,10 @@ import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 
 class GroceryWeightBottomsheet extends StatefulWidget {
+  final int selectedIndex;
   const GroceryWeightBottomsheet({
     Key key,
+    this.selectedIndex,
   }) : super(key: key);
 
   @override
@@ -49,12 +51,19 @@ class _GroceryWeightBottomsheetState extends State<GroceryWeightBottomsheet> {
                     children: [
                       Image.asset(Images.imgWeight),
                       SizedBox(width: 20),
-                      Text("choose_weight".tr,
-                          style: robotoMedium.copyWith(
-                            color: Color(0xff09323e),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                          )),
+                      widget.selectedIndex == 1
+                          ? Text("available_quantities".tr,
+                              style: robotoMedium.copyWith(
+                                color: Color(0xff09323e),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                              ))
+                          : Text("choose_weight".tr,
+                              style: robotoMedium.copyWith(
+                                color: Color(0xff09323e),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                              )),
                     ],
                   ),
                 ),
@@ -70,6 +79,17 @@ class _GroceryWeightBottomsheetState extends State<GroceryWeightBottomsheet> {
               ],
             ),
           ),
+          widget.selectedIndex == 1
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text("medicine_strength".tr,
+                      style: robotoMedium.copyWith(
+                        color: Color(0xff09323e),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                      )),
+                )
+              : SizedBox.shrink(),
           SizedBox(
             height: 200,
             child: ListView.builder(

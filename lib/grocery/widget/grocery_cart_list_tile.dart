@@ -1,18 +1,32 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 
 class GroceryCartListTile extends StatefulWidget {
-  const GroceryCartListTile({Key key}) : super(key: key);
+  final int selectedIndex;
+  const GroceryCartListTile({Key key, this.selectedIndex}) : super(key: key);
 
   @override
   State<GroceryCartListTile> createState() => _GroceryCartListTileState();
 }
 
 class _GroceryCartListTileState extends State<GroceryCartListTile> {
+  int count = 1;
+  counter() {
+    count++;
+  }
+
+  decrement() {
+    if (widget.selectedIndex == 1) {
+      if (count > 1) {
+        count--;
+      }
+    } else {
+      count = 1;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -69,35 +83,93 @@ class _GroceryCartListTileState extends State<GroceryCartListTile> {
                   ],
                 ),
               ),
-              Container(
-                padding: EdgeInsets.all(7),
-                decoration: BoxDecoration(
-                    color: Color(0xff0eacd7),
-                    borderRadius: BorderRadius.circular(8)),
-                child: Image.asset(Images.icDelete, height: 16, width: 15),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    decrement();
+                  });
+                },
+                child: Container(
+                  padding: EdgeInsets.all(7),
+                  decoration: BoxDecoration(
+                      color: widget.selectedIndex == 1
+                          ? Color(0xffbf1d2d)
+                          : Color(0xff0eacd7),
+                      borderRadius: BorderRadius.circular(8)),
+                  child: Image.asset(
+                      widget.selectedIndex == 1
+                          ? Images.icMinus
+                          : Images.icDelete,
+                      color: Color(0xffffffff),
+                      height: 16,
+                      width: 15),
+                ),
               ),
               SizedBox(width: 15),
-              Text("1",
+              Text(count.toString(),
                   style: robotoMedium.copyWith(
                     color: Color(0xff09323e),
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
                   )),
               SizedBox(width: 15),
-              Container(
-                padding: EdgeInsets.all(7),
-                decoration: BoxDecoration(
-                    color: Color(0xff0eacd7),
-                    borderRadius: BorderRadius.circular(8)),
-                child: Image.asset(
-                  Images.icAdd,
-                  height: 16,
-                  width: 15,
-                  color: Color(0xffffffff),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    counter();
+                  });
+                },
+                child: Container(
+                  padding: EdgeInsets.all(7),
+                  decoration: BoxDecoration(
+                      color: widget.selectedIndex == 1
+                          ? Color(0xffbf1d2d)
+                          : Color(0xff0eacd7),
+                      borderRadius: BorderRadius.circular(8)),
+                  child: Image.asset(
+                    Images.icAdd,
+                    height: 16,
+                    width: 15,
+                    color: Color(0xffffffff),
+                  ),
                 ),
               )
             ],
-          )
+          ),
+          widget.selectedIndex == 1
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 18),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text('do_you_want_reminder'.tr,
+                            style: robotoMedium.copyWith(
+                              color: Color(0xff979797),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            )),
+                        Container(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 28, vertical: 8),
+                          decoration: BoxDecoration(
+                              color: Color(0xff0eacd7),
+                              borderRadius: BorderRadius.circular(8)),
+                          child: Text('add'.tr,
+                              style: robotoMedium.copyWith(
+                                color: Color(0xffffffff),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              )),
+                        ),
+                      ],
+                    ),
+                  ],
+                )
+              : SizedBox.shrink()
         ],
       ),
     );

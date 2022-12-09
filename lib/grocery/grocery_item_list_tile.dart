@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:sixam_mart/grocery/grocery_details_page.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
+import 'package:sixam_mart/view/screens/chat/chat_screen.dart';
+import 'package:sixam_mart/view/screens/chat/conversation_screen.dart';
 
 class GoceryItemListTile extends StatefulWidget {
   final int selectedIndex;
@@ -88,7 +90,37 @@ class _GoceryItemListTileState extends State<GoceryItemListTile> {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                    )
+                    ),
+                    widget.selectedIndex == 1
+                        ? Positioned(
+                            left: 20,
+                            bottom: 14,
+                            child: InkWell(
+                              onTap: () {
+                                Get.to(ChatScreen());
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    Images.icMessag,
+                                    width: 21,
+                                    height: 21,
+                                  ),
+                                  SizedBox(width: 10),
+                                  Text(
+                                    "Chat now",
+                                    style: robotoMedium.copyWith(
+                                      color: Color(0xffffffff),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ))
+                        : SizedBox.shrink()
                   ],
                 )),
           ),

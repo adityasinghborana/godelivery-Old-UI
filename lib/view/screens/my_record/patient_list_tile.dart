@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/my_record/patient_detail_page.dart';
-import 'package:sixam_mart/my_record/patient_edit_delete_bottomsheet.dart';
+import 'package:sixam_mart/view/screens/my_record/patient_detail_page.dart';
+import 'package:sixam_mart/view/screens/my_record/patient_edit_delete_bottomsheet.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 
@@ -34,15 +34,32 @@ class _PatientListTileState extends State<PatientListTile> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CircleAvatar(
-                        radius: 40,
-                        backgroundColor: Color(0xff0eacd7).withOpacity(0.4),
-                        child: Image.asset(
-                          Images.icPlaceholder,
-                          height: 46,
-                          width: 46,
+                      Container(
+                        padding: EdgeInsets.all(6),
+                        // width: 60,
+                        // height: 60,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: Color(0xff0eacd7).withOpacity(0.4),
+                        ),
+                        child: ClipOval(
+                          child: Image.asset(
+                            Images.icPlaceholder,
+                            height: 46,
+                            width: 46,
+                          ),
                         ),
                       ),
+                      // CircleAvatar(
+                      //   radius: 40,
+                      //   backgroundColor: Color(0xff0eacd7).withOpacity(0.4),
+                      //   child: Image.asset(
+                      //     Images.icPlaceholder,
+                      //     height: 46,
+                      //     width: 46,
+                      //   ),
+                      // ),
                       SizedBox(width: 14),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,

@@ -19,13 +19,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class OrderDetailsScreen extends StatefulWidget {
+  final int selectedIndex;
   // final OrderModel orderModel;
   // final int orderId;
   // final bool fromNotification;
-  // OrderDetailsScreen(
-  //     {@required this.orderModel,
-  //     @required this.orderId,
-  //     this.fromNotification = false});
+  OrderDetailsScreen({this.selectedIndex});
 
   @override
   _OrderDetailsScreenState createState() => _OrderDetailsScreenState();
@@ -270,7 +268,9 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         shrinkWrap: true,
                         // physics: NeverScrollableScrollPhysics(),
                         itemBuilder: ((context, index) {
-                          return OrderItemList();
+                          return OrderItemList(
+                            selectedIndex: widget.selectedIndex,
+                          );
                         })),
                   ),
                   SizedBox(height: 20),

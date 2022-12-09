@@ -6,7 +6,9 @@ import 'package:sixam_mart/util/styles.dart';
 import 'package:sixam_mart/view/screens/item/item_details_screen.dart';
 
 class GroceryDetailsItemList extends StatefulWidget {
-  const GroceryDetailsItemList({Key key}) : super(key: key);
+  final int selectedIndex;
+
+  const GroceryDetailsItemList({Key key, this.selectedIndex}) : super(key: key);
 
   @override
   State<GroceryDetailsItemList> createState() => _GroceryDetailsItemListState();
@@ -17,7 +19,9 @@ class _GroceryDetailsItemListState extends State<GroceryDetailsItemList> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(ItemDetailsScreen());
+        Get.to(ItemDetailsScreen(
+          selectedIndex: widget.selectedIndex,
+        ));
       },
       child: Container(
           decoration: BoxDecoration(
@@ -117,7 +121,8 @@ class _GroceryDetailsItemListState extends State<GroceryDetailsItemList> {
               InkWell(
                 onTap: () {
                   Get.bottomSheet(
-                    GroceryWeightBottomsheet(),
+                    GroceryWeightBottomsheet(
+                        selectedIndex: widget.selectedIndex),
                     backgroundColor: Colors.transparent,
                     isScrollControlled: true,
                   );

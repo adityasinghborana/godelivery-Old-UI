@@ -527,7 +527,9 @@ class _GroceryDetailsPageState extends State<GroceryDetailsPage> {
                                     mainAxisSpacing: 20),
                             itemCount: 10,
                             itemBuilder: ((context, index) {
-                              return GroceryDetailsItemList();
+                              return GroceryDetailsItemList(
+                                selectedIndex: widget.selectedIndex,
+                              );
                             })),
                       )
                     ],
@@ -567,7 +569,9 @@ class _GroceryDetailsPageState extends State<GroceryDetailsPage> {
                   ),
                   InkWell(
                     onTap: () {
-                      Get.bottomSheet(GroceryCartBottomsheet(),
+                      Get.bottomSheet(
+                          GroceryCartBottomsheet(
+                              selectedIndex: widget.selectedIndex),
                           backgroundColor: Colors.transparent,
                           isScrollControlled: true);
                     },
