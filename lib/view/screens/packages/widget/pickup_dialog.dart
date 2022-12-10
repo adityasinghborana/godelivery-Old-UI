@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
+import 'package:sixam_mart/view/screens/packages/pickup_address_page.dart';
 
 class PickupDialog extends StatefulWidget {
   const PickupDialog({Key key}) : super(key: key);
@@ -68,19 +69,24 @@ class _PickupDialogState extends State<PickupDialog> {
                   ),
                 ),
                 SizedBox(width: 20),
-                Container(
-                  // width: 84,
-                  padding: EdgeInsets.symmetric(vertical: 7, horizontal: 25),
-                  decoration: BoxDecoration(
-                      color: Color(0xffbf1d2d),
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Center(
-                    child: Text(
-                      'yes_i_do'.tr,
-                      style: robotoRegular.copyWith(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xffffffff)),
+                InkWell(
+                  onTap: () {
+                    Get.to(PickUpPage());
+                  },
+                  child: Container(
+                    // width: 84,
+                    padding: EdgeInsets.symmetric(vertical: 7, horizontal: 25),
+                    decoration: BoxDecoration(
+                        color: Color(0xffbf1d2d),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: Text(
+                        'yes_i_do'.tr,
+                        style: robotoRegular.copyWith(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xffffffff)),
+                      ),
                     ),
                   ),
                 ),

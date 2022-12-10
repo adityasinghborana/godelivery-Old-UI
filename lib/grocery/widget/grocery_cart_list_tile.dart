@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sixam_mart/grocery/widget/add_reminder_dialog.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 
@@ -152,18 +153,23 @@ class _GroceryCartListTileState extends State<GroceryCartListTile> {
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                             )),
-                        Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 28, vertical: 8),
-                          decoration: BoxDecoration(
-                              color: Color(0xff0eacd7),
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Text('add'.tr,
-                              style: robotoMedium.copyWith(
-                                color: Color(0xffffffff),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                              )),
+                        InkWell(
+                          onTap: () {
+                            Get.dialog(addReminderDialog());
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 28, vertical: 8),
+                            decoration: BoxDecoration(
+                                color: Color(0xff0eacd7),
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Text('add'.tr,
+                                style: robotoMedium.copyWith(
+                                  color: Color(0xffffffff),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                )),
+                          ),
                         ),
                       ],
                     ),

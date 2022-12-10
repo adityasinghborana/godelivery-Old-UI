@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
+import 'package:sixam_mart/view/screens/packages/arrival_time_bottomsheet.dart';
+import 'package:sixam_mart/view/screens/packages/pickup_address_page.dart';
+import 'package:sixam_mart/view/screens/packages/prohibited_item_bottomsheet.dart';
 import 'package:sixam_mart/view/screens/packages/select_weight_bottomsheet.dart';
 import 'package:sixam_mart/view/screens/packages/widget/pickup_dialog.dart';
 import 'package:sixam_mart/view/screens/packages/select_size_bottomsheet.dart';
@@ -77,56 +80,54 @@ class _PackagePageState extends State<PackagePage> {
                 ),
               ),
               SizedBox(height: 40),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 20,
-                            height: 20,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: Color(0xffa3a3a3), width: 3),
-                                borderRadius: BorderRadius.circular(12)),
-                          ),
-                          // DottedLine(
-                          //   direction: Axis.horizontal,
-                          //   lineLength: 40,
-                          //   lineThickness: 1.0,
-                          //   dashLength: 4.0,
-                          //   dashColor: Colors.black,
-                          //   //dashGradient: [Colors.red, Colors.blue],
-                          //   dashRadius: 0.0,
-                          //   dashGapLength: 4.0,
-                          //   dashGapColor: Colors.transparent,
-                          //   // dashGapGradient: [Colors.red, Colors.blue],
-                          //   dashGapRadius: 0.0,
-                          // )
-                        ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 42),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: 24,
+                      height: 24,
+                      decoration: BoxDecoration(
+                          color: Color(0xfff1f1f1),
+                          border:
+                              Border.all(color: Color(0xfff1f1f1), width: 3),
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Container(
+                        width: 20,
+                        height: 20,
+                        decoration: BoxDecoration(
+                            color: Color(0xff0eacd7),
+                            border:
+                                Border.all(color: Color(0xff0eacd7), width: 3),
+                            borderRadius: BorderRadius.circular(12)),
                       ),
-                      SizedBox(height: 10),
-                      Text(
-                        'product_details'.tr,
-                        style: robotoRegular.copyWith(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff979797)),
+                    ),
+                    Expanded(
+                      child: DottedLine(
+                        direction: Axis.horizontal,
+                        // lineLength: 40,
+                        lineThickness: 1.0,
+                        dashLength: 4.0,
+                        dashColor: Color(0xff979797),
+                        //dashGradient: [Colors.red, Colors.blue],
+                        dashRadius: 0.0,
+                        dashGapLength: 4.0,
+                        dashGapColor: Colors.transparent,
+                        // dashGapGradient: [Colors.red, Colors.blue],
+                        dashGapRadius: 0.0,
                       ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
+                    ),
+                    Container(
+                      width: 24,
+                      height: 24,
+                      decoration: BoxDecoration(
+                          color: Color(0xfff1f1f1),
+                          border:
+                              Border.all(color: Color(0xfff1f1f1), width: 3),
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Container(
                         width: 20,
                         height: 20,
                         decoration: BoxDecoration(
@@ -134,21 +135,31 @@ class _PackagePageState extends State<PackagePage> {
                                 Border.all(color: Color(0xffa3a3a3), width: 3),
                             borderRadius: BorderRadius.circular(12)),
                       ),
-                      SizedBox(height: 10),
-                      Text(
-                        'pickup_address'.tr,
-                        style: robotoRegular.copyWith(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff979797)),
+                    ),
+                    Expanded(
+                      child: DottedLine(
+                        direction: Axis.horizontal,
+                        // lineLength: 40,
+                        lineThickness: 1.0,
+                        dashLength: 4.0,
+                        dashColor: Color(0xff979797),
+                        //dashGradient: [Colors.red, Colors.blue],
+                        dashRadius: 0.0,
+                        dashGapLength: 4.0,
+                        dashGapColor: Colors.transparent,
+                        // dashGapGradient: [Colors.red, Colors.blue],
+                        dashGapRadius: 0.0,
                       ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
+                    ),
+                    Container(
+                      width: 24,
+                      height: 24,
+                      decoration: BoxDecoration(
+                          color: Color(0xfff1f1f1),
+                          border:
+                              Border.all(color: Color(0xfff1f1f1), width: 3),
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Container(
                         width: 20,
                         height: 20,
                         decoration: BoxDecoration(
@@ -156,21 +167,34 @@ class _PackagePageState extends State<PackagePage> {
                                 Border.all(color: Color(0xffa3a3a3), width: 3),
                             borderRadius: BorderRadius.circular(12)),
                       ),
-                      SizedBox(height: 10),
-                      Text(
-                        'dropoff_address'.tr,
-                        style: robotoRegular.copyWith(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff979797)),
+                    ),
+                    // SizedBox(
+                    //   width: 10,
+                    // ),
+                    Expanded(
+                      child: DottedLine(
+                        direction: Axis.horizontal,
+                        // lineLength: 90,
+                        lineThickness: 1.0,
+                        dashLength: 4.0,
+                        dashColor: Color(0xff979797),
+                        //dashGradient: [Colors.red, Colors.blue],
+                        dashRadius: 0.0,
+                        dashGapLength: 4.0,
+                        dashGapColor: Colors.transparent,
+                        // dashGapGradient: [Colors.red, Colors.blue],
+                        dashGapRadius: 0.0,
                       ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
+                    ),
+                    Container(
+                      width: 24,
+                      height: 24,
+                      decoration: BoxDecoration(
+                          color: Color(0xfff1f1f1),
+                          border:
+                              Border.all(color: Color(0xfff1f1f1), width: 3),
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Container(
                         width: 20,
                         height: 20,
                         decoration: BoxDecoration(
@@ -178,17 +202,47 @@ class _PackagePageState extends State<PackagePage> {
                                 Border.all(color: Color(0xffa3a3a3), width: 3),
                             borderRadius: BorderRadius.circular(12)),
                       ),
-                      SizedBox(height: 10),
-                      Text(
-                        'review'.tr,
-                        style: robotoRegular.copyWith(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff979797)),
-                      ),
-                    ],
-                  )
-                ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'product_details'.tr,
+                      style: robotoRegular.copyWith(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xff979797)),
+                    ),
+                    Text(
+                      'pickup_address'.tr,
+                      style: robotoRegular.copyWith(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xff979797)),
+                    ),
+                    Text(
+                      'dropoff_address'.tr,
+                      style: robotoRegular.copyWith(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xff979797)),
+                    ),
+                    Text(
+                      'review'.tr,
+                      style: robotoRegular.copyWith(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xff979797)),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: 30),
               Expanded(
@@ -247,11 +301,6 @@ class _PackagePageState extends State<PackagePage> {
                                       borderRadius: BorderRadius.circular(8)),
                                   elevation: 5,
                                   child: InkWell(
-                                    onTap: () {
-                                      Get.bottomSheet(SelectSizedBottomsheet(),
-                                          backgroundColor: Colors.transparent,
-                                          isScrollControlled: true);
-                                    },
                                     child: Container(
                                       decoration: BoxDecoration(
                                           border: Border.all(
@@ -259,7 +308,13 @@ class _PackagePageState extends State<PackagePage> {
                                           borderRadius:
                                               BorderRadius.circular(8)),
                                       child: TextFormField(
-                                        readOnly: true,
+                                        onTap: () {
+                                          Get.bottomSheet(
+                                              SelectSizedBottomsheet(),
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              isScrollControlled: true);
+                                        },
                                         decoration:
                                             textFieldInputDecoration3.copyWith(
                                                 enabledBorder:
@@ -299,46 +354,40 @@ class _PackagePageState extends State<PackagePage> {
                                           BorderSide(color: Color(0xffdedede)),
                                       borderRadius: BorderRadius.circular(8)),
                                   elevation: 5,
-                                  child: InkWell(
-                                    onTap: () {
-                                      Get.bottomSheet(SelectWeightBottomsheet(),
-                                          backgroundColor: Colors.transparent,
-                                          isScrollControlled: true);
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Color(0xffdedede)),
-                                          borderRadius:
-                                              BorderRadius.circular(8)),
-                                      child: TextFormField(
-                                        decoration:
-                                            textFieldInputDecoration3.copyWith(
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                        borderSide:
-                                                            BorderSide.none),
-                                                contentPadding:
-                                                    EdgeInsets.symmetric(
-                                                        vertical: 9,
-                                                        horizontal: 15),
-                                                border: OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: Color(0xffdedede)
-                                                            .withOpacity(
-                                                                0.25))),
-                                                hintText: 'select_weight'.tr,
-                                                hintStyle: TextStyle(
-                                                    fontSize: 12,
-                                                    color: Color(0xff979797),
-                                                    fontWeight:
-                                                        FontWeight.w400)),
-                                        onSaved: (value) {
-                                          setState(() {
-                                            // password = value!.trim();
-                                          });
-                                        },
-                                      ),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Color(0xffdedede)),
+                                        borderRadius: BorderRadius.circular(8)),
+                                    child: TextFormField(
+                                      onTap: () {
+                                        Get.bottomSheet(
+                                            SelectWeightBottomsheet(),
+                                            backgroundColor: Colors.transparent,
+                                            isScrollControlled: true);
+                                      },
+                                      decoration:
+                                          textFieldInputDecoration3.copyWith(
+                                              enabledBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide.none),
+                                              contentPadding:
+                                                  EdgeInsets.symmetric(
+                                                      vertical: 9,
+                                                      horizontal: 15),
+                                              border: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Color(0xffdedede)
+                                                          .withOpacity(0.25))),
+                                              hintText: 'select_weight'.tr,
+                                              hintStyle: TextStyle(
+                                                  fontSize: 12,
+                                                  color: Color(0xff979797),
+                                                  fontWeight: FontWeight.w400)),
+                                      onSaved: (value) {
+                                        setState(() {
+                                          // password = value!.trim();
+                                        });
+                                      },
                                     ),
                                   ),
                                 ),
@@ -356,6 +405,11 @@ class _PackagePageState extends State<PackagePage> {
                                   border: Border.all(color: Color(0xffdedede)),
                                   borderRadius: BorderRadius.circular(8)),
                               child: TextFormField(
+                                onTap: () {
+                                  Get.bottomSheet(ArrivalTimeBottomsheet(),
+                                      backgroundColor: Colors.transparent,
+                                      isScrollControlled: true);
+                                },
                                 decoration: textFieldInputDecoration3.copyWith(
                                     enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide.none),
@@ -505,25 +559,32 @@ class _PackagePageState extends State<PackagePage> {
                             ],
                           ),
                           SizedBox(height: 30),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                Images.icAbout,
-                                height: 20,
-                                width: 20,
-                                color: Color(0xffBF1D2D),
-                              ),
-                              SizedBox(width: 5),
-                              Text(
-                                'prohibited_item'.tr,
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: Color(0xffBF1D2D),
-                                    fontWeight: FontWeight.w700),
-                              ),
-                            ],
+                          InkWell(
+                            onTap: () {
+                              Get.bottomSheet(ProhibitedItemBottomsheet(),
+                                  backgroundColor: Colors.transparent,
+                                  isScrollControlled: true);
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  Images.icAbout,
+                                  height: 20,
+                                  width: 20,
+                                  color: Color(0xffBF1D2D),
+                                ),
+                                SizedBox(width: 5),
+                                Text(
+                                  'prohibited_item'.tr,
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color: Color(0xffBF1D2D),
+                                      fontWeight: FontWeight.w700),
+                                ),
+                              ],
+                            ),
                           ),
                           SizedBox(height: 30),
                           Text(
@@ -636,7 +697,6 @@ class _PackagePageState extends State<PackagePage> {
                   InkWell(
                     onTap: () {
                       Get.dialog(PickupDialog());
-                      // Get.back();
                     },
                     child: Container(
                       width: 123,

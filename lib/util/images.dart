@@ -213,4 +213,25 @@ class Images {
   static const String icPaintCan = 'assets/image/ic_paint_can.png';
   static const String icWashing = 'assets/image/ic_washing.png';
   static const String icWardrop = 'assets/image/ic_wardrobe.png';
+  static const String icGreyLocation = 'assets/image/ic_grey_location.png';
+  static const String imgTruck = 'assets/image/img_truck.png';
+  static const String icExpressDilevery =
+      'assets/image/ic_express_dilevery.png';
+  static const String icBicycle = 'assets/image/ic_cycle.png';
+  static const String icMotor = 'assets/image/ic_motorcycle.png';
+  static const String icCar = 'assets/image/ic_car.png';
+  static const String icVan = 'assets/image/ic_van.png';
+  static const String ictruck = 'assets/image/ic_truck.png';
+  static const String imgDeliverServicesBg =
+      'assets/image/img_delivery_services.png';
+  static const String icAnimal = 'assets/image/ic_animal.png';
+  static const String icAntique = 'assets/image/ic_antique.png';
+  static const String icCarBodyPart = 'assets/image/ic_car_part.png';
+  static const String icCreditCard = 'assets/image/ic_credit_card.png';
+  static const String icCurrency = 'assets/image/ic_currency.png';
+  static const String icBiological = 'assets/image/ic_biological.png';
+  static const String icGym = 'assets/image/ic_gym.png';
+  static const String icFirearm = 'assets/image/ic_firearm.png';
+  static const String icFire = 'assets/image/ic_fire.png';
+  static const String icHuman = 'assets/image/ic_human_renains.png';
 }
