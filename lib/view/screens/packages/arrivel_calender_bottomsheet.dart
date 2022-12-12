@@ -104,28 +104,13 @@ class _ArrivalCalenderBottomsheetState
                 // ),
                 TableCalendar(
                   headerStyle: HeaderStyle(
+                    titleTextStyle: robotoRegular.copyWith(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff222222)),
                     centerHeaderTitle: true,
                     formatButtonVisible: false,
                   ),
-                  // initialCalendarFormat: CalendarFormat.month,
-                  // calendarStyle: CalendarStyle(
-                  //     todayColor: Colors.blue,
-                  //     selectedColor: Theme.of(context).primaryColor,
-                  //     todayStyle: TextStyle(
-                  //         fontWeight: FontWeight.bold,
-                  //         fontSize: 22.0,
-                  //         color: Colors.white)),
-
-                  // headerStyle: HeaderStyle(
-                  //   centerHeaderTitle: true,
-                  //   // formatButtonDecoration: BoxDecoration(
-                  //   //   color: Colors.brown,
-                  //   //   borderRadius: BorderRadius.circular(22.0),
-                  //   // ),
-                  //   formatButtonTextStyle: TextStyle(color: Colors.white),
-                  //   formatButtonShowsNext: false,
-                  // ),
-                  // startingDayOfWeek: StartingDayOfWeek.monday,
                   onDaySelected: ((
                     day,
                     events,
@@ -136,7 +121,6 @@ class _ArrivalCalenderBottomsheetState
                       print("select date-->" + day.day.toString());
                     });
                   }),
-
                   builders: CalendarBuilders(
                     selectedDayBuilder: (context, date, events) => Container(
                         margin: const EdgeInsets.all(5.0),

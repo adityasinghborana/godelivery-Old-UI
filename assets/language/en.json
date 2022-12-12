@@ -852,5 +852,22 @@
   "evening": "Evening",
   "night": "Night",
   "take_your_first_does": "At What time of day to do you take your first does ?",
-  "time": "Time"
+  "time": "Time",
+  "am": "Am",
+  "pm": "Pm",
+  "take_your_second_does": "At What time of day to do you take your Second does ?",
+  "start_date": "Start Date?",
+  "end_date": "End Date?",
+  "medication_from": "Medication From",
+  "timing": "Timing",
+  "set_routine": "Set Routine",
+  "daily": "Daily",
+  "schedule_": "Schedule",
+  "add_new_event": "Add New Event",
+  "taken": "Taken",
+  "medicine_reminder": "Medicine Reminder Added Successfully",
+  "reschedule": "Reschedule",
+  "take": "Take",
+  "are_you_sure_delete_reminder": "Are you sure want to Delete this Reminder",
+  "relation": "Relation"
 }

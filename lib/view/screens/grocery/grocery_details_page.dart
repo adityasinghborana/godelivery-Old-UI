@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/grocery/grocery_details_category_list.dart';
-import 'package:sixam_mart/grocery/grocery_details_item_list.dart';
-import 'package:sixam_mart/grocery/widget/grocery_cart_bottomsheet.dart';
+import 'package:sixam_mart/view/screens/grocery/grocery_details_category_list.dart';
+import 'package:sixam_mart/view/screens/grocery/grocery_details_item_list.dart';
+import 'package:sixam_mart/view/screens/grocery/widget/grocery_cart_bottomsheet.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 

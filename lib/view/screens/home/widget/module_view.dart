@@ -8,7 +8,7 @@ import 'package:sixam_mart/controller/banner_controller.dart';
 import 'package:sixam_mart/controller/location_controller.dart';
 import 'package:sixam_mart/controller/splash_controller.dart';
 import 'package:sixam_mart/data/model/response/address_model.dart';
-import 'package:sixam_mart/grocery/grocey_page.dart';
+import 'package:sixam_mart/view/screens/grocery/grocey_page.dart';
 import 'package:sixam_mart/helper/responsive_helper.dart';
 import 'package:sixam_mart/util/dimensions.dart';
 import 'package:sixam_mart/util/images.dart';

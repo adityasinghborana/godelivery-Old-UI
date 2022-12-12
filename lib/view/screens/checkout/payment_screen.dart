@@ -9,6 +9,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 import 'package:sixam_mart/view/screens/checkout/widget/payment_succesful_dialog.dart';
+import 'package:sixam_mart/view/screens/track_order/track_order_page.dart';
 
 class PaymentScreen extends StatefulWidget {
   //final OrderModel orderModel;
@@ -140,32 +141,37 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       color: Color(0xff979797)),
                 ),
                 SizedBox(height: 15),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 16),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        color: Color(0xff979797),
-                      )),
-                  child: Row(
-                    // mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        Images.imgAtmCard,
-                        width: 31,
-                        height: 23,
-                      ),
-                      SizedBox(width: 20),
-                      Text(
-                        'add_card'.tr,
-                        style: robotoRegular.copyWith(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xff09323e)),
-                      ),
-                    ],
+                InkWell(
+                  onTap: () {
+                    Get.to(TrackOrderPage());
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(
+                          color: Color(0xff979797),
+                        )),
+                    child: Row(
+                      // mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          Images.imgAtmCard,
+                          width: 31,
+                          height: 23,
+                        ),
+                        SizedBox(width: 20),
+                        Text(
+                          'add_card'.tr,
+                          style: robotoRegular.copyWith(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xff09323e)),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(height: 30),

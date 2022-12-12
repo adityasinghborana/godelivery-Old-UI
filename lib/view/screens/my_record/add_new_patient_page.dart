@@ -24,6 +24,16 @@ class _AddNewPateintPageState extends State<AddNewPateintPage> {
 
   String genderValue;
   final gender = ['Male', 'Female'];
+
+  String relationValue;
+  final relation = [
+    'Self',
+    'Father',
+    'Son',
+    'Husbung',
+    'Grandfather',
+    'Others'
+  ];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -175,6 +185,44 @@ class _AddNewPateintPageState extends State<AddNewPateintPage> {
                   ),
                 ),
               ],
+            ),
+            SizedBox(height: 20),
+            Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)),
+              elevation: 5,
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                ),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: Color(0xffdedede))),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<String>(
+                    hint: Text(
+                      "relation".tr,
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: Color(0xff979797),
+                          fontWeight: FontWeight.w400),
+                    ),
+                    value: relationValue,
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xff979797),
+                        fontWeight: FontWeight.w400),
+                    iconSize: 30,
+                    icon: const Icon(
+                      Icons.keyboard_arrow_down_outlined,
+                      color: Color(0xff979797),
+                    ),
+                    isExpanded: true,
+                    items: relation.map(relationMethod).toList(),
+                    onChanged: (value) => setState(() => relationValue = value),
+                  ),
+                ),
+              ),
             ),
             SizedBox(height: 20),
             Row(
@@ -674,6 +722,12 @@ class _AddNewPateintPageState extends State<AddNewPateintPage> {
   }
 
   DropdownMenuItem<String> genderMethod(String item) => DropdownMenuItem(
+      value: item,
+      child: Text(
+        item,
+      ));
+
+  DropdownMenuItem<String> relationMethod(String item) => DropdownMenuItem(
       value: item,
       child: Text(
         item,

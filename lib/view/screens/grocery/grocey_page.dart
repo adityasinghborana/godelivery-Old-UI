@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:sixam_mart/grocery/grocery_category_list_tile.dart';
-import 'package:sixam_mart/grocery/grocery_item_list_tile.dart';
+import 'package:sixam_mart/view/screens/grocery/grocery_category_list_tile.dart';
+import 'package:sixam_mart/view/screens/grocery/grocery_item_list_tile.dart';
 import 'package:sixam_mart/view/screens/my_record/my_record_page.dart';
 import 'package:sixam_mart/view/screens/my_record/prescription/prescription_upload_page.dart';
 import 'package:sixam_mart/view/screens/packages/package_page.dart';
@@ -11,7 +11,7 @@ import 'package:sixam_mart/view/screens/reminder/reminder_page.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 
-import '../view/screens/category/category_screen.dart';
+import '../category/category_screen.dart';
 
 class GroceryPage extends StatefulWidget {
   final int selectedIndex;

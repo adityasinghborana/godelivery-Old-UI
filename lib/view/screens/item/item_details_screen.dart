@@ -5,7 +5,7 @@ import 'package:sixam_mart/controller/cart_controller.dart';
 import 'package:sixam_mart/controller/item_controller.dart';
 import 'package:sixam_mart/controller/splash_controller.dart';
 import 'package:sixam_mart/data/model/response/cart_model.dart';
-import 'package:sixam_mart/grocery/widget/grocery_cart_bottomsheet.dart';
+import 'package:sixam_mart/view/screens/grocery/widget/grocery_cart_bottomsheet.dart';
 import 'package:sixam_mart/helper/responsive_helper.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';

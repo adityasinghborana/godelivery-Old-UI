@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/grocery/widget/add_reminder_dialog.dart';
+import 'package:sixam_mart/view/screens/reminder/dialog/add_reminder_dialog.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 

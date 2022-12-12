@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:sixam_mart/grocery/widget/grocery_weight_bottomsheet.dart';
+import 'package:sixam_mart/view/screens/grocery/widget/grocery_weight_bottomsheet.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 

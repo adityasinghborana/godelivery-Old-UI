@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/grocery/grocery_details_page.dart';
+import 'package:sixam_mart/view/screens/grocery/grocery_details_page.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 import 'package:sixam_mart/view/screens/chat/chat_screen.dart';

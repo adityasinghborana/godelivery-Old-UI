@@ -234,4 +234,8 @@ class Images {
   static const String icFirearm = 'assets/image/ic_firearm.png';
   static const String icFire = 'assets/image/ic_fire.png';
   static const String icHuman = 'assets/image/ic_human_renains.png';
+  static const String icMorning = 'assets/image/ic_morning.png';
+  static const String icEditGreen = 'assets/image/ic_edit_green.png';
+  static const String icSuccess = 'assets/image/ic_success.png';
+  static const String icDeleteReminder = 'assets/image/ic_delete_reminder.png';
 }
