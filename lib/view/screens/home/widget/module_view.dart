@@ -51,9 +51,9 @@ class ModuleView extends StatelessWidget {
                         Get.to(GroceryPage(
                           selectedIndex: index,
                         ));
-                        print("selected index--->" + index.toString());
+                        // splashController.switchModule(index, true);
+                        // print("selected index--->" + index.toString());
                       },
-                      //splashController.switchModule(index, true),
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(21, 20, 18, 15),
                         child: Container(
