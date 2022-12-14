@@ -869,5 +869,7 @@
   "reschedule": "Reschedule",
   "take": "Take",
   "are_you_sure_delete_reminder": "Are you sure want to Delete this Reminder",
-  "relation": "Relation"
+  "relation": "Relation",
+  "offers": "Offers",
+  "short_by": "Short by"
 }

@@ -10,6 +10,7 @@ import 'package:sixam_mart/view/screens/reminder/add_reminder_page.dart';
 import 'package:sixam_mart/view/screens/reminder/reminder_page.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
+import 'package:sixam_mart/view/screens/restaurants/restaurant_categories_list_tile.dart';
 
 import '../category/category_screen.dart';
 
@@ -80,6 +81,72 @@ class _GroceryPageState extends State<GroceryPage> {
                       ],
                     ),
                   ),
+                  widget.selectedIndex == 3
+                      ? Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 23),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 19),
+                              child: SingleChildScrollView(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      // padding: EdgeInsets.symmetric(
+                                      //     horizontal: 10, vertical: 10),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        // border: Border.all(
+                                        //     width: 1,
+                                        //     color: Color(0xff979797))
+                                      ),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Image.asset(Images.icPlaceholder,
+                                              height: 40, width: 30),
+                                          Text(
+                                            'offers'.tr,
+                                            style: robotoRegular.copyWith(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w400,
+                                                color: Color(0xff979797)),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Container(
+                                        margin:
+                                            EdgeInsets.only(top: 3, left: 20),
+                                        height: 60,
+                                        child: ListView.builder(
+                                            scrollDirection: Axis.horizontal,
+                                            itemCount: 10,
+                                            shrinkWrap: true,
+                                            //physics: NeverScrollableScrollPhysics(),
+                                            itemBuilder: ((context, index) {
+                                              return RestaurantCategoriesListTile();
+                                            })),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Divider(
+                              thickness: 4,
+                            ),
+                          ],
+                        )
+                      : SizedBox.shrink(),
 
                   widget.selectedIndex == 0
                       ? Column(
@@ -110,7 +177,7 @@ class _GroceryPageState extends State<GroceryPage> {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Text(
-                                            'Short by',
+                                            'short_by'.tr,
                                             style: robotoRegular.copyWith(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w500,

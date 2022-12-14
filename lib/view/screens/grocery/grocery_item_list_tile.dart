@@ -61,6 +61,30 @@ class _GoceryItemListTileState extends State<GoceryItemListTile> {
                           // width: 108,
                           // height: 22,
                         )),
+                    widget.selectedIndex == 3
+                        ? Positioned(
+                            top: 30,
+                            left: -1,
+                            child: Image.asset(
+                              Images.imgDelivery,
+                              // width: 108,
+                              // height: 22,
+                            ))
+                        : SizedBox.shrink(),
+                    widget.selectedIndex == 3
+                        ? Positioned(
+                            left: 3,
+                            top: 33,
+                            child: Text(
+                              "Get Free Delivery",
+                              style: robotoMedium.copyWith(
+                                color: Color(0xffffffff),
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          )
+                        : SizedBox.shrink(),
                     Positioned(
                       left: 4,
                       top: 12,

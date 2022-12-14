@@ -58,42 +58,51 @@ class _GroceryDetailsPageState extends State<GroceryDetailsPage> {
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: 45,
-                      left: 65,
-                      right: 65,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Color(0xffffffff),
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: TextFormField(
-                          // controller: _emailController,
-                          decoration: textFieldInputDecoration.copyWith(
-                              prefixIcon: Icon(
-                                Icons.search,
-                                color: Color(0xff979797),
+                    widget.selectedIndex == 1 || widget.selectedIndex == 0
+                        ? Positioned(
+                            top: 45,
+                            left: 65,
+                            right: 65,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xffffffff),
+                                borderRadius: BorderRadius.circular(6),
                               ),
-                              hintText: 'search_by_item'.tr,
-                              contentPadding: EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 15),
-                              hintStyle: TextStyle(color: Color(0xff979797))),
-                          // validator: (value) {
-                          //   if (value.isEmpty) {
-                          //     // print('value empty');
-                          //     return "enter_your_first_name".tr;
-                          //   } else {
-                          //     return null;
-                          //   }
-                          // },
-                          onSaved: (value) {
-                            setState(() {
-                              // _emailController.text = value;
-                            });
-                          },
-                        ),
-                      ),
-                    ),
+                              child: TextFormField(
+                                // controller: _emailController,
+                                decoration: textFieldInputDecoration.copyWith(
+                                    prefixIcon: Icon(
+                                      Icons.search,
+                                      color: Color(0xff979797),
+                                    ),
+                                    hintText: 'search_by_item'.tr,
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 10, horizontal: 15),
+                                    hintStyle:
+                                        TextStyle(color: Color(0xff979797))),
+                                // validator: (value) {
+                                //   if (value.isEmpty) {
+                                //     // print('value empty');
+                                //     return "enter_your_first_name".tr;
+                                //   } else {
+                                //     return null;
+                                //   }
+                                // },
+                                onSaved: (value) {
+                                  setState(() {
+                                    // _emailController.text = value;
+                                  });
+                                },
+                              ),
+                            ),
+                          )
+                        : SizedBox.shrink(),
+                    widget.selectedIndex == 3
+                        ? Positioned(
+                            top: 50,
+                            right: 60,
+                            child: Image.asset(Images.icSearch))
+                        : SizedBox.shrink(),
                     Positioned(
                         top: 50,
                         right: 20,
@@ -140,12 +149,35 @@ class _GroceryDetailsPageState extends State<GroceryDetailsPage> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Morrisons Shop",
-                                    style: robotoMedium.copyWith(
-                                      color: Color(0xff09323e),
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w700,
-                                    )),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text("Morrisons Shop",
+                                        style: robotoMedium.copyWith(
+                                          color: Color(0xff09323e),
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.w700,
+                                        )),
+                                    SizedBox(width: 10),
+                                    widget.selectedIndex == 3
+                                        ? Container(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 10, vertical: 5),
+                                            decoration: BoxDecoration(
+                                                color: Colors.green,
+                                                borderRadius:
+                                                    BorderRadius.circular(6)),
+                                            child: Text("veg".tr.toUpperCase(),
+                                                style: robotoMedium.copyWith(
+                                                  color: Color(0xffffffff),
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w700,
+                                                )),
+                                          )
+                                        : SizedBox.shrink()
+                                  ],
+                                ),
                                 SizedBox(height: 13),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -330,6 +362,49 @@ class _GroceryDetailsPageState extends State<GroceryDetailsPage> {
                             ]),
                       ),
                       SizedBox(height: 18),
+                      widget.selectedIndex == 3
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        Images.icMyRecords,
+                                        color: Color(0xff000000),
+                                      ),
+                                      SizedBox(width: 10),
+                                      Text("Delivery From 9:00 To 10:00",
+                                          style: robotoMedium.copyWith(
+                                            color: Color(0xff09323e),
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w700,
+                                          )),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 5),
+                                  decoration: BoxDecoration(
+                                      color: Color(0xfff5f5f5),
+                                      borderRadius: BorderRadius.circular(5),
+                                      border:
+                                          Border.all(color: Color(0xfff3f3f3))),
+                                  child: Text("change".tr.toUpperCase(),
+                                      style: robotoMedium.copyWith(
+                                        color: Color(0xff0eadc7),
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                )
+                              ],
+                            )
+                          : SizedBox.shrink(),
                       widget.selectedIndex == 1
                           ? Row(
                               mainAxisAlignment: MainAxisAlignment.center,
