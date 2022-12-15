@@ -238,4 +238,12 @@ class Images {
   static const String icEditGreen = 'assets/image/ic_edit_green.png';
   static const String icSuccess = 'assets/image/ic_success.png';
   static const String icDeleteReminder = 'assets/image/ic_delete_reminder.png';
+  static const String icOffers = 'assets/image/ic_offers.png';
+  static const String icBurger = 'assets/image/ic_burger.png';
+  static const String icFoodSearch = 'assets/image/ic_food_search.png';
+  static const String icDeliver = 'assets/image/ic_deliver.png';
+  static const String icHygieneRating = 'assets/image/ic_hygiene_rating.png';
+  static const String icMap = 'assets/image/ic_map.png';
+  static const String imgRestaurantItem =
+      'assets/image/img_restaurant_item.png';
 }

@@ -24,7 +24,11 @@ class _RestaurantCategoriesListTileState
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(Images.icPlaceholder, height: 40, width: 30),
+          Image.asset(
+            Images.icBurger,
+            // height: 40, width: 30
+          ),
+          SizedBox(height: 5),
           Text(
             "Burger",
             style: robotoMedium.copyWith(

@@ -109,8 +109,11 @@ class _GroceryPageState extends State<GroceryPage> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
                                         children: [
-                                          Image.asset(Images.icPlaceholder,
-                                              height: 40, width: 30),
+                                          Image.asset(
+                                            Images.icOffers,
+                                            // height: 40, width: 30
+                                          ),
+                                          SizedBox(height: 8),
                                           Text(
                                             'offers'.tr,
                                             style: robotoRegular.copyWith(
