@@ -930,39 +930,41 @@ class _GroceryDetailsPageState extends State<GroceryDetailsPage> {
                   ),
           ],
         ),
-        widget.selectedIndex == 3
-            ? Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: Container(
-                  // width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                  color: Colors.black.withOpacity(0.80),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Get.dialog(DialogRestaurantWarning());
-                        },
-                        child: Image.asset(
-                          Images.icWarning,
-                          color: Color(0xffffffff),
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text("some_disruption".tr,
-                          style: robotoMedium.copyWith(
-                            color: Color(0xffffffff),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          )),
-                    ],
-                  ),
-                ))
-            : SizedBox.shrink()
+        // widget.selectedIndex == 3
+        //     ? Positioned(
+        //         bottom: 0,
+        //         left: 0,
+        //         right: 0,
+        //         child: Container(
+        //           // width: MediaQuery.of(context).size.width,
+        //           padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+        //           color: Colors.black.withOpacity(0.80),
+        //           child: Column(
+        //             mainAxisAlignment: MainAxisAlignment.start,
+        //             crossAxisAlignment: CrossAxisAlignment.start,
+        //             children: [
+        //               InkWell(
+        //                 onTap: () {
+        //                   Get.dialog(DialogRestaurantWarning());
+        //                 },
+        //                 child: Image.asset(
+        //                   Images.icWarning,
+        //                   height: 23,
+        //                   width: 23,
+        //                   color: Color(0xffffffff),
+        //                 ),
+        //               ),
+        //               SizedBox(height: 11),
+        //               Text("some_disruption".tr,
+        //                   style: robotoMedium.copyWith(
+        //                     color: Color(0xffffffff),
+        //                     fontSize: 12,
+        //                     fontWeight: FontWeight.w400,
+        //                   )),
+        //             ],
+        //           ),
+        //         ))
+        //     : SizedBox.shrink()
       ]),
     );
   }

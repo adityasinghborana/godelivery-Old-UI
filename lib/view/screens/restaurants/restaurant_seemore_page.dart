@@ -54,7 +54,7 @@ class _RestaurantSeeMorePageState extends State<RestaurantSeeMorePage> {
           Container(
             decoration: BoxDecoration(boxShadow: [
               BoxShadow(
-                  blurRadius: 10, color: Color(0xff000000).withOpacity(0.10))
+                  blurRadius: 14, color: Color(0xff000000).withOpacity(0.14))
             ]),
             child: Container(
               color: Color(0xffffffff),
@@ -78,7 +78,7 @@ class _RestaurantSeeMorePageState extends State<RestaurantSeeMorePage> {
                             color: Color(0xff09323e),
                           ),
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(width: 28),
                         Text("Mary's Kitchen",
                             style: robotoMedium.copyWith(
                               color: Color(0xff09323e),
@@ -88,9 +88,10 @@ class _RestaurantSeeMorePageState extends State<RestaurantSeeMorePage> {
                       ],
                     ),
                   ),
-                  Icon(
-                    Icons.call,
-                    color: Color(0xffbf1d2d),
+                  Image.asset(
+                    Images.icCallSeeMore,
+                    height: 23,
+                    width: 18,
                   )
                 ],
               ),
@@ -108,14 +109,14 @@ class _RestaurantSeeMorePageState extends State<RestaurantSeeMorePage> {
                           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet tellus pharetra molestie sed Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet tellus pharetra molestie sedLorem ipsum dolor sit amet, consectetur adipiscing elit. Amet tellus pharetra molestie sed.",
                           style: robotoMedium.copyWith(
                             color: Color(0xff979797),
-                            fontSize: 13,
+                            fontSize: 14,
                             fontWeight: FontWeight.w400,
                           )),
                     ),
                     SizedBox(height: 10),
                     Divider(
                       thickness: 1,
-                      color: Color(0xffe3e3e3),
+                      color: Color(0xffe5e5e5),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -123,12 +124,16 @@ class _RestaurantSeeMorePageState extends State<RestaurantSeeMorePage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Image.asset(Images.icHygieneRating),
+                          Image.asset(
+                            Images.icHygieneRating,
+                            height: 22,
+                            width: 22,
+                          ),
                           SizedBox(width: 10),
                           Text("view_hygiene_rating".tr,
                               style: robotoMedium.copyWith(
                                 color: Color(0xff0eadc7),
-                                fontSize: 16,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w400,
                               )),
                         ],
@@ -136,27 +141,31 @@ class _RestaurantSeeMorePageState extends State<RestaurantSeeMorePage> {
                     ),
                     Divider(
                       thickness: 1,
-                      color: Color(0xffe3e3e3),
+                      color: Color(0xffe5e5e5),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 28),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Image.asset(Images.icMap),
-                          SizedBox(width: 10),
+                          Image.asset(
+                            Images.icMap,
+                            height: 24,
+                            width: 24,
+                          ),
+                          SizedBox(width: 16),
                           Text("3 Bondway, Vauxhall, London, SW81SJ",
                               style: robotoMedium.copyWith(
-                                color: Color(0xff979797),
-                                fontSize: 16,
+                                color: Color(0xff5e5e5e),
+                                fontSize: 14,
                                 fontWeight: FontWeight.w400,
                               )),
                         ],
                       ),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 31),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Container(
@@ -164,7 +173,7 @@ class _RestaurantSeeMorePageState extends State<RestaurantSeeMorePage> {
                         width: double.infinity,
                         height: 291,
                         decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xff0eacd7)),
+                          //border: Border.all(color: Color(0xff0eacd7)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: GoogleMap(
@@ -183,10 +192,10 @@ class _RestaurantSeeMorePageState extends State<RestaurantSeeMorePage> {
                             decoration: TextDecoration.underline,
                             color: Color(0xffbf1d2d),
                             fontSize: 16,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w400,
                           )),
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 62),
                     Padding(
                       padding: const EdgeInsets.only(
                           left: 20, right: 20, bottom: 20),
@@ -196,16 +205,16 @@ class _RestaurantSeeMorePageState extends State<RestaurantSeeMorePage> {
                         children: [
                           Text("note".tr,
                               style: robotoMedium.copyWith(
-                                color: Color(0xff979797),
-                                fontSize: 16,
+                                color: Color(0xff5e5e5e),
+                                fontSize: 14,
                                 fontWeight: FontWeight.w700,
                               )),
-                          SizedBox(height: 10),
+                          SizedBox(height: 15),
                           Text(
                               'Alcohol is not for sale to people under the age of 18. By placing an order for alcohol product on this site you are declaring that you are 18 years of age or over. Identification will be requested for anyone looking under the age of 25.',
                               style: robotoMedium.copyWith(
-                                color: Color(0xff979797),
-                                fontSize: 13,
+                                color: Color(0xff5e5e5e),
+                                fontSize: 14,
                                 fontWeight: FontWeight.w400,
                               )),
                         ],

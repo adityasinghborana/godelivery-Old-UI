@@ -273,6 +273,53 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                           );
                         })),
                   ),
+                  widget.selectedIndex == 3
+                      ? Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 32),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'restaurant_tip'.tr,
+                                      textAlign: TextAlign.center,
+                                      style: robotoRegular.copyWith(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w700,
+                                          color: Color(0xff0a191e)),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Image.asset(
+                                Images.icCircleMinus,
+                                width: 20,
+                                height: 20,
+                              ),
+                              SizedBox(width: 24),
+                              Image.asset(
+                                Images.icCirclePlus,
+                                width: 20,
+                                height: 20,
+                              ),
+                              SizedBox(width: 26),
+                              Text(
+                                '₦100.00'.tr,
+                                textAlign: TextAlign.center,
+                                style: robotoRegular.copyWith(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xff979797)),
+                              ),
+                            ],
+                          ),
+                        )
+                      : SizedBox.shrink(),
                   SizedBox(height: 20),
                   Text(
                     'popular_order'.tr,

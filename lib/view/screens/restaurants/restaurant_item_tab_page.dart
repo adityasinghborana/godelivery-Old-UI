@@ -63,7 +63,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                             child: Text(
                               'extra_large'.tr,
                               style: robotoRegular.copyWith(
-                                  fontSize: 18,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w700,
                                   color: Color(0xff09323e)),
                             ),
@@ -71,7 +71,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦2000',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -107,7 +107,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                             child: Text(
                               'large'.tr,
                               style: robotoRegular.copyWith(
-                                  fontSize: 18,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w700,
                                   color: Color(0xff09323e)),
                             ),
@@ -115,7 +115,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦2000',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -152,7 +152,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                             child: Text(
                               'medium'.tr,
                               style: robotoRegular.copyWith(
-                                  fontSize: 18,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w700,
                                   color: Color(0xff09323e)),
                             ),
@@ -160,7 +160,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦2000',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -196,7 +196,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                             child: Text(
                               'small'.tr,
                               style: robotoRegular.copyWith(
-                                  fontSize: 18,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w700,
                                   color: Color(0xff09323e)),
                             ),
@@ -204,7 +204,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦2000',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -240,7 +240,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                             child: Text(
                               'single_peace'.tr,
                               style: robotoRegular.copyWith(
-                                  fontSize: 18,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w700,
                                   color: Color(0xff09323e)),
                             ),
@@ -248,7 +248,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦2000',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -284,7 +284,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                             child: Text(
                               'single_peace_small'.tr,
                               style: robotoRegular.copyWith(
-                                  fontSize: 18,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w700,
                                   color: Color(0xff09323e)),
                             ),
@@ -292,7 +292,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦2000',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -340,7 +340,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                             child: Text(
                               'pan'.tr,
                               style: robotoRegular.copyWith(
-                                  fontSize: 18,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w700,
                                   color: Color(0xff09323e)),
                             ),
@@ -348,7 +348,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦20',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -384,7 +384,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                             child: Text(
                               'stuffed'.tr,
                               style: robotoRegular.copyWith(
-                                  fontSize: 18,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w700,
                                   color: Color(0xff09323e)),
                             ),
@@ -392,7 +392,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦20',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -428,7 +428,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                             child: Text(
                               'stuffed_crust'.tr,
                               style: robotoRegular.copyWith(
-                                  fontSize: 18,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w700,
                                   color: Color(0xff09323e)),
                             ),
@@ -436,7 +436,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦20',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -473,7 +473,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                             child: Text(
                               'cracker_crust'.tr,
                               style: robotoRegular.copyWith(
-                                  fontSize: 18,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w700,
                                   color: Color(0xff09323e)),
                             ),
@@ -481,7 +481,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦20',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -518,7 +518,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                             child: Text(
                               'flat_bread'.tr,
                               style: robotoRegular.copyWith(
-                                  fontSize: 18,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w700,
                                   color: Color(0xff09323e)),
                             ),
@@ -526,7 +526,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦20',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -563,7 +563,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                             child: Text(
                               'thin_crust'.tr,
                               style: robotoRegular.copyWith(
-                                  fontSize: 18,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w700,
                                   color: Color(0xff09323e)),
                             ),
@@ -571,7 +571,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦20',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -620,15 +620,13 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Image.asset(
-                                  Images.checked,
-                                  height: 20,
-                                  width: 20,
+                                  Images.icNonVeg,
                                 ),
                                 SizedBox(width: 20),
                                 Text(
                                   'Parma Ham',
                                   style: robotoRegular.copyWith(
-                                      fontSize: 18,
+                                      fontSize: 12,
                                       fontWeight: FontWeight.w700,
                                       color: Color(0xff09323e)),
                                 ),
@@ -638,7 +636,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦20',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -676,15 +674,13 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Image.asset(
-                                  Images.checked,
-                                  height: 20,
-                                  width: 20,
+                                  Images.icNonVeg,
                                 ),
                                 SizedBox(width: 20),
                                 Text(
                                   'Spicy alami',
                                   style: robotoRegular.copyWith(
-                                      fontSize: 18,
+                                      fontSize: 12,
                                       fontWeight: FontWeight.w700,
                                       color: Color(0xff09323e)),
                                 ),
@@ -694,7 +690,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦20',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -732,15 +728,13 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Image.asset(
-                                  Images.checked,
-                                  height: 20,
-                                  width: 20,
+                                  Images.icVeg,
                                 ),
                                 SizedBox(width: 20),
                                 Text(
                                   'Black Olives',
                                   style: robotoRegular.copyWith(
-                                      fontSize: 18,
+                                      fontSize: 12,
                                       fontWeight: FontWeight.w700,
                                       color: Color(0xff09323e)),
                                 ),
@@ -750,7 +744,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦20',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -788,15 +782,13 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Image.asset(
-                                  Images.checked,
-                                  height: 20,
-                                  width: 20,
+                                  Images.icNonVeg,
                                 ),
                                 SizedBox(width: 20),
                                 Text(
                                   'Cotto Ham',
                                   style: robotoRegular.copyWith(
-                                      fontSize: 18,
+                                      fontSize: 12,
                                       fontWeight: FontWeight.w700,
                                       color: Color(0xff09323e)),
                                 ),
@@ -806,7 +798,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦20',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -845,15 +837,13 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Image.asset(
-                                  Images.checked,
-                                  height: 20,
-                                  width: 20,
+                                  Images.icVeg,
                                 ),
                                 SizedBox(width: 20),
                                 Text(
                                   'Red Onion',
                                   style: robotoRegular.copyWith(
-                                      fontSize: 18,
+                                      fontSize: 12,
                                       fontWeight: FontWeight.w700,
                                       color: Color(0xff09323e)),
                                 ),
@@ -863,7 +853,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦20',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),
@@ -902,15 +892,13 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Image.asset(
-                                  Images.checked,
-                                  height: 20,
-                                  width: 20,
+                                  Images.icVeg,
                                 ),
                                 SizedBox(width: 20),
                                 Text(
                                   'Button Mushrooms',
                                   style: robotoRegular.copyWith(
-                                      fontSize: 18,
+                                      fontSize: 12,
                                       fontWeight: FontWeight.w700,
                                       color: Color(0xff09323e)),
                                 ),
@@ -920,7 +908,7 @@ class _RestaurantItemTabPageState extends State<RestaurantItemTabPage> {
                           Text(
                             '₦20',
                             style: robotoRegular.copyWith(
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff09323e)),
                           ),

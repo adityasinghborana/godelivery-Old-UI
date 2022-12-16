@@ -246,4 +246,9 @@ class Images {
   static const String icMap = 'assets/image/ic_map.png';
   static const String imgRestaurantItem =
       'assets/image/img_restaurant_item.png';
+  static const String icVeg = 'assets/image/ic_veg.png';
+  static const String icNonVeg = 'assets/image/ic_nonveg.png';
+  static const String icCallSeeMore = 'assets/image/ic_call_seemore.png';
+  static const String icCircleMinus = 'assets/image/ic_circle_minus.png';
+  static const String icCirclePlus = 'assets/image/ic_circle_plus.png';
 }

@@ -37,6 +37,7 @@ class _RestaurantDetailsItemListState extends State<RestaurantDetailsItemList> {
         Get.to(RestaurantItemDetailsPage());
       },
       child: Container(
+        margin: EdgeInsets.symmetric(vertical: 15),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,30 +63,30 @@ class _RestaurantDetailsItemListState extends State<RestaurantDetailsItemList> {
                                     fontSize: 14,
                                     fontWeight: FontWeight.w700,
                                   )),
-                              SizedBox(width: 20),
+                              SizedBox(width: 15),
                               Container(
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 3),
+                                    horizontal: 7, vertical: 3),
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Colors.orange),
+                                    borderRadius: BorderRadius.circular(2),
+                                    color: Color(0xfff5913c)),
                                 child: Text("popular".tr,
                                     style: robotoMedium.copyWith(
                                       color: Color(0xffffffff),
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
                                     )),
                               ),
                             ],
                           ),
                         ],
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 8),
                       Text(
                           "ruyere cheese, sour cream, diced ham, crisp bacon, sauteed mushrooms",
                           style: robotoMedium.copyWith(
                             color: Color(0xff9797979),
-                            fontSize: 14,
+                            fontSize: 12,
                             fontWeight: FontWeight.w700,
                           )),
                     ],
@@ -94,7 +95,7 @@ class _RestaurantDetailsItemListState extends State<RestaurantDetailsItemList> {
                 Image.asset(Images.imgMyOrder)
               ],
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -108,9 +109,9 @@ class _RestaurantDetailsItemListState extends State<RestaurantDetailsItemList> {
                 isVisible
                     ? Container(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                            EdgeInsets.symmetric(horizontal: 11, vertical: 5),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6),
+                            borderRadius: BorderRadius.circular(4),
                             border: Border.all(color: Color(0xffbf1d2d))),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -130,8 +131,8 @@ class _RestaurantDetailsItemListState extends State<RestaurantDetailsItemList> {
                             Text(count.toString(),
                                 style: robotoMedium.copyWith(
                                   color: Color(0xffbf1d2d),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.w400,
                                 )),
                             SizedBox(width: 6),
                             InkWell(
@@ -158,14 +159,14 @@ class _RestaurantDetailsItemListState extends State<RestaurantDetailsItemList> {
                         child: Container(
                           margin: EdgeInsets.only(right: 15),
                           padding:
-                              EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                              EdgeInsets.symmetric(horizontal: 17, vertical: 3),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6),
+                              borderRadius: BorderRadius.circular(2),
                               color: Color(0xffbf1d2d)),
                           child: Text("add".tr,
                               style: robotoMedium.copyWith(
                                 color: Color(0xffffffff),
-                                fontSize: 14,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                               )),
                         ),

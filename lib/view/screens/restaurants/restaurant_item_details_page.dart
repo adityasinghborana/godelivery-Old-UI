@@ -32,11 +32,6 @@ class _RestaurantItemDetailsPageState extends State<RestaurantItemDetailsPage>
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Container(
-            //   decoration: BoxDecoration(
-            //     color: Colors.grey,
-            //   ),
-            // ),
             Container(
               width: double.infinity,
               height: 250,
@@ -81,30 +76,30 @@ class _RestaurantItemDetailsPageState extends State<RestaurantItemDetailsPage>
                       Text(
                         'Sweet Goat',
                         style: robotoRegular.copyWith(
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.w700,
-                            color: Color(0xff09323e)),
+                            color: Color(0xff0a191e)),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 15),
                       Text(
                         'Tomato sauce, morzzarella cheese, goat cheese, spinach and onions.',
                         style: robotoRegular.copyWith(
-                            fontSize: 14,
+                            fontSize: 10,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff09323e)),
+                            color: Color(0xff0a191e)),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 15),
                       Text(
                         'something_extra'.tr,
                         style: robotoRegular.copyWith(
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.w700,
-                            color: Color(0xff09323e)),
+                            color: Color(0xff0a191e)),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 5),
+                SizedBox(height: 15),
                 Container(
                   color: Color(0xfff3f3f3),
                   child: TabBar(
@@ -153,17 +148,17 @@ class _RestaurantItemDetailsPageState extends State<RestaurantItemDetailsPage>
                   ]),
                 ),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 30),
-                  padding: EdgeInsets.symmetric(vertical: 15),
+                  margin: EdgeInsets.symmetric(horizontal: 41),
+                  padding: EdgeInsets.symmetric(vertical: 10),
                   width: double.infinity,
                   decoration: BoxDecoration(
                       color: Color(0xffbf1d2d),
-                      borderRadius: BorderRadius.circular(9)),
+                      borderRadius: BorderRadius.circular(5)),
                   child: Center(
                     child: Text(
                       'continue'.tr,
                       style: robotoRegular.copyWith(
-                          fontSize: 16,
+                          fontSize: 12,
                           fontWeight: FontWeight.w700,
                           color: Color(0xffffffff)),
                     ),
