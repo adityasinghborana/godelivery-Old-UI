@@ -1,8 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 
@@ -14,6 +10,7 @@ class SendGiftCard extends StatefulWidget {
 }
 
 class _SendGiftCardState extends State<SendGiftCard> {
+  PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -76,9 +73,9 @@ class _SendGiftCardState extends State<SendGiftCard> {
             ),
           ),
         ),
-        Positioned(
-            top: 75, right: 25, child: Image.asset(Images.imgRightArrow)),
-        Positioned(top: 75, left: 25, child: Image.asset(Images.imgLeftArrow)),
+        // Positioned(
+        //     top: 75, right: 25, child: Image.asset(Images.imgRightArrow)),
+        // Positioned(top: 75, left: 25, child: Image.asset(Images.imgLeftArrow)),
       ],
     );
   }

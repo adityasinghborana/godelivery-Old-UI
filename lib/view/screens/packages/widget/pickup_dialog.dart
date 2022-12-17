@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
-import 'package:sixam_mart/view/screens/packages/pickup_address_page.dart';
 
 class PickupDialog extends StatefulWidget {
-  const PickupDialog({Key key}) : super(key: key);
+  final VoidCallback onUpdate;
+
+  const PickupDialog({
+    Key key,
+    this.onUpdate,
+  }) : super(key: key);
 
   @override
   State<PickupDialog> createState() => _PickupDialogState();
@@ -71,7 +75,11 @@ class _PickupDialogState extends State<PickupDialog> {
                 SizedBox(width: 20),
                 InkWell(
                   onTap: () {
-                    Get.to(PickUpPage());
+                    // Get.to(PickUpPage());
+                    print('In dialog click');
+                    Navigator.pop(context);
+                    widget.onUpdate;
+                    print('in dialog click');
                   },
                   child: Container(
                     // width: 84,
