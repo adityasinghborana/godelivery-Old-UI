@@ -36,166 +36,164 @@ class ModuleView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      GetBuilder<BannerController>(builder: (bannerController) {
-        return BannerView(isFeatured: false);
-      }),
+      // GetBuilder<BannerController>(builder: (bannerController) {
+      //   return BannerView(isFeatured: false);
+      // }),
       splashController.moduleList != null
-          ? splashController.moduleList.length > 0
-              ? ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: splashController.moduleList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return InkWell(
-                      onTap: () {
-                        Get.to(GroceryPage(
-                          selectedIndex: index,
-                        ));
-                        // splashController.switchModule(index, true);
-                        // print("selected index--->" + index.toString());
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(21, 20, 18, 15),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: listColor[index],
+          // ? splashController.moduleList.length > 0
+          ? ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: splashController.moduleList.length,
+              itemBuilder: (BuildContext context, int index) {
+                return InkWell(
+                  onTap: () {
+                    Get.to(GroceryPage(
+                      selectedIndex: index,
+                    ));
+                    // splashController.switchModule(index, true);
+                    // print("selected index--->" + index.toString());
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(21, 20, 18, 15),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: listColor[index],
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            Images.imgRestro,
+                            height: 159,
+                            width: 135,
                           ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                Images.imgRestro,
-                                height: 159,
-                                width: 135,
-                              ),
-                              Expanded(
-                                child: Container(
-                                  padding: EdgeInsets.only(right: 20),
-                                  child: Column(
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsets.only(right: 20),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    splashController
+                                        .moduleList[index].moduleName,
+                                    style: robotoBold.copyWith(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "lorem ipsum dolor sit amet,consector.",
+                                    style: robotoRegular.copyWith(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Row(
                                     mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.end,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Text(
-                                        splashController
-                                            .moduleList[index].moduleName,
+                                        'explore'.tr,
                                         style: robotoBold.copyWith(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(
-                                        "lorem ipsum dolor sit amet,consector.",
-                                        style: robotoRegular.copyWith(
                                           color: Colors.white,
                                           fontSize: 12,
                                         ),
                                       ),
                                       SizedBox(
-                                        height: 5,
+                                        width: 2,
                                       ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            'explore'.tr,
-                                            style: robotoBold.copyWith(
-                                              color: Colors.white,
-                                              fontSize: 12,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 2,
-                                          ),
-                                          Icon(
-                                            Icons.arrow_forward,
-                                            size: 23,
-                                            color: Colors.white,
-                                          )
-                                        ],
-                                      ),
+                                      Icon(
+                                        Icons.arrow_forward,
+                                        size: 23,
+                                        color: Colors.white,
+                                      )
                                     ],
                                   ),
-                                ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
-                        ),
+                        ],
                       ),
-                    );
-                  })
+                    ),
+                  ),
+                );
+              })
 
-              // GridView.builder(
-              //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              //       crossAxisCount: 3,
-              //       mainAxisSpacing: Dimensions.PADDING_SIZE_SMALL,
-              //       crossAxisSpacing: Dimensions.PADDING_SIZE_SMALL,
-              //       childAspectRatio: (1 / 1),
-              //     ),
-              //     padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
-              //     itemCount: splashController.moduleList.length,
-              //     shrinkWrap: true,
-              //     physics: NeverScrollableScrollPhysics(),
-              //     itemBuilder: (context, index) {
-              //       return InkWell(
-              //         onTap: () => splashController.switchModule(index, true),
-              //         child: Container(
-              //           decoration: BoxDecoration(
-              //             borderRadius:
-              //                 BorderRadius.circular(Dimensions.RADIUS_DEFAULT),
-              //             color: Theme.of(context).cardColor,
-              //             boxShadow: [
-              //               BoxShadow(
-              //                   color: Colors.grey[Get.isDarkMode ? 700 : 200],
-              //                   spreadRadius: 1,
-              //                   blurRadius: 5)
-              //             ],
-              //           ),
-              //           child: Column(
-              //               mainAxisAlignment: MainAxisAlignment.center,
-              //               children: [
-              //                 ClipRRect(
-              //                   borderRadius: BorderRadius.circular(
-              //                       Dimensions.RADIUS_SMALL),
-              //                   child: CustomImage(
-              //                     image:
-              //                         '${splashController.configModel.baseUrls.moduleImageUrl}/${splashController.moduleList[index].icon}',
-              //                     height: 50,
-              //                     width: 50,
-              //                   ),
-              //                 ),
-              //                 SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
-              //                 Center(
-              //                     child: Text(
-              //                   splashController.moduleList[index].moduleName,
-              //                   textAlign: TextAlign.center,
-              //                   maxLines: 2,
-              //                   overflow: TextOverflow.ellipsis,
-              //                   style: robotoMedium.copyWith(
-              //                       fontSize: Dimensions.fontSizeSmall),
-              //                 )),
-              //               ]),
-              //         ),
-              //       );
-              //     },
-              //   )
-              : Center(
-                  child: Padding(
-                  padding: EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
-                  child: Text('no_module_found'.tr),
-                ))
-          : ModuleShimmer(isEnabled: splashController.moduleList == null),
-      SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
+          // GridView.builder(
+          //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          //       crossAxisCount: 3,
+          //       mainAxisSpacing: Dimensions.PADDING_SIZE_SMALL,
+          //       crossAxisSpacing: Dimensions.PADDING_SIZE_SMALL,
+          //       childAspectRatio: (1 / 1),
+          //     ),
+          //     padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+          //     itemCount: splashController.moduleList.length,
+          //     shrinkWrap: true,
+          //     physics: NeverScrollableScrollPhysics(),
+          //     itemBuilder: (context, index) {
+          //       return InkWell(
+          //         onTap: () => splashController.switchModule(index, true),
+          //         child: Container(
+          //           decoration: BoxDecoration(
+          //             borderRadius:
+          //                 BorderRadius.circular(Dimensions.RADIUS_DEFAULT),
+          //             color: Theme.of(context).cardColor,
+          //             boxShadow: [
+          //               BoxShadow(
+          //                   color: Colors.grey[Get.isDarkMode ? 700 : 200],
+          //                   spreadRadius: 1,
+          //                   blurRadius: 5)
+          //             ],
+          //           ),
+          //           child: Column(
+          //               mainAxisAlignment: MainAxisAlignment.center,
+          //               children: [
+          //                 ClipRRect(
+          //                   borderRadius: BorderRadius.circular(
+          //                       Dimensions.RADIUS_SMALL),
+          //                   child: CustomImage(
+          //                     image:
+          //                         '${splashController.configModel.baseUrls.moduleImageUrl}/${splashController.moduleList[index].icon}',
+          //                     height: 50,
+          //                     width: 50,
+          //                   ),
+          //                 ),
+          //                 SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+          //                 Center(
+          //                     child: Text(
+          //                   splashController.moduleList[index].moduleName,
+          //                   textAlign: TextAlign.center,
+          //                   maxLines: 2,
+          //                   overflow: TextOverflow.ellipsis,
+          //                   style: robotoMedium.copyWith(
+          //                       fontSize: Dimensions.fontSizeSmall),
+          //                 )),
+          //               ]),
+          //         ),
+          //       );
+          //     },
+          //   )
+          : Center(
+              child: Padding(
+              padding: EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
+              child: Text('no_module_found'.tr),
+            ))
+      // : ModuleShimmer(isEnabled: splashController.moduleList == null),
+      // SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
       // Padding(
       //   padding:
       //       EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_SMALL),

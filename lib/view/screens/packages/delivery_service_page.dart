@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
-import 'package:sixam_mart/view/screens/packages/package_address_page.dart';
 
 class DeliveryServicePage extends StatefulWidget {
-  const DeliveryServicePage({Key key}) : super(key: key);
+  final VoidCallback onBack;
+  const DeliveryServicePage({Key key, this.onBack}) : super(key: key);
 
   @override
   State<DeliveryServicePage> createState() => _DeliveryServicePageState();
@@ -66,7 +66,8 @@ class _DeliveryServicePageState extends State<DeliveryServicePage> {
                           flex: 1,
                           child: InkWell(
                             onTap: () {
-                              Get.to(PackageAddressPage());
+                              Get.back();
+                              widget.onBack();
                             },
                             child: Container(
                               padding: EdgeInsets.symmetric(

@@ -16,8 +16,6 @@ import 'package:sixam_mart/view/base/footer_view.dart';
 import 'package:sixam_mart/view/base/menu_drawer.dart';
 import 'package:sixam_mart/view/base/web_menu_bar.dart';
 import 'package:sixam_mart/view/screens/auth/widget/code_picker_widget.dart';
-import 'package:sixam_mart/view/screens/auth/widget/condition_check_box.dart';
-import 'package:sixam_mart/view/screens/auth/widget/guest_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:phone_number/phone_number.dart';

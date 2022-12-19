@@ -225,45 +225,64 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.start,
                                                   children: [
-                                                    Icon(
-                                                      locationController
-                                                                  .getUserAddress()
-                                                                  .addressType ==
-                                                              'home'
-                                                          ? Icons.home_filled
-                                                          : locationController
-                                                                      .getUserAddress()
-                                                                      .addressType ==
-                                                                  'office'
-                                                              ? Icons.work
-                                                              : Icons
-                                                                  .location_on,
-                                                      size: 20,
-                                                      color: Theme.of(context)
-                                                          .textTheme
-                                                          .bodyText1
-                                                          .color,
-                                                    ),
+                                                    // Icon(
+                                                    //   locationController
+                                                    //               .getUserAddress()
+                                                    //               .addressType ==
+                                                    //           'home'
+                                                    //       ? Icons.home_filled
+                                                    //       : locationController
+                                                    //                   .getUserAddress()
+                                                    //                   .addressType ==
+                                                    //               'office'
+                                                    //           ? Icons.work
+                                                    //           : Icons
+                                                    //               .location_on,
+                                                    //   size: 20,
+                                                    //   color: Theme.of(context)
+                                                    //       .textTheme
+                                                    //       .bodyText1
+                                                    //       .color,
+                                                    // ),
                                                     SizedBox(width: 10),
-                                                    GetBuilder<UserController>(
-                                                        builder:
-                                                            (userController) {
-                                                      return Text(
-                                                        _isLoggedIn
-                                                            ? '${userController.userInfoModel.fName} ${userController.userInfoModel.lName}'
-                                                            : 'guest'.tr,
-                                                        style:
-                                                            robotoBold.copyWith(
-                                                          color:
-                                                              Theme.of(context)
-                                                                  .textTheme
-                                                                  .bodyText1
-                                                                  .color,
-                                                          fontSize: Dimensions
-                                                              .fontSizeSmall,
+                                                    // GetBuilder<UserController>(
+                                                    //     builder:
+                                                    //         (userController) {
+                                                    //   return
+
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Image.asset(
+                                                          Images.icLocation,
+                                                          height: 19,
+                                                          width: 17,
                                                         ),
-                                                      );
-                                                    }),
+                                                        SizedBox(width: 20),
+                                                        Text(
+                                                          'Hey Alley',
+                                                          // _isLoggedIn
+                                                          //     ? '${userController.userInfoModel.fName} ${userController.userInfoModel.lName}'
+                                                          //     : 'guest'.tr,
+                                                          style: robotoBold
+                                                              .copyWith(
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .textTheme
+                                                                .bodyText1
+                                                                .color,
+                                                            fontSize: Dimensions
+                                                                .fontSizeSmall,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    )
+                                                    // }),
 
                                                     // Text(
                                                     //   _isLoggedIn
@@ -292,9 +311,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ),
                                                 Flexible(
                                                   child: Text(
-                                                    locationController
-                                                        .getUserAddress()
-                                                        .address,
+                                                    '3891 Ranchview Dr.Richardson',
+                                                    // locationController
+                                                    //     .getUserAddress()
+                                                    //     .address,
                                                     style:
                                                         robotoRegular.copyWith(
                                                       color: Colors.grey,

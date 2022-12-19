@@ -113,6 +113,8 @@ class _TrackOrderPageState extends State<TrackOrderPage> {
               )),
           Positioned(
               top: 400,
+              left: 10,
+              right: 20,
               child: Container(
                 margin: EdgeInsets.only(left: 20),
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -126,7 +128,55 @@ class _TrackOrderPageState extends State<TrackOrderPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [],
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(Images.icCart),
+                            Image.asset(Images.icLine),
+                            Image.asset(Images.icRoundHome)
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Mary's Kitchen",
+                              style: robotoRegular.copyWith(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xff000000)),
+                            ),
+                            Text(
+                              "Restaurant",
+                              style: robotoRegular.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff979797)),
+                            ),
+                            Divider(
+                              thickness: 3,
+                              color: Color(0xff979797),
+                            ),
+                            Text(
+                              "Mary's Kitchen",
+                              style: robotoRegular.copyWith(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xff000000)),
+                            ),
+                            Text(
+                              "Restaurant",
+                              style: robotoRegular.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff979797)),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -174,7 +224,7 @@ class _TrackOrderPageState extends State<TrackOrderPage> {
                           color: Color(0xff979797),
                         ),
                         Image.asset(
-                          Images.icLocation,
+                          Images.icBoxLocation,
                           height: 30,
                           width: 25,
                         ),

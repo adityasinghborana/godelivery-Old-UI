@@ -251,4 +251,8 @@ class Images {
   static const String icCallSeeMore = 'assets/image/ic_call_seemore.png';
   static const String icCircleMinus = 'assets/image/ic_circle_minus.png';
   static const String icCirclePlus = 'assets/image/ic_circle_plus.png';
+  static const String icBoxLocation = 'assets/image/ic_box_location.png';
+  static const String icRoundHome = 'assets/image/ic_round_home.png';
+  static const String icLine = 'assets/image/ic_line.png';
+  static const String icCart = 'assets/image/ic_cart.png';
 }

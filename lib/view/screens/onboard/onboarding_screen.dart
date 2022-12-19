@@ -136,8 +136,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                           child: Image.asset(
                                               onBoardingController
                                                   .onBoardingList[index]
-                                                  .imageUrl,
-                                              height: context.height * 0.3),
+                                                  .imageUrl),
                                         ),
                                         // Text(
                                         //   onBoardingController

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
@@ -45,7 +42,7 @@ class _PickUpPageState extends State<PickUpPage> {
                       border: OutlineInputBorder(
                           borderSide: BorderSide(
                               color: Color(0xffdedede).withOpacity(0.25))),
-                      // hintText: '',
+                      hintText: 'pickup_address'.tr,
                       hintStyle: TextStyle(
                           fontSize: 12,
                           color: Color(0xff979797),

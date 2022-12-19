@@ -47,53 +47,59 @@ class _PickupDialogState extends State<PickupDialog> {
             ),
             SizedBox(height: 26),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 InkWell(
                   onTap: () {
                     Get.back();
                   },
-                  child: Container(
-                    width: 92,
-                    padding: EdgeInsets.symmetric(horizontal: 25, vertical: 7),
-                    decoration: BoxDecoration(
-                        color: Color(0xffffffff),
-                        border: Border.all(color: Color(0xff979797)),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Center(
-                      child: Text(
-                        'no'.tr,
-                        style: robotoRegular.copyWith(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xff09323e)),
+                  child: Expanded(
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 25, vertical: 7),
+                      decoration: BoxDecoration(
+                          color: Color(0xffffffff),
+                          border: Border.all(color: Color(0xff979797)),
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Center(
+                        child: Text(
+                          'no'.tr,
+                          style: robotoRegular.copyWith(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xff09323e)),
+                        ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
+                SizedBox(width: 15),
                 InkWell(
                   onTap: () {
                     // Get.to(PickUpPage());
                     print('In dialog click');
-                    Navigator.pop(context);
-                    widget.onUpdate;
+                    widget.onUpdate();
+                    print('selected index-->' + widget.onUpdate.toString());
                     print('in dialog click');
+                    Navigator.pop(context);
                   },
-                  child: Container(
-                    // width: 84,
-                    padding: EdgeInsets.symmetric(vertical: 7, horizontal: 25),
-                    decoration: BoxDecoration(
-                        color: Color(0xffbf1d2d),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Center(
-                      child: Text(
-                        'yes_i_do'.tr,
-                        style: robotoRegular.copyWith(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xffffffff)),
+                  child: Expanded(
+                    child: Container(
+                      // width: 84,
+                      padding:
+                          EdgeInsets.symmetric(vertical: 7, horizontal: 20),
+                      decoration: BoxDecoration(
+                          color: Color(0xffbf1d2d),
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Center(
+                        child: Text(
+                          'yes_i_do'.tr,
+                          style: robotoRegular.copyWith(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xffffffff)),
+                        ),
                       ),
                     ),
                   ),

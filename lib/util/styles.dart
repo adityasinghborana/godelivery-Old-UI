@@ -32,6 +32,13 @@ final robotoBlack = TextStyle(
   fontSize: Dimensions.fontSizeDefault,
 );
 
+//email validation
+bool isValidEmail(String email) {
+  return RegExp(
+          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+      .hasMatch(email);
+}
+
 final InputDecoration textFieldInputDecoration = InputDecoration(
   fillColor: AppColors.redAccentColor,
   border: OutlineInputBorder(
