@@ -47,7 +47,7 @@ class ProfileBgWidget extends StatelessWidget {
                   child: Center(
                       child: Image.asset(Images.imgProfileBg,
                           height: 300,
-                          width: Dimensions.WEB_MAX_WIDTH,
+                          width: double.infinity,
                           fit: BoxFit.fill)),
                 ),
                 // Positioned(

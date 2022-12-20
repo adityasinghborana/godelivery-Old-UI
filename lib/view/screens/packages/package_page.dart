@@ -121,8 +121,9 @@ class _PackagePageState extends State<PackagePage> {
                           dotRadius: 10,
                           spacing: 70.00,
                           lineConnectorDecoration: LineConnectorDecoration(
-                              linePadding: 1.0, color: Color(0xff979797)),
-                          // tappingEnabled: false,
+                              strokeWidth: 0.3,
+                              linePadding: 1.0,
+                              color: Color(0xff979797)),
                           indicatorDecoration: IndicatorDecoration(
                               strokeColor: Color(0xff0eacd7),
                               color: Color(0xff0eacd7)),

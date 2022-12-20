@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -17,6 +18,7 @@ class PrescriptionUploadPage extends StatefulWidget {
 
 class _PrescriptionUploadPageState extends State<PrescriptionUploadPage> {
   File imageFile;
+  PickedFile documentFile = null;
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +102,7 @@ class _PrescriptionUploadPageState extends State<PrescriptionUploadPage> {
                           ],
                         ),
                       ),
-                      InkWell(
+                    InkWell(
                         onTap: () {
                           _getFromGallery();
                         },
@@ -120,20 +122,25 @@ class _PrescriptionUploadPageState extends State<PrescriptionUploadPage> {
                           ],
                         ),
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset(Images.icPdf),
-                          SizedBox(height: 10),
-                          Text(
-                            'pdf'.tr.toUpperCase(),
-                            style: robotoRegular.copyWith(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xff09323e)),
-                          ),
-                        ],
+                      InkWell(
+                        onTap: () {
+                          _openDocument(context, documentFile);
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(Images.icPdf),
+                            SizedBox(height: 10),
+                            Text(
+                              'pdf'.tr.toUpperCase(),
+                              style: robotoRegular.copyWith(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff09323e)),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -169,6 +176,19 @@ class _PrescriptionUploadPageState extends State<PrescriptionUploadPage> {
         ));
       });
     }
+  }
+
+  //upload documents
+  void _openDocument(BuildContext context, PickedFile fileType) async {
+    final FilePickerResult result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['jpg', 'pdf', 'doc'],
+    );
+    setState(() {
+      fileType = result as PickedFile;
+      print('file path-->' + fileType.path.toString());
+    });
+    Navigator.pop(context);
   }
 
   //crop image

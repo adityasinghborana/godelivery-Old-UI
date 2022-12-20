@@ -10,18 +10,18 @@ class ModuleModel {
   String createdAt;
   String updatedAt;
 
-  ModuleModel(
-      {this.id,
-        this.moduleName,
-        this.moduleType,
-        this.thumbnail,
-        this.storesCount,
-        this.icon,
-        this.themeId,
-        this.description,
-        this.createdAt,
-        this.updatedAt,
-      });
+  ModuleModel({
+    this.id,
+    this.moduleName,
+    this.moduleType,
+    this.thumbnail,
+    this.storesCount,
+    this.icon,
+    this.themeId,
+    this.description,
+    this.createdAt,
+    this.updatedAt,
+  });
 
   ModuleModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

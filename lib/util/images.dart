@@ -255,4 +255,6 @@ class Images {
   static const String icRoundHome = 'assets/image/ic_round_home.png';
   static const String icLine = 'assets/image/ic_line.png';
   static const String icCart = 'assets/image/ic_cart.png';
+  static const String icRedClock = 'assets/image/ic_red_clock.png';
+  static const String icBlackLocation = 'assets/image/ic_loaction.png';
 }
