@@ -8,7 +8,9 @@ import 'package:sixam_mart/util/styles.dart';
 
 class PatientDetailsPage extends StatefulWidget {
   final File image;
-  const PatientDetailsPage({Key key, this.image}) : super(key: key);
+  final String imageName;
+  const PatientDetailsPage({Key key, this.image, this.imageName})
+      : super(key: key);
 
   @override
   State<PatientDetailsPage> createState() => _PatientDetailsPageState();
@@ -190,7 +192,10 @@ class _PatientDetailsPageState extends State<PatientDetailsPage>
             child: TabBarView(
               controller: _tabController,
               children: [
-                PatientTabPage(isMedicinelist: false, image: widget.image),
+                PatientTabPage(
+                    isMedicinelist: false,
+                    image: widget.image,
+                    imageName: widget.imageName),
                 PatientTabPage(isMedicinelist: true, image: widget.image),
               ],
             ),

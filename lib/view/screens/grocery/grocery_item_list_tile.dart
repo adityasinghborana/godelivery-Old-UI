@@ -4,7 +4,6 @@ import 'package:sixam_mart/view/screens/grocery/grocery_details_page.dart';
 import 'package:sixam_mart/util/images.dart';
 import 'package:sixam_mart/util/styles.dart';
 import 'package:sixam_mart/view/screens/chat/chat_screen.dart';
-import 'package:sixam_mart/view/screens/chat/conversation_screen.dart';
 
 class GoceryItemListTile extends StatefulWidget {
   final int selectedIndex;

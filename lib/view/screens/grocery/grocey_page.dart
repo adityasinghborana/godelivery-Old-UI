@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:sixam_mart/helper/route_helper.dart';
 import 'package:sixam_mart/view/screens/grocery/grocery_category_list_tile.dart';
 import 'package:sixam_mart/view/screens/grocery/grocery_item_list_tile.dart';
 import 'package:sixam_mart/view/screens/my_record/my_record_page.dart';
@@ -73,10 +74,15 @@ class _GroceryPageState extends State<GroceryPage> {
                                 height: 32,
                               ),
                         SizedBox(width: 23),
-                        Icon(
-                          Icons.shopping_cart,
-                          size: 25,
-                          color: Colors.grey,
+                        InkWell(
+                          onTap: () {
+                            Get.toNamed(RouteHelper.getCartRoute());
+                          },
+                          child: Icon(
+                            Icons.shopping_cart,
+                            size: 25,
+                            color: Colors.grey,
+                          ),
                         )
                       ],
                     ),

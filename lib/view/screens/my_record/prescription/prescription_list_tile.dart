@@ -10,7 +10,9 @@ import 'package:sixam_mart/util/styles.dart';
 
 class PrescriptionListTile extends StatefulWidget {
   final File image;
-  const PrescriptionListTile({Key key, this.image}) : super(key: key);
+  final String imageName;
+  const PrescriptionListTile({Key key, this.image, this.imageName})
+      : super(key: key);
 
   @override
   State<PrescriptionListTile> createState() => _PrescriptionListTileState();
@@ -50,26 +52,28 @@ class _PrescriptionListTileState extends State<PrescriptionListTile> {
                         ),
                 ),
                 SizedBox(width: 20),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Cold.jpg",
-                      style: robotoRegular.copyWith(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xff09323e)),
-                    ),
-                    SizedBox(height: 15),
-                    Text(
-                      "11 jun 2022",
-                      style: robotoRegular.copyWith(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff979797)),
-                    ),
-                  ],
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.imageName,
+                        style: robotoRegular.copyWith(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xff09323e)),
+                      ),
+                      SizedBox(height: 15),
+                      Text(
+                        "11 jun 2022",
+                        style: robotoRegular.copyWith(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff979797)),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

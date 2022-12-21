@@ -10,7 +10,9 @@ import 'package:sixam_mart/util/styles.dart';
 class PatientTabPage extends StatefulWidget {
   final File image;
   final bool isMedicinelist;
-  const PatientTabPage({Key key, this.isMedicinelist, this.image})
+  final String imageName;
+  const PatientTabPage(
+      {Key key, this.isMedicinelist, this.image, this.imageName})
       : super(key: key);
 
   @override
@@ -63,6 +65,7 @@ class _PatientTabPageState extends State<PatientTabPage> {
                               itemBuilder: (context, index) {
                                 return PrescriptionListTile(
                                   image: widget.image,
+                                  imageName: widget.imageName,
                                 );
                               },
                               separatorBuilder: (context, index) {

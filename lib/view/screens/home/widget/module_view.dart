@@ -25,6 +25,34 @@ import 'package:sixam_mart/view/screens/home/widget/popular_store_view.dart';
 class ModuleView extends StatelessWidget {
   final SplashController splashController;
   ModuleView({@required this.splashController});
+
+  List images = [
+    Image.asset(
+      Images.imgGrocry,
+      height: 159,
+      width: 120,
+    ),
+    Image.asset(
+      Images.imgPharmacy,
+      height: 150,
+      width: 150,
+    ),
+    Image.asset(
+      Images.imgGrocry,
+      height: 159,
+      width: 120,
+    ),
+    Image.asset(
+      Images.imgRestro,
+      height: 159,
+      width: 135,
+    ),
+    Image.asset(
+      Images.imgPackage,
+      height: 159,
+      width: 135,
+    ),
+  ];
   static List listColor = [
     const Color(0xffc6192a),
     const Color(0xff0facd7),
@@ -55,7 +83,7 @@ class ModuleView extends StatelessWidget {
                     // print("selected index--->" + index.toString());
                   },
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(21, 20, 18, 15),
+                    padding: EdgeInsets.fromLTRB(21, 15, 18, 0),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -65,11 +93,13 @@ class ModuleView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Image.asset(
-                            Images.imgRestro,
-                            height: 159,
-                            width: 135,
-                          ),
+                          images[index],
+                          // Image.asset(
+                          //   Images.imgGrocry,
+                          //   // images[index].toString(),
+                          //   height: 159,
+                          //   width: 135,
+                          // ),
                           Expanded(
                             child: Container(
                               padding: EdgeInsets.only(right: 20),

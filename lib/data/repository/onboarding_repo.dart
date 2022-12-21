@@ -12,8 +12,8 @@ class OnBoardingRepo {
             'on_boarding_2_description'.tr),
         OnBoardingModel(Images.onboard_3, 'on_boarding_3_title'.tr,
             'on_boarding_3_description'.tr),
-        OnBoardingModel(Images.onboard_4, 'on_boarding_3_title'.tr,
-            'on_boarding_3_description'.tr),
+        OnBoardingModel(Images.onboard_4, 'on_boarding_4_title'.tr,
+            'on_boarding_4_description'.tr),
       ];
 
       Response response = Response(body: onBoardingList, statusCode: 200);

@@ -257,4 +257,8 @@ class Images {
   static const String icCart = 'assets/image/ic_cart.png';
   static const String icRedClock = 'assets/image/ic_red_clock.png';
   static const String icBlackLocation = 'assets/image/ic_loaction.png';
+  static const String imgGrocry = 'assets/image/img_grocery.png';
+  static const String imgPharmacy = 'assets/image/img_pharmacy.png';
+  static const String imgShop = 'assets/image/img_resto.png';
+  static const String imgPackage = 'assets/image/img_package.png';
 }

@@ -102,7 +102,7 @@ class _PrescriptionUploadPageState extends State<PrescriptionUploadPage> {
                           ],
                         ),
                       ),
-                    InkWell(
+                      InkWell(
                         onTap: () {
                           _getFromGallery();
                         },
@@ -163,16 +163,13 @@ class _PrescriptionUploadPageState extends State<PrescriptionUploadPage> {
       maxHeight: 1800,
     );
     if (pickedFile != null) {
-      // print("picked file" + pickedFile.path);
       _cropImage(pickedFile.path);
-      // print("crop function called");
-
       setState(() {
         imageFile = File(pickedFile.path);
-        // print('img gallery-->' + imageFile!.path.toString());
-
+        print('img gallery-->' + pickedFile.name);
         Get.to(PatientDetailsPage(
           image: imageFile,
+          imageName: pickedFile.name,
         ));
       });
     }
@@ -182,12 +179,20 @@ class _PrescriptionUploadPageState extends State<PrescriptionUploadPage> {
   void _openDocument(BuildContext context, PickedFile fileType) async {
     final FilePickerResult result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
-      allowedExtensions: ['jpg', 'pdf', 'doc'],
+      allowedExtensions: ['pdf', 'doc'],
     );
-    setState(() {
-      fileType = result as PickedFile;
-      print('file path-->' + fileType.path.toString());
-    });
+    if (result != null) {
+      PlatformFile file = result.files.first;
+      print(file.name);
+      print(file.extension);
+      print(file.path);
+    } else {
+      // User canceled the picker
+    }
+    // setState(() {
+    //   fileType = result as PickedFile;
+    //   print('file path-->' + fileType.path.toString());
+    // });
     Navigator.pop(context);
   }
 

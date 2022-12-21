@@ -104,15 +104,16 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                           style: robotoMedium.copyWith(
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              fontWeight: FontWeight.w900,
                                               fontStyle: FontStyle.italic,
-                                              fontSize: context.height * 0.022),
+                                              fontSize: 23.7),
                                           textAlign: TextAlign.center,
                                         ),
                                         SizedBox(
                                           height: 20,
                                         ),
-                                        SizedBox(
-                                            height: context.height * 0.025),
+                                        // SizedBox(
+                                        //     height: context.height * 0.025),
                                         Padding(
                                           padding: EdgeInsets.symmetric(
                                               horizontal: Dimensions
@@ -123,7 +124,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                                 .description,
                                             style: robotoRegular.copyWith(
                                               fontStyle: FontStyle.italic,
-                                              fontSize: context.height * 0.030,
+                                              color: Color(0xff09323e),
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 25,
                                               // color: Theme.of(context)
                                               //     .disabledColor
                                             ),
