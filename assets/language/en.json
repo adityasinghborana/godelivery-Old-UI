@@ -897,5 +897,7 @@
   "some_disruption": "There's been some disruption to our supply, so a couple of items may be unavailable today. We know it's frustrating and we're working hard to resolve it. Thanks for your understanding.",
   "due_to_the": "Due to the shop's distance from your home, it will take more than 40 minites for the delivery boy to delivery your item, so you might have to pay a little more",
   "your_otp": "Your OTP :",
-  "estimate_time": "Estimate time"
+  "estimate_time": "Estimate time",
+  "expected_time": "Expected time",
+  "got_it": "Got it"
 }

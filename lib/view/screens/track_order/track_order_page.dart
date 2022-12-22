@@ -72,8 +72,8 @@ class _TrackOrderPageState extends State<TrackOrderPage> {
               )),
           Positioned(
             top: 63,
-            left: 170,
-            right: 60,
+            left: 120,
+            right: 120,
             child: Text(
               'track_order'.tr,
               style: robotoRegular.copyWith(

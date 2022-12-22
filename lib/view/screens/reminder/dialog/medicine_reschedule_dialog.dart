@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:sixam_mart/util/styles.dart';
 
@@ -212,7 +209,7 @@ class _MedicineRescheduleDialogState extends State<MedicineRescheduleDialog> {
                 ),
                 SizedBox(width: 24),
                 Text(
-                  '22 Jub, Tomorrow',
+                  '22 Jun, Tomorrow',
                   style: robotoRegular.copyWith(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,

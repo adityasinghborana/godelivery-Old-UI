@@ -54,22 +54,19 @@ class _PickupDialogState extends State<PickupDialog> {
                   onTap: () {
                     Get.back();
                   },
-                  child: Expanded(
-                    child: Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 25, vertical: 7),
-                      decoration: BoxDecoration(
-                          color: Color(0xffffffff),
-                          border: Border.all(color: Color(0xff979797)),
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Center(
-                        child: Text(
-                          'no'.tr,
-                          style: robotoRegular.copyWith(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xff09323e)),
-                        ),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 25, vertical: 7),
+                    decoration: BoxDecoration(
+                        color: Color(0xffffffff),
+                        border: Border.all(color: Color(0xff979797)),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: Text(
+                        'no'.tr,
+                        style: robotoRegular.copyWith(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xff09323e)),
                       ),
                     ),
                   ),
@@ -84,22 +81,19 @@ class _PickupDialogState extends State<PickupDialog> {
                     print('in dialog click');
                     Navigator.pop(context);
                   },
-                  child: Expanded(
-                    child: Container(
-                      // width: 84,
-                      padding:
-                          EdgeInsets.symmetric(vertical: 7, horizontal: 20),
-                      decoration: BoxDecoration(
-                          color: Color(0xffbf1d2d),
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Center(
-                        child: Text(
-                          'yes_i_do'.tr,
-                          style: robotoRegular.copyWith(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xffffffff)),
-                        ),
+                  child: Container(
+                    // width: 84,
+                    padding: EdgeInsets.symmetric(vertical: 7, horizontal: 20),
+                    decoration: BoxDecoration(
+                        color: Color(0xffbf1d2d),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: Text(
+                        'yes_i_do'.tr,
+                        style: robotoRegular.copyWith(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xffffffff)),
                       ),
                     ),
                   ),

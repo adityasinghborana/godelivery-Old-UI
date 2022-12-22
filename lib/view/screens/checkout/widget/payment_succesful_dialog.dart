@@ -66,7 +66,7 @@ class _PaymentSuccessfulDialogState extends State<PaymentSuccessfulDialog> {
                 borderRadius: BorderRadius.circular(9),
               ),
               child: Text(
-                'got_it',
+                'got_it'.tr,
                 style: robotoRegular.copyWith(
                     fontSize: 14,
                     fontWeight: FontWeight.w700,

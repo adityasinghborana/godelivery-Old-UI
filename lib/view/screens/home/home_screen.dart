@@ -311,10 +311,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ),
                                                 Flexible(
                                                   child: Text(
-                                                    '3891 Ranchview Dr.Richardson',
-                                                    // locationController
-                                                    //     .getUserAddress()
-                                                    //     .address,
+                                                    // '3891 Ranchview Dr.Richardson',
+                                                    locationController
+                                                        .getUserAddress()
+                                                        .address,
                                                     style:
                                                         robotoRegular.copyWith(
                                                       color: Colors.grey,
@@ -386,71 +386,78 @@ class _HomeScreenState extends State<HomeScreen> {
                                     child: InkWell(
                                       onTap: () => Get.toNamed(
                                           RouteHelper.getSearchRoute()),
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: Container(
-                                              padding: EdgeInsets.symmetric(
-                                                  vertical: Dimensions
-                                                      .PADDING_SIZE_EXTRA_SMALL,
-                                                  horizontal: Dimensions
-                                                      .PADDING_SIZE_SMALL),
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    Theme.of(context).cardColor,
-                                                border: Border.all(
-                                                    color: Color(0xffff979797)),
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Dimensions
-                                                            .RADIUS_SMALL),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      color: Colors.grey[
-                                                          Get.isDarkMode
-                                                              ? 800
-                                                              : 200],
-                                                      spreadRadius: 1,
-                                                      blurRadius: 5)
-                                                ],
-                                              ),
-                                              child: Row(children: [
-                                                Icon(
-                                                  Icons.search,
-                                                  size: 25,
-                                                  color: Colors.grey,
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 11),
+                                        child: Row(
+                                          children: [
+                                            Expanded(
+                                              child: Container(
+                                                padding: EdgeInsets.symmetric(
+                                                    vertical: Dimensions
+                                                        .PADDING_SIZE_EXTRA_SMALL,
+                                                    horizontal: Dimensions
+                                                        .PADDING_SIZE_SMALL),
+                                                decoration: BoxDecoration(
+                                                  color: Theme.of(context)
+                                                      .cardColor,
+                                                  border: Border.all(
+                                                      color:
+                                                          Color(0xffff979797)),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          Dimensions
+                                                              .RADIUS_SMALL),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        color: Colors.grey[
+                                                            Get.isDarkMode
+                                                                ? 800
+                                                                : 200],
+                                                        spreadRadius: 1,
+                                                        blurRadius: 5)
+                                                  ],
                                                 ),
-                                                SizedBox(
-                                                    width: Dimensions
-                                                        .PADDING_SIZE_EXTRA_SMALL),
-                                                Text(
-                                                  Get.find<SplashController>()
-                                                          .configModel
-                                                          .moduleConfig
-                                                          .module
-                                                          .showRestaurantText
-                                                      ? 'search_by_item_name'.tr
-                                                      : 'search_by_item_name'
-                                                          .tr,
-                                                  style: robotoRegular.copyWith(
-                                                    fontSize: Dimensions
-                                                        .fontSizeSmall,
-                                                    color: Theme.of(context)
-                                                        .hintColor,
+                                                child: Row(children: [
+                                                  Icon(
+                                                    Icons.search,
+                                                    size: 25,
+                                                    color: Colors.grey,
                                                   ),
-                                                ),
-                                              ]),
+                                                  SizedBox(
+                                                      width: Dimensions
+                                                          .PADDING_SIZE_EXTRA_SMALL),
+                                                  Text(
+                                                    Get.find<SplashController>()
+                                                            .configModel
+                                                            .moduleConfig
+                                                            .module
+                                                            .showRestaurantText
+                                                        ? 'search_by_item_name'
+                                                            .tr
+                                                        : 'search_by_item_name'
+                                                            .tr,
+                                                    style:
+                                                        robotoRegular.copyWith(
+                                                      fontSize: Dimensions
+                                                          .fontSizeSmall,
+                                                      color: Theme.of(context)
+                                                          .hintColor,
+                                                    ),
+                                                  ),
+                                                ]),
+                                              ),
                                             ),
-                                          ),
-                                          SizedBox(
-                                            width: 15,
-                                          ),
-                                          Image.asset(
-                                            Images.imgFilter,
-                                            height: 35,
-                                            width: 35,
-                                          )
-                                        ],
+                                            SizedBox(
+                                              width: 15,
+                                            ),
+                                            Image.asset(
+                                              Images.imgFilter,
+                                              height: 35,
+                                              width: 35,
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ))),

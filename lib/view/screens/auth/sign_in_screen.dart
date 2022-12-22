@@ -493,10 +493,10 @@ class _SignInScreenState extends State<SignInScreen> {
                             SizedBox(height: 15),
                             Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
+                                  const EdgeInsets.symmetric(horizontal: 5),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Checkbox(
                                     side: MaterialStateBorderSide.resolveWith(
@@ -510,14 +510,15 @@ class _SignInScreenState extends State<SignInScreen> {
                                       });
                                     },
                                   ),
-                                  SizedBox(
-                                    width: 40,
-                                  ),
+                                  // SizedBox(
+                                  //   width: 5,
+                                  // ),
                                   Expanded(
                                     child: Text(
                                       'i_agree'.tr,
-                                      style:
-                                          TextStyle(color: Color(0xff979797)),
+                                      style: robotoRegular.copyWith(
+                                          fontSize: 10,
+                                          color: Color(0xff979797)),
                                     ),
                                   ),
                                 ],
@@ -528,10 +529,10 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                             Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
+                                  const EdgeInsets.symmetric(horizontal: 5),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Checkbox(
                                     side: MaterialStateBorderSide.resolveWith(
@@ -545,14 +546,15 @@ class _SignInScreenState extends State<SignInScreen> {
                                       });
                                     },
                                   ),
-                                  SizedBox(
-                                    width: 40,
-                                  ),
+                                  // SizedBox(
+                                  //   width: 10,
+                                  // ),
                                   Expanded(
                                     child: Text(
                                       'i_agree_that'.tr,
-                                      style:
-                                          TextStyle(color: Color(0xff979797)),
+                                      style: robotoRegular.copyWith(
+                                          fontSize: 10,
+                                          color: Color(0xff979797)),
                                     ),
                                   ),
                                 ],

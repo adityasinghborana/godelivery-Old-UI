@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:sixam_mart/helper/route_helper.dart';
 import 'package:sixam_mart/util/styles.dart';
 import 'package:sixam_mart/view/base/custom_button.dart';
 import 'package:sixam_mart/view/screens/location/widget/add_address_bottomsheet.dart';
@@ -70,6 +71,7 @@ class _ChangeAddressBottomSheetState extends State<ChangeAddressBottomSheet> {
                 itemBuilder: (context, index) {
                   return NewAddressListTile(
                     pickAddres: widget.pickAddress,
+                    selectedIndex: index,
                   );
                 }),
             SizedBox(
@@ -79,7 +81,10 @@ class _ChangeAddressBottomSheetState extends State<ChangeAddressBottomSheet> {
               radius: 10,
               buttonText: 'confirm'.tr,
               fontSize: 17,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacementNamed(
+                    context, RouteHelper.getInitialRoute());
+              },
             ),
             SizedBox(
               height: 20,

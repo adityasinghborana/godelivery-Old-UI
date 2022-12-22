@@ -8,7 +8,9 @@ import 'package:sixam_mart/view/screens/location/widget/update_address_bottomshe
 
 class NewAddressListTile extends StatefulWidget {
   final String pickAddres;
-  const NewAddressListTile({Key key, this.pickAddres}) : super(key: key);
+  final int selectedIndex;
+  const NewAddressListTile({Key key, this.pickAddres, this.selectedIndex})
+      : super(key: key);
 
   @override
   State<NewAddressListTile> createState() => _NewAddressListTileState();
@@ -16,6 +18,14 @@ class NewAddressListTile extends StatefulWidget {
 
 class _NewAddressListTileState extends State<NewAddressListTile> {
   String _value;
+  int value;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -45,6 +55,16 @@ class _NewAddressListTileState extends State<NewAddressListTile> {
                 ],
               ),
             ),
+
+            // Expanded(
+            //   child: RadioListTile(
+            //     value: widget.selectedIndex,
+            //     groupValue: value,
+            //     onChanged: (ind) => setState(() => value = ind),
+            //     title: Text("Number ${widget.selectedIndex}"),
+            //   ),
+            // ),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -69,8 +89,8 @@ class _NewAddressListTileState extends State<NewAddressListTile> {
                 ),
                 Radio(
                     activeColor: Color(0xff0eacd7),
-                    value: "edit",
-                    groupValue: _value,
+                    value: '',
+                    groupValue: _value.toString(),
                     onChanged: ((value) {
                       setState(() {
                         _value = value.toString();
